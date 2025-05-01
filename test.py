@@ -1,5 +1,4 @@
 import numpy as np
-import math
 
 def sample_AM_distribution(log_Lc, fragment_type="upper_stage"):
     """
@@ -14,13 +13,13 @@ def sample_AM_distribution(log_Lc, fragment_type="upper_stage"):
     """
     
     # Determine which distribution to use based on size
-    if log_Lc > math.log10(0.11):  # Larger than 11 cm
+    if log_Lc > np.log10(0.11):  # Larger than 11 cm
         return sample_large_AM_distribution(log_Lc, fragment_type)
-    elif log_Lc < math.log10(0.08):  # Smaller than 8 cm
+    elif log_Lc < np.log10(0.08):  # Smaller than 8 cm
         return sample_small_AM_distribution(log_Lc)
     else:  # Between 8 and 11 cm - transition region
         # Linearly interpolate between small and large fragment distributions
-        weight = (log_Lc - math.log10(0.08)) / (math.log10(0.11) - math.log10(0.08))
+        weight = (log_Lc - np.log10(0.08)) / (np.log10(0.11) - np.log10(0.08))
         large_sample = sample_large_AM_distribution(log_Lc, fragment_type)
         small_sample = sample_small_AM_distribution(log_Lc)
         return small_sample * (1 - weight) + large_sample * weight
@@ -147,7 +146,7 @@ def calculate_mass(Lc, fragment_type="upper_stage"):
         area = 0.556945 * (Lc ** 2.0047077)
     
     # Step 2: Sample A/M ratio from the appropriate distribution
-    log_Lc = math.log10(Lc)
+    log_Lc = np.log10(Lc)
     AM_ratio = sample_AM_distribution(log_Lc, fragment_type)
     
     # Step 3: Calculate mass
