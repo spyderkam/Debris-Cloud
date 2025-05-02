@@ -6,7 +6,7 @@ __date__ = "May 1, 2025"
 import numpy as np
 
 # NASA Standard Breakup Model
-def get_AM_valu(log_Lc, fragment_type="upper_stage"):
+def get_AM_value(log_Lc, fragment_type="upper_stage"):
     """
     Sample from the NASA breakup model's area-to-mass ratio distribution.
     
@@ -152,7 +152,7 @@ def calculate_mass(Lc, fragment_type="upper_stage"):
     
     # Step 2: Sample A/M ratio from the appropriate distribution
     log_Lc = np.log10(Lc)
-    AM_ratio = get_AM_valu(log_Lc, fragment_type)
+    AM_ratio = get_AM_value(log_Lc, fragment_type)
     
     # Step 3: Calculate mass
     mass = area / AM_ratio
