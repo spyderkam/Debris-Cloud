@@ -210,7 +210,7 @@ The atmospheric density varies significantly with altitude and solar activity, t
 
 A refined evolutionary model incorporating these effects would update $\sigma$ in Equation (2.1) to be time-dependent as it is now affected by SRP:
 
-$$ \sigma(L_\mathrm{c}, t) = \sigma(L_\mathrm{c}, 0) + \gamma, t L_\mathrm{c}^{-\alpha} \tag{4.11} $$
+$$ \sigma(L_\mathrm{c}, t) = \sigma(L_\mathrm{c}, 0) + \gamma t L_\mathrm{c}^{-\alpha} \tag{4.11} $$
 
 where $\gamma$ is an empirical parameter. The peak radial position, on the other hand, is unaffected by perturbations for short timescales. For large fragments, the SRP force is negligible as their mass-to-area ratio is very high [1]. For medium and small fragments, the initial deviation of fragments is dominated by the impulse from the fragmentation event itself [5]; over and above that, the ejection velocities from the fragmentation event far exceed the velocity changes induced by SRP within the first 120 seconds (typically ≪ 1 m·s$^{-1}$ for small fragments) [4].
 
