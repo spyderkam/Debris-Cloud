@@ -1,35 +1,36 @@
 #!usr/bin/env python3
 
 __author__ = "Kamyar Modjtahedzadeh"
-__date__ = "May 1, 2025"
+__date__ = "May 2, 2025"
 
 """
     Let the origin be the center of the parent body at impact (𝑡 = 0).
 """
 
 from gdmpidc_tools import calculate_mass, cross_sectional_area, empirical_parameters, expansion_velocity, get_AM_value
-from scipy import integrate
 import numpy as np
 
-#M_EARTH = 5.972e+24            # [kg]
-#GRAV_CONST = 6.67430e-11       # [m^3·kg^-1·s^-2]
+# M_EARTH = 5.972e+24            # [kg]
+# GRAV_CONST = 6.67430e-11       # [m^3·kg^-1·s^-2]
 parent_vel = 0                 # [m·s^-1]
-initial_cloud_radius = 30000   # [m]
+#initial_cloud_radius = 30000    # [m]
+
 
 class Fragment:
     """PID fragments."""
 
-    def __init__(self, characteristic_length: float, pos: list, breakup_type="collision") -> None:
+    def __init__(self, characteristic_length: float, pos: list, creation_type="collision") -> None:
         self.size = characteristic_length                         # characteristic length
         self.pos = pos                                            # (x, y, z)
-        self.radial = np.sqrt(pos[0]**2 + pos[1]**2 + pos[2]**2)  # r = √(x^2 + y^2 + z^2)
-        
+        # r = √(x^2 + y^2 + z^2)
+        self.radial = np.sqrt(pos[0]**2 + pos[1]**2 + pos[2]**2)
+
         self.mass = calculate_mass(characteristic_length)
         self.area = cross_sectional_area(characteristic_length)
-        
-        if breakup_type == "collision":
+
+        if creation_type == "collision":
             ejection_vel = 0.9*np.log10(get_AM_value(np.log10(characteristic_length))) + 2.9
-        elif breakup_type == "explosion":
+        elif creation_type == "explosion":
             ejection_vel = 0.2*np.log10(get_AM_value(np.log10(characteristic_length))) + 1.85
         self.vel = parent_vel + ejection_vel
 
@@ -48,6 +49,12 @@ class Fragment:
         """
         return self.σ0*self.size**(-self.α) + self.γ*t*self.size**(-self.α)
 
+
+class Cloud:
+    def __init__(self, initRadius, characteristic_length, breakup_type="collision") -> None:
+        self.radius = initRadius
+        self.fragmentSize = characteristic_length
+
     def cloud_radius(self, t: float) -> float:
         """
             Cloud radius at time t; Equation (3.1) of gdmpidc.md.
@@ -58,8 +65,17 @@ class Fragment:
             Returns:
                 float: Cloud radius at time t [m]
         """
-        return initial_cloud_radius + t*expansion_velocity(parent_mass=1000, L_min=0.001, L_max=15.0)
+        return self.radius + t*expansion_velocity(parent_mass=1000, L_min=0.001, L_max=15.0)
+
+    #def sample_fragment(self, pos) -> Fragment:
+    #    return Fragment(self.characteristic_length, pos)
+
+    #def density(self) -> float:
+    #    ρ0*np.exp(-0.5 * ((r - μ*self.radius)/(σ*self.radius))**2)
+
+
+
 
 if __name__ == "__main__":
     sample_fragment = Fragment(0.01, [0, 0, 0])
-    print(vars(sample_fragment))
+    print(type(sample_fragment))
