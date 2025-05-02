@@ -1,3 +1,8 @@
+#!usr/bin/env python3
+
+__author__ = "Claude 3.7 Sonnet"
+__date__ = "May 1, 2025"
+
 import numpy as np
 
 def sample_AM_distribution(log_Lc, fragment_type="upper_stage"):
@@ -153,3 +158,4 @@ def calculate_mass(Lc, fragment_type="upper_stage"):
     mass = area / AM_ratio
     
     return mass
+    

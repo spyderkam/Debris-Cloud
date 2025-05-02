@@ -11,12 +11,12 @@ parent_vel = 0            # [m·s^-1]
 # ejec_vel = ???
 
 class Fragment:
-  """PID fragments"""
+    """PID fragments"""
 
-  def __init__(self, size: float, pos: list, vel: float, breakup_type="collision") -> None:
-    self.size = size                                          # characteristic length
-    self.pos = pos                                            # (x, y, z)
-    self.radial = np.sqrt(pos[0]**2 + pos[1]**2 + pos[2]**2)  # r = √(x^2 + y^2 + z^2)
-    self.velocity = vel                                       # v_fragment = v_parent + v_ejection
-    # Should velocity be a vector
-    
+    def __init__(self, size: float, pos: list, vel: float, breakup_type="collision") -> None:
+        self.size = size                                          # characteristic length
+        self.pos = pos                                            # (x, y, z)
+        self.radial = np.sqrt(pos[0]**2 + pos[1]**2 + pos[2]**2)  # r = √(x^2 + y^2 + z^2)
+        self.velocity = vel                                       # v_fragment = v_parent + v_ejection
+        # Should velocity be a vector
+        

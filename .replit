@@ -4,6 +4,7 @@ hidden = ["generated-icon.png"]
 
 [nix]
 channel = "stable-24_05"
+packages = ["vim"]
 
 [unitTest]
 language = "python3"
