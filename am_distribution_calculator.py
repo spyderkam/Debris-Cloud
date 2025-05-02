@@ -160,3 +160,89 @@ def calculate_mass(Lc, fragment_type="upper_stage"):
     AM_ratio = get_AM_value(log_Lc, fragment_type)
     mass = area / AM_ratio    
     return mass
+
+
+
+def expansion_velocity(parent_mass=1000, L_min=0.001, L_max=1.0, breakup_type="collision"):
+    """
+    Calculate the average expansion velocity of the debris cloud based on Eq. (3.3) of gdmpidc.md.
+    
+    Args:
+        parent_mass (float): Mass of the parent object in kg
+        L_min (float): Minimum characteristic length in meters
+        L_max (float): Maximum characteristic length in meters
+        breakup_type (str): "collision" or "explosion"
+        
+    Returns:
+        float: Average expansion velocity in m/s
+    """
+    # Define differential size distribution function n(L_c) based on Eq. (2.8), (2.9), (2.10)
+    def differential_size_distribution(L_c):
+        if breakup_type == "explosion":
+            # n(L_c) = -d/dL_c[N(L_c)] = -d/dL_c[6*L_c^(-1.6)]
+            return 6 * 1.6 * L_c**(-2.6)
+        else:  # collision
+            # n(L_c) = -d/dL_c[N(L_c)] = -d/dL_c[0.1*L_c^(-1.71)*M_parent^0.75]
+            return 0.1 * 1.71 * L_c**(-2.71) * parent_mass**0.75
+    
+    # Define average velocity for fragments of size L_c based on Eq. (2.4), (2.5)
+    def avg_velocity(L_c):
+        # Calculate A/M ratio for this characteristic length
+        log_Lc = np.log10(L_c)
+        AM_ratio = get_AM_value(log_Lc)
+        
+        if breakup_type == "explosion":
+            return 0.2 * np.log10(AM_ratio) + 1.85
+        else:  # collision
+            return 0.9 * np.log10(AM_ratio) + 2.9
+    
+    # Numerator: ∫ v̄(L_c) × n(L_c) dL_c
+    def integrand_numerator(L_c):
+        return avg_velocity(L_c) * differential_size_distribution(L_c)
+    
+    # Denominator: ∫ n(L_c) dL_c
+    def integrand_denominator(L_c):
+        return differential_size_distribution(L_c)
+    
+    # Compute the integrals
+    numerator, _ = integrate.quad(integrand_numerator, L_min, L_max)
+    denominator, _ = integrate.quad(integrand_denominator, L_min, L_max)
+    
+    # Return the average expansion velocity
+    if denominator != 0:
+        return numerator / denominator
+    else:
+        return 0.0
+
+
+def empirical_parameters(Lc):
+    """
+        Define empirical parameters for the fragment based on its characteristic length.
+
+        Returns:
+            tuple: (μ, ρ0, σ0, α, γ)
+    """
+    
+    # Small fragments (≲ 1 cm)
+    if Lc <= 0.01:
+        ρ0 = 2.5           # Higher normalization constant for smaller fragments
+        μ = 0.70           # Peak density slightly further out due to higher mobility
+        γ = 0.005          # Faster evolution due to SRP and drag effects
+        σ0 = 0.4           # Wider initial distribution due to higher ejection velocities
+        α = 1.2            # Stronger size dependency
+    # Medium fragments (1-10 cm)
+    elif 0.01 < Lc <= 0.1:
+        ρ0 = 2.0
+        μ = 0.65
+        γ = 0.003
+        σ0 = 0.3
+        α = 1.0
+    # Large fragments (≳ 10 cm)
+    else:
+        ρ0 = 1.5           # Lower normalization constant for larger fragments
+        μ = 0.60           # Peak closer to origin (less affected by dispersion)
+        γ = 0.001          # Slower evolution due to smaller perturbation effects
+        σ0 = 0.2           # Narrower distribution (less affected by ejection)
+        α = 0.8            # Weaker size dependency
+        
+    return μ, ρ0, σ0, α, γ

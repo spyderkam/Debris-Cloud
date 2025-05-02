@@ -7,13 +7,14 @@ __date__ = "May 1, 2025"
     Let the origin be the center of the parent body at impact (𝑡 = 0).
 """
 
-from am_distribution_calculator import calculate_mass, cross_sectional_area, get_AM_value
+from am_distribution_calculator import calculate_mass, cross_sectional_area, empirical_parameters, expansion_velocity, get_AM_value
+from scipy import integrate
 import numpy as np
 
 #M_EARTH = 5.972e+24            # [kg]
 #GRAV_CONST = 6.67430e-11       # [m^3·kg^-1·s^-2]
 parent_vel = 0                 # [m·s^-1]
-initial_cloud_radius = 156000  # [m]
+initial_cloud_radius = 30000   # [m]
 
 class Fragment:
     """PID fragments."""
@@ -30,44 +31,14 @@ class Fragment:
             ejection_vel = 0.9*np.log10(get_AM_value(np.log10(characteristic_length))) + 2.9
         elif breakup_type == "explosion":
             ejection_vel = 0.2*np.log10(get_AM_value(np.log10(characteristic_length))) + 1.85
-            
         self.vel = parent_vel + ejection_vel
 
-    def empirical_parameters(self):
-        """
-            Define empirical parameters for the fragment based on its characteristic length.
-    
-            Returns:
-                tuple: (μ, ρ0, σ0, α, γ)
-        """
-        
-        # Small fragments (≲ 1 cm)
-        if self.size <= 0.01:
-            ρ0 = 2.5           # Higher normalization constant for smaller fragments
-            μ = 0.70           # Peak density slightly further out due to higher mobility
-            γ = 0.005          # Faster evolution due to SRP and drag effects
-            σ0 = 0.4           # Wider initial distribution due to higher ejection velocities
-            α = 1.2            # Stronger size dependency
-        # Medium fragments (1-10 cm)
-        elif 0.01 < self.size <= 0.1:
-            ρ0 = 2.0
-            μ = 0.65
-            γ = 0.003
-            σ0 = 0.3
-            α = 1.0
-        # Large fragments (≳ 10 cm)
-        else:
-            ρ0 = 1.5           # Lower normalization constant for larger fragments
-            μ = 0.60           # Peak closer to origin (less affected by dispersion)
-            γ = 0.001          # Slower evolution due to smaller perturbation effects
-            σ0 = 0.2           # Narrower distribution (less affected by ejection)
-            α = 0.8            # Weaker size dependency
-            
-        return μ, ρ0, σ0, α, γ
+        # Get empirical parameters
+        self.μ, self.ρ0, self.σ0, self.α, self.γ = empirical_parameters(self.size)
 
     def dispersion(self, t: float) -> float:
         """
-            Spacial Distribution of Fragment.
+            Spacial Distribution of Fragment; Equation (4.11) of gdmpidc.md. 
 
             Args:
                 t (float): Time since impact [s]
@@ -75,18 +46,20 @@ class Fragment:
             Returns:
                 float: Spacial distribution of fragment with specific charachteristic length at time t.
         """
-
-        ρ0, σ0, α, γ = empirical_parameters()[1], empirical_parameters()[2], empirical_parameters()[3], empirical_parameters()[4]
-        Lc = self.size
-
-        return σ0*Lc**(-α) + γ*t*Lc**(-α)
+        return self.σ0*Lc**(-self.α) + self.γ*t*self.size**(-self.α)
 
     def cloud_radius(self, t: float) -> float:
-        """Cloud radius at time t."""
-
-        return initial_cloud_radius + t*
+        """
+            Cloud radius at time t; Equation (3.1) of gdmpidc.md.
+            
+            Args:
+                t (float): Time since impact [s]
+            
+            Returns:
+                float: Cloud radius at time t [m]
+        """
+        return initial_cloud_radius + t*expansion_velocity(parent_mass=1000, L_min=0.001, L_max=15.0)
 
 if __name__ == "__main__":
     sample_fragment = Fragment(0.01, [0, 0, 0])
-    #print(vars(sample_fragment))
-    help(Fragment.dispersion)
+    print(vars(sample_fragment))
