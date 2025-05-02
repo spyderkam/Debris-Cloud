@@ -16,10 +16,10 @@ parent_vel = 0            # [m·s^-1]
 # ejec_vel = ???
 
 class Fragment:
-    """PID fragments"""
+    """PID fragments."""
 
     def __init__(self, characteristic_length: float, pos: list, breakup_type="collision") -> None:
-        self.characteristic_length = characteristic_length        # characteristic length
+        self.size = characteristic_length                         # characteristic length
         self.pos = pos                                            # (x, y, z)
         self.radial = np.sqrt(pos[0]**2 + pos[1]**2 + pos[2]**2)  # r = √(x^2 + y^2 + z^2)
         
@@ -36,7 +36,7 @@ class Fragment:
 
 if __name__ == "__main__":
     sample_fragment = Fragment(0.01, [0, 0, 0])
-    #(vars(sample_fragment))
+    #print(vars(sample_fragment))
 
     μ = 2/3     # varies with fragment area-to-mass ratio
     
