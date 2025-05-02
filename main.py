@@ -46,7 +46,7 @@ class Fragment:
             Returns:
                 float: Spacial distribution of fragment with specific charachteristic length at time t.
         """
-        return self.σ0*Lc**(-self.α) + self.γ*t*self.size**(-self.α)
+        return self.σ0*self.size**(-self.α) + self.γ*t*self.size**(-self.α)
 
     def cloud_radius(self, t: float) -> float:
         """
