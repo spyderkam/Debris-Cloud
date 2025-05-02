@@ -138,7 +138,7 @@ Now that a time dependence for the PID cloud's density has been established, the
 
 The cloud density model in Section 3 describes the statistical distribution of fragments, but individual fragments follow deterministic orbital paths. The transition from the statistical cloud model to individual fragment trajectories requires mapping the density distribution to specific initial state vectors. The probability is directly related to the mass density, $P(\vec{r}|L_\mathrm{c}, t) \propto \rho(|\vec{r}|, L_\mathrm{c}, t)$. For a fragment with characteristic length $L_\mathrm{c}$ at time $t$ after impact, its position vector $\vec{r}$ corresponds to the probability density function:
 
-$$ P(\vec{r}|L_\mathrm{c}, t) = \frac{\rho(|\vec{r}|, L_\mathrm{c}, t)}{4\pi\int_0^{R_\mathrm{c}(t)} \rho(r, L_\mathrm{c}, t)r^2, dr} \tag{4.1} $$
+$$ P(\vec{r}|L_\mathrm{c}, t) = \frac{\rho(|\vec{r}|, L_\mathrm{c}, t)}{4\pi\int_0^{R_\mathrm{c}(t)} \rho(r, L_\mathrm{c}, t)r^2 dr} \tag{4.1} $$
 
 This normalized probability density function relates the mass density distribution from Equation (2.1) to the spatial distribution of fragments across three-dimensional space. In this formulation, the radial distribution follows the Gaussian model while the angular components of $\vec{r}$ may vary according to impact dynamics.[^6]
 
