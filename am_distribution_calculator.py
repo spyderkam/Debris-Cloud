@@ -144,20 +144,19 @@ def sample_small_AM_distribution(log_Lc):
     return 10**log_AM
 
 
+def cross_sectional_area(Lc):
+    """Calculate cross-sectional area based on characteristic length."""
+    if Lc < 0.00167:
+        area = 0.540424 * (Lc**2)
+    else:
+        area = 0.556945 * (Lc**2.0047077)
+    return area
+    
+
 def calculate_mass(Lc, fragment_type="upper_stage"):
     """Calculate fragment mass based on characteristic length using NASA model."""
-    
-    # Step 1: Calculate cross-sectional area
-    if Lc < 0.00167:
-        area = 0.540424 * (Lc ** 2)
-    else:
-        area = 0.556945 * (Lc ** 2.0047077)
-    
-    # Step 2: Sample A/M ratio from the appropriate distribution
+    area = cross_sectional_area(Lc)
     log_Lc = np.log10(Lc)
     AM_ratio = get_AM_value(log_Lc, fragment_type)
-    
-    # Step 3: Calculate mass
-    mass = area / AM_ratio
-    
+    mass = area / AM_ratio    
     return mass

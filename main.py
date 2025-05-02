@@ -3,7 +3,7 @@
 __author__ = "Kamyar Modjtahedzadeh"
 __date__ = "May 1, 2025"
 
-from am_distribution_calculator import get_AM_value, calculate_mass
+from am_distribution_calculator import calculate_mass, cross_sectional_area, get_AM_value
 import numpy as np
 
 M_EARTH = 5.972e+24       # [kg]
@@ -19,9 +19,9 @@ class Fragment:
         self.pos = pos                                            # (x, y, z)
         self.radial = np.sqrt(pos[0]**2 + pos[1]**2 + pos[2]**2)  # r = √(x^2 + y^2 + z^2)
         
+        self.mass = calculate_mass(characteristic_length)
+        self.area = cross_sectional_area(characteristic_length)
         
-        ejection_vel = 0.1*np.log10(get_AM_value(np.log10(characteristic_length)))
-        
+        ejection_vel = 0.9*np.log10(get_AM_value(np.log10(characteristic_length))) + 2.9
         self.vel = parent_vel + ejection_vel                      # v_fragment = v_parent + v_ejection
-        
         
