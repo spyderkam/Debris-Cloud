@@ -37,41 +37,37 @@ def empirical_parameters(self):
         Define empirical parameters for the fragment based on its characteristic length.
 
         Returns:
-            tuple: (ρ0, μ, γ, σ0, α)
+            tuple: (μ, ρ0, σ0, α, γ)
     """
     
-    # The following units for characteristic length are in meters.
-    if self.size <= 0.01:  # Small fragments (≲ 1 cm)
+    # Small fragments (≲ 1 cm)
+    if self.size <= 0.01:
         ρ0 = 2.5           # Higher normalization constant for smaller fragments
         μ = 0.70           # Peak density slightly further out due to higher mobility
         γ = 0.005          # Faster evolution due to SRP and drag effects
         σ0 = 0.4           # Wider initial distribution due to higher ejection velocities
         α = 1.2            # Stronger size dependency
-    elif 0.01 < self.size <= 0.1:  # Medium fragments (1-10 cm)
+    # Medium fragments (1-10 cm)
+    elif 0.01 < self.size <= 0.1:
         ρ0 = 2.0
         μ = 0.65
         γ = 0.003
         σ0 = 0.3
         α = 1.0
-    else:  # Large fragments (≳ 10 cm)
+    # Large fragments (≳ 10 cm)
+    else:
         ρ0 = 1.5           # Lower normalization constant for larger fragments
         μ = 0.60           # Peak closer to origin (less affected by dispersion)
         γ = 0.001          # Slower evolution due to smaller perturbation effects
         σ0 = 0.2           # Narrower distribution (less affected by ejection)
         α = 0.8            # Weaker size dependency
         
-    return ρ0, μ, γ, σ0, α
+    return μ, ρ0, σ0, α, γ
 
 
 if __name__ == "__main__":
     sample_fragment = Fragment(0.01, [0, 0, 0])
     #print(vars(sample_fragment))
-
-    ρ0 = 1      # varies with fragment area-to-mass ratio
-    μ = 2/3     # varies with fragment area-to-mass ratio
-    γ = 1.5     # varies with fragment area-to-mass ratio
-    σ0 = 0.3    # varies with fragment area-to-mass ratio
-    α = 0.2     # varies with fragment area-to-mass ratio
     
     def dispersion(Lc, t):
         return σ0*Lc**(-α) + γ*t*Lc**(-α)
