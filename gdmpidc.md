@@ -1,4 +1,5 @@
 
+
 # Gaussian Distribution Model of Post-Impact Debris Cloud
 
 Kamyar Modjtahedzadeh  
@@ -261,9 +262,9 @@ $$ M_{\mathrm{total}}(t) = 4\pi \int_0^{R_\mathrm{c}(t)} \rho(r, L_\mathrm{c}, t
 
 Size classifications in this model are as follows:
 
--   Small ($L_\mathrm{c} < 1$ cm); experience rapid dispersion due to dominant SRP and atmospheric drag effects [3, 8]
--   Medium (1 cm < $L_\mathrm{c}$ < 10 cm); experience moderate deviation primarily due to SRP [3]
--   Large ($L_\mathrm{c} > 10$ cm); remain close to their initial ballistic trajectories [1]
+-   Small ($L_\mathrm{c} \lesssim 1~\text{cm}$); experience rapid dispersion due to dominant SRP and atmospheric drag effects [3, 8]
+-   Medium ($1~\text{cm}\lesssim L_\mathrm{c} \lesssim 10~\text{cm}$); experience moderate deviation primarily due to SRP [3]
+-   Large ($L_\mathrm{c} \gtrsim 10$ cm); remain close to their initial ballistic trajectories [1]
 
 This size-dependent stratification alters the Gaussian density distribution over time, with different size classes evolving at different rates according to their respective area-to-mass ratios.
 
