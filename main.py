@@ -3,6 +3,7 @@
 __author__ = "Kamyar Modjtahedzadeh"
 __date__ = "May 1, 2025"
 
+from am_distribution_calculator import get_AM_value, calculate_mass
 import numpy as np
 
 M_EARTH = 5.972e+24       # [kg]
