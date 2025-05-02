@@ -7,7 +7,7 @@ __date__ = "May 1, 2025"
     Let the origin be the center of the parent body at impact (𝑡 = 0).
 """
 
-from am_distribution_calculator import calculate_mass, cross_sectional_area, empirical_parameters, expansion_velocity, get_AM_value
+from gdmpidc_tools import calculate_mass, cross_sectional_area, empirical_parameters, expansion_velocity, get_AM_value
 from scipy import integrate
 import numpy as np
 
