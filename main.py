@@ -10,10 +10,9 @@ __date__ = "May 2, 2025"
 from gdmpidc_tools import calculate_mass, cross_sectional_area, empirical_parameters, expansion_velocity, get_AM_value
 import numpy as np
 
-# M_EARTH = 5.972e+24            # [kg]
-# GRAV_CONST = 6.67430e-11       # [m^3·kg^-1·s^-2]
-parent_vel = 0                 # [m·s^-1]
-#initial_cloud_radius = 30000    # [m]
+# M_EARTH = 5.972e+24       # [kg]
+# GRAV_CONST = 6.67430e-11  # [m^3·kg^-1·s^-2]
+parent_vel = 0              # [m·s^-1]
 
 
 class Fragment:
@@ -72,8 +71,6 @@ class Cloud:
 
     #def density(self) -> float:
     #    ρ0*np.exp(-0.5 * ((r - μ*self.radius)/(σ*self.radius))**2)
-
-
 
 
 if __name__ == "__main__":
