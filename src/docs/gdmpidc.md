@@ -2,7 +2,11 @@
 
 Kamyar Modjtahedzadeh  
 Boeing Intelligence & Analytics  
-May 1, 2025
+May 5, 2025
+
+> **Abstract:** A comprehensive model describing the evolution of satellite debris clouds following fragmentation events in orbit is presented. The approach models the spatial density distribution of fragments using a Gaussian function that incorporates the physical characteristics of debris particles. The model accounts for size-dependent stratification through an inverse relationship between the applied perturbational forces and characteristic length. These prominent non-gravitational forces cause the initial spherical cloud with differently sized fragments to evolve along distinct trajectories, transforming the geometry of original structure. It follows that this representation provides the groundwork for a computational model to simulate and predict the system for short time intervals post-fragmentation; i.e., $\lesssim{120}$ seconds. 
+
+**Keywords:** Orbital mechanics, Space debris, Probability and statistics, Perturbation theory
 
 ## 1 Basic Modeling of PID Cloud Radius using Packing Density
 
@@ -134,9 +138,9 @@ Now that a time dependence for the PID cloud's density has been established, the
 
 #### 4.1.1 Individualistic Fragments
 
-The cloud density model in Section 3 describes the statistical distribution of fragments, but individual fragments follow deterministic orbital paths. The transition from the statistical cloud model to individual fragment trajectories requires mapping the density distribution to specific initial state vectors. The probability is directly related to the mass density, $P(\vec{r}|L_\mathrm{c}, t) \propto \rho(|\vec{r}|, L_\mathrm{c}, t)$. For a fragment with characteristic length $L_\mathrm{c}$ at time $t$ after impact, its position vector $\vec{r}$ corresponds to the probability density function:
+The cloud density model in Section 3 describes the statistical distribution of fragments, but individual fragments follow deterministic orbital paths. The transition from the statistical cloud model to individual fragment trajectories requires mapping the density distribution to specific initial state vectors. The probability is directly related to the mass density, $\mathcal P(\vec{r}|L_\mathrm{c}, t) \propto \rho(|\vec{r}|, L_\mathrm{c}, t)$. For a fragment with characteristic length $L_\mathrm{c}$ at time $t$ after impact, its position vector $\vec{r}$ corresponds to the probability density function:
 
-$$ P(\vec{r}|L_\mathrm{c}, t) = \frac{\rho(|\vec{r}|, L_\mathrm{c}, t)}{4\pi\int_0^{R_\mathrm{c}(t)} \rho(r, L_\mathrm{c}, t)r^2 dr} \tag{4.1} $$
+$$ \mathcal P(\vec{r}|L_\mathrm{c}, t) = \frac{\rho(|\vec{r}|, L_\mathrm{c}, t)}{4\pi\int_0^{R_\mathrm{c}(t)} \rho(r, L_\mathrm{c}, t)r^2 dr} \tag{4.1} $$
 
 This normalized probability density function relates the mass density distribution from Equation (2.1) to the spatial distribution of fragments across three-dimensional space. In this formulation, the radial distribution follows the Gaussian model while the angular components of $\vec{r}$ may vary according to impact dynamics.[^6]
 
@@ -242,15 +246,15 @@ with $R_\mathrm{c}(t)$, $\rho_0(L_\mathrm{c}, t)$, and $\sigma(L_\mathrm{c}, t)$
 
 [11] Anz-Meador, P. D., & Liou, J.-C. (2001). An assessment of the NASA explosion fragmentation model to 1 mm characteristic sizes. _Advances in Space Research_, **28**(9), 1383-1388.
 
-## Appendix A: Reasoning Behind $P \propto \rho$
+## Appendix A: Reasoning Behind $\mathcal P \propto \rho$
 
-Equation (4.1) represents the relationship between the Gaussian mass density function $\rho(r, L_\mathrm{c}, t)$ and a probability density function for fragment positions in 3D space. The mass density function describes how fragment mass is distributed radially within the cloud; to create a probability density function in space, we need to ensure it integrates to 1 over all space, $\iiint_V P dV = 1$. In spherical coordinates this becomes:
+Equation (4.1) represents the relationship between the Gaussian mass density function $\rho(r, L_\mathrm{c}, t)$ and a probability density function for fragment positions in 3D space. The mass density function describes how fragment mass is distributed radially within the cloud; to create a probability density function in space, we need to ensure it integrates to 1 over all space, $\iiint_\mathcal V \mathcal P d\mathcal V = 1$. In spherical coordinates this becomes:
 
-$$ 4\pi \int_0^{R_\mathrm{c}(t)} P(r|L_\mathrm{c}, t)r^2 dr = 1 \tag{A.1} $$
+$$ 4\pi \int_0^{R_\mathrm{c}(t)} \mathcal P(r|L_\mathrm{c}, t)r^2 dr = 1 \tag{A.1} $$
 
 For the probability to be proportional to the mass density, dividing $\rho$ by the total mass normalizes this distribution:
 
-$$ P(\vec{r}|L_\mathrm{c}, t) = \frac{\rho(|\vec{r}|, L_\mathrm{c}, t)}{M_{\mathrm{total}}(t)} \tag{A.2} $$
+$$ \mathcal P(\vec{r}|L_\mathrm{c}, t) = \frac{\rho(|\vec{r}|, L_\mathrm{c}, t)}{M_{\mathrm{total}}(t)} \tag{A.2} $$
 
 where,
 
