@@ -106,7 +106,7 @@ As fragments follow their individual orbital paths, the variations in velocity v
 
 ### 3.2 Time-Dependent Density Function for Short Timescales
 
-To extend the model up to short time periods after impact (≈ 120 s), $\rho(r, L_\mathrm{c})$ must be modified to account for the PID cloud's evolution with time. The parameters of the radial density are: $\rho_0(L_\mathrm{c})$, $\mu(L_\mathrm{c})$, $\sigma(L_\mathrm{c})$, and $R_\mathrm{c}$.
+To extend the model up to short time periods after impact ($\approx 120 \, \mathrm{s}$), $\rho(r, L_\mathrm{c})$ must be modified to account for the PID cloud's evolution with time. The parameters of the radial density are: $\rho_0(L_\mathrm{c})$, $\mu(L_\mathrm{c})$, $\sigma(L_\mathrm{c})$, and $R_\mathrm{c}$.
 
 Making the cloud radius time-dependent does make sense because differential velocities cause the cloud to naturally expand over time due to the different velocities of fragments. In the initial moments after impact, expansion velocity is roughly constant [5]; for a short simulation, a simple linear expansion model should suffice,
 
