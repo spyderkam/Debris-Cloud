@@ -1,5 +1,3 @@
-
-
 # Gaussian Distribution Model of Post-Impact Debris Cloud
 
 Kamyar Modjtahedzadeh  
@@ -78,7 +76,7 @@ where $\sigma_0$ and $\alpha$ are empirical parameters.
 
 For the model to conserve the total mass of the original object, it must now account for the size of the fragments. The total mass (of all the PID particles) is now:
 
-$$ M_{\mathrm{total}} = 4\pi \int_{L_{\mathrm{min}}}^{L_{\mathrm{max}}} \int_{0}^{R_\mathrm{c}} r^2 \rho(r, L_\mathrm{c})dr, n(L_\mathrm{c})dL_\mathrm{c} \tag{2.7} $$
+$$ M_{\mathrm{total}} = 4\pi \int_{L_{\mathrm{min}}}^{L_{\mathrm{max}}} \int_{0}^{R_\mathrm{c}} r^2 \rho(r, L_\mathrm{c})dr n(L_\mathrm{c})dL_\mathrm{c} \tag{2.7} $$
 
 where $n(L_\mathrm{c})$ is the differential size distribution function. It is given from the cumulative size distribution function via,
 
@@ -124,7 +122,7 @@ this time-dependent normalization factor $\rho_0(t)$ ensures that the total mass
 
 The expansion velocity parameter in Equation (3.1) can be estimated from the average fragment velocity distribution. For short timescales, this parameter can be derived using the NASA Standard Breakup Model [5]. The average expansion velocity is determined by integrating over the fragment size distribution:
 
-$$ \bar{v}_{\mathrm{expansion}} = \frac{\int_{L_\mathrm{c}} \bar{v}n dL_\mathrm{c}}{\int_{L_\mathrm{c}} n, dL_\mathrm{c}} \tag{3.3} $$
+$$ \bar{v}_{\mathrm{expansion}} = \frac{\int_{L_\mathrm{c}} \bar{v}n dL_\mathrm{c}}{\int_{L_\mathrm{c}} n dL_\mathrm{c}} \tag{3.3} $$
 
 Where $\bar{v}(L_\mathrm{c})$ represents the average velocity for fragments of characteristic length $L_\mathrm{c}$, which can be estimated using Equations (2.4) and (2.5) for explosions and collisions, respectively.
 
