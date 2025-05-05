@@ -206,7 +206,7 @@ The atmospheric density varies significantly with altitude and solar activity, t
 
 #### 4.2.4 Impact on Gaussian Distribution Parameters
 
-A refined evolutionary model incorporating these effects would update $\sigma$ in Equation (2.1) to be time-dependent as it is now affected by SRP:
+A refined evolutionary model incorporating these effects would update $\sigma$ from Equation (2.6) to be time-dependent as it is now affected by SRP:
 
 $$ \sigma(L_\mathrm{c}, t) = \sigma(L_\mathrm{c}, 0) + \gamma t L_\mathrm{c}^{-\alpha} \tag{4.11} $$
 
