@@ -53,7 +53,7 @@ class Fragment:
 
 class Cloud:
     def __init__(self, characteristic_length, num_fragments, breakup_type: str = "collision") -> None:
-        self.radius = parent_rad*packing_density(characteristic_length)**(-1/3)
+        self.radius = parent_rad * packing_density(characteristic_length)**(-1/3)
         self.nFrag = num_fragments
         self.fragSize = characteristic_length
         self.breakup_type = breakup_type
