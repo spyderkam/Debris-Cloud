@@ -1,7 +1,7 @@
 #!usr/bin/env python3
 
-__author__ = "Claude 3.7 Sonnet"
-__date__ = "May 1, 2025"
+__author__ = "Claude 3.7 Sonnet, Kamyar Modjtahedzadeh"
+__date__ = "May 1, 2025 - May 5, 2025"
 
 from scipy import integrate
 import numpy as np
@@ -247,3 +247,8 @@ def empirical_parameters(Lc):
         α = 0.8            # Weaker size dependency
 
     return μ, ρ0, σ0, α, γ
+
+
+def packing_density(Lc: float) -> float:
+    """Initial packing density of a cloud subsphere with fragment size Lc."""
+    return 1/1.35     # FIX THIS!!!
