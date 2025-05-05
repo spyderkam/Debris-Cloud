@@ -36,6 +36,7 @@ class Fragment:
         # Get empirical parameters
         self.μ, self.ρ0, self.σ0, self.α, self.γ = empirical_parameters(self.size)
 
+    '''  Not sure if I need this method, since it is already defined for Cloud..?
     def dispersion(self, t: float) -> float:
         """
             Spacial Distribution of Fragment; Equation (4.11) of gdmpidc.md. 
@@ -47,6 +48,7 @@ class Fragment:
                 float: Spacial distribution of fragment with specific charachteristic length at time 𝑡.
         """
         return self.σ0*self.size**(-self.α) + self.γ*t*self.size**(-self.α)
+    '''
 
 
 class Cloud:
@@ -75,8 +77,10 @@ class Cloud:
             pass
         return updated_radius
 
-    #def sample_fragment(self, pos) -> Fragment:
-    #    return Fragment(self.fragSize, pos, creation_type=self.breakup_type)
+    '''  !! DELETE !!
+    def sample_fragment(self, pos) -> Fragment:
+        return Fragment(self.fragSize, pos, creation_type=self.breakup_type)
+    '''
     
     def density(self, pos: list, t: float) -> float:
         """Density of the cloud at time 𝑡 and radial position 𝑟."""
