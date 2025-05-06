@@ -266,6 +266,8 @@ where,
 
 $$ M_{\mathrm{total}}(t) = 4\pi \int_0^{R_\mathrm{c}(t)} \rho(r, L_\mathrm{c}, t)r^2 dr \tag{A.3} $$
 
+This normalized probability distribution provides the mathematical foundation for accurately positioning fragments according to their physical distribution while maintaining statistical validity through proper conversion of mass density into sampling weights. A sampling weight is a numerical value assigned to each potential position in space that determines its probability of being selected during random sampling. In this context, positions with higher mass density receive higher weights, making them more likely to be chosen when generating fragment positions.
+
 ## Appendix B: Size Classification
 
 Size classifications in this model are as follows:
