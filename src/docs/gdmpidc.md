@@ -4,7 +4,7 @@ Kamyar Modjtahedzadeh
 Boeing Intelligence & Analytics  
 May 5, 2025
 
-> A comprehensive model describing the evolution of satellite debris clouds following fragmentation events in orbit is presented. The approach models the spatial density distribution of fragments using a Gaussian function that incorporates the physical characteristics of debris particles. The model accounts for size-dependent stratification through an inverse relationship between the applied perturbational forces and characteristic length. These prominent non-gravitational forces cause the initial spherical cloud with differently sized fragments to evolve along distinct trajectories, transforming the geometry of original structure. It follows that this representation provides the groundwork for a computational model to simulate and predict the system for short time intervals post-fragmentation; i.e., $\lesssim{120}$ seconds. 
+> A comprehensive model describing the evolution of satellite debris clouds following fragmentation events in orbit is presented. The approach models the spatial density distribution of fragments using a Gaussian function that incorporates the physical characteristics of debris particles. The model accounts for size-dependent stratification through an inverse relationship between the applied perturbational forces and characteristic length. These prominent non-gravitational forces cause the initial spherical cloud with differently sized fragments to evolve along distinct trajectories, transforming the geometry of the original structure. It follows that this representation provides the groundwork for a computational model to simulate and predict the system for short time intervals post-fragmentation, i.e., $\lesssim{120}$ seconds. 
 
 **Keywords:** Orbital mechanics, Space debris, Probability and statistics, Perturbation theory
 
@@ -221,6 +221,12 @@ Now that perturbations have been introduced causing $\sigma(L_\mathrm{c}) \right
 $$ \rho(r, L_\mathrm{c}, t) = \rho_0(L_\mathrm{c}, t) \exp\left[-\frac{1}{2}\left(\frac{r - \mu(L_\mathrm{c})R_\mathrm{c}(t)}{\sigma(L_\mathrm{c}, t)R_\mathrm{c}(t)}\right)^2\right] \tag{4.12} $$
 
 with $R_\mathrm{c}(t)$, $\rho_0(L_\mathrm{c}, t)$, and $\sigma(L_\mathrm{c}, t)$ given in Equations (3.1), (3.2), and (4.11) respectively.
+
+## Acknowledgments
+
+Thank you to my colleague and mentor, Robert A. Amborski, for his invaluable guidance and support throughout this research. His generous provision of key references significantly strengthened the theoretical foundation of this work. Robert's previous research into finding the probability of 
+impact given an interceptor flying through a cloud of debris is what directly and ultimately created the postulate that fragment dispersion post-impact is 
+symmetric about the peak of the distribution. I would also like to acknowledge the technical discussions and constructive feedback that helped refine the mathematical framework presented in this paper.
 
 ## References
 
