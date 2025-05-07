@@ -252,6 +252,8 @@ symmetric about the peak of the distribution. I would also like to acknowledge t
 
 [11] Anz-Meador, P. D., & Liou, J.-C. (2001). An assessment of the NASA explosion fragmentation model to 1 mm characteristic sizes. _Advances in Space Research_, **28**(9), 1383-1388.
 
+[12] Johnson, N. L., Krisko, P. H., Liou, J.-C., & Anz-Meador, P. D. (2001). NASA’s New Breakup Model of EVOLVE 4.0. _Advances in Space Research_, **28**(9), 1377, 1384.
+
 ## Appendix A: Reasoning Behind $\mathcal P \propto \rho$
 
 Equation (4.1) represents the relationship between the Gaussian mass density function $\rho(r, L_\mathrm{c}, t)$ and a probability density function for fragment positions in 3D space. The mass density function describes how fragment mass is distributed radially within the cloud; to create a probability density function in space, we need to ensure it integrates to 1 over all space, $\iiint_\mathcal V \mathcal P d\mathcal V = 1$. In spherical coordinates this becomes:
@@ -270,7 +272,7 @@ This normalized probability distribution provides the mathematical foundation fo
 
 ## Appendix B: Size Classification
 
-Size classifications in this model are as follows:
+Size classifications in this model are as the NASA EVOLVE 4.0 model [12]:
 
 -   Small ($L_\mathrm{c} \lesssim 8~\text{cm}$); experience rapid dispersion due to dominant SRP and atmospheric drag effects [3, 8]
 -   Medium ($8~\text{cm}\lesssim L_\mathrm{c} \lesssim 11~\text{cm}$); experience moderate deviation primarily due to SRP [3]
