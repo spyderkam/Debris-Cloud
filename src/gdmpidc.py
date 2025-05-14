@@ -144,12 +144,12 @@ class Cloud:
         return self.fragSize**(-α) * (σ0 + γ*t)
 
 
-if __name__ == "__main__":
-    #import matplotlib; matplotlib.use('TkAgg')
-    import matplotlib.pyplot as plt
-    
-    cloud = Cloud(characteristic_length=0.05, num_fragments=100, breakup_type="collision")
+if __name__ == "__main__":    
+    cloud = Cloud(characteristic_length=0.15, num_fragments=1000, breakup_type="collision")
     vec_r = init_positions = cloud.sample_positions()
 
-    for x,y,z in vec_r:
-        print(f"(x,y,z) = ({x}, {y}, {x})")
+    with open('plotter.py', 'r') as file:
+        code = file.read()
+        exec(code)
+    del code
+    
