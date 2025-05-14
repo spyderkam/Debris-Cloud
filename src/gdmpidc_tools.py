@@ -218,20 +218,21 @@ def expansion_velocity(parent_mass=1000, L_min=0.001, L_max=1.0, breakup_type="c
 def empirical_parameters(Lc):
     """
         Define empirical parameters for the fragment based on its characteristic length.
-
+        Please note that these parameters are Claude 3.5 Sonnet's best guesses.
+        
         Returns:
             tuple: (μ, ρ0, σ0, α, γ)
     """
 
     # Small fragments (≲ 1 cm)
-    if Lc <= 0.01:
+    if Lc <= 0.08:
         ρ0 = 2.5           # Higher normalization constant for smaller fragments
         μ = 0.70           # Peak density slightly further out due to higher mobility
         γ = 0.005          # Faster evolution due to SRP and drag effects
         σ0 = 0.4           # Wider initial distribution due to higher ejection velocities
         α = 1.2            # Stronger size dependency
     # Medium fragments (1-10 cm)
-    elif 0.01 < Lc <= 0.1:
+    elif 0.08 < Lc <= 0.11:
         ρ0 = 2.0
         μ = 0.65
         γ = 0.003
