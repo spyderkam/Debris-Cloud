@@ -7,5 +7,6 @@ requires-python = ">=3.11"
 dependencies = [
     "markdown",
     "numpy>=2.2.5",
+    "pypdf2>=3.0.1",
     "scipy>=1.15.2",
 ]
