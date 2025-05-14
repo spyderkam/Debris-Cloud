@@ -1,7 +1,7 @@
 #!usr/bin/env python3
 
 __author__ = "Claude 3.7 Sonnet, Kamyar Modjtahedzadeh, Claude 3.5 Sonnet V2"
-__date__ = "May 1, 2025 - May 5, 2025"
+__date__ = "May 1, 2025 - May 13, 2025"
 
 from scipy import integrate
 import numpy as np
@@ -218,7 +218,7 @@ def expansion_velocity(parent_mass=1000, L_min=0.001, L_max=1.0, breakup_type="c
 def empirical_parameters(Lc):
     """
         Define empirical parameters for the fragment based on its characteristic length.
-        Please note that these parameters are Claude 3.5 Sonnet's best guesses.
+        Please note that these parameters are Claude 3.5 Sonnet V2's best guesses.
         
         Returns:
             tuple: (μ, ρ0, σ0, α, γ)
@@ -253,10 +253,7 @@ def empirical_parameters(Lc):
 def packing_density(Lc: float) -> float:
     """
     Initial packing density of a cloud subsphere with fragment size Lc.
-    Based on NASA EVOLVE 4.0 model size classifications:
-    - Small fragments: Lc < 0.08 m
-    - Medium fragments: 0.08 m ≤ Lc ≤ 0.11 m
-    - Large fragments: Lc > 0.11 m
+    Please note that these parameters are Claude 3.5 Sonnet V2's best guesses.
     """
     if Lc < 0.08:  # Small fragments
         return 0.55  # More dispersed due to higher ejection velocities
