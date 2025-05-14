@@ -1,6 +1,6 @@
 #!usr/bin/env python3
 
-__author__ = "Claude 3.7 Sonnet, Kamyar Modjtahedzadeh"
+__author__ = "Claude 3.7 Sonnet, Kamyar Modjtahedzadeh, Replit Assistant"
 __date__ = "May 1, 2025 - May 5, 2025"
 
 from scipy import integrate
