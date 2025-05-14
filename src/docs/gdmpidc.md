@@ -289,7 +289,7 @@ $$
 \tag{C.1}
 $$
 
-Then, $A/M$ follows statistical distributions based on $L_\mathrm{c}$ [1].
+Then, $A/M$ follows statistical distributions based on $L_\mathrm{c}$ [1, 12].
 
 [^1]: Packing density, packing fraction, and packing coefficient are all correct terminology.
 
