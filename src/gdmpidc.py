@@ -100,11 +100,11 @@ class Cloud:
 
         # Sample angular coordinates for isotropic distribution
         theta = np.arccos(2 * np.random.uniform(0, 1, n) - 1)  # Uniform in cos(θ)
-        phi = np.random.uniform(0, 2 * np.pi, n)               # Uniform in φ
+        varphi = np.random.uniform(0, 2 * np.pi, n)            # Uniform in ϕ
 
         # Convert to Cartesian coordinates
-        x = r * np.sin(theta) * np.cos(phi)
-        y = r * np.sin(theta) * np.sin(phi)
+        x = r * np.sin(theta) * np.cos(varphi)
+        y = r * np.sin(theta) * np.sin(varphi)
         z = r * np.cos(theta)
 
         # Return list of [x, y, z] coordinates
