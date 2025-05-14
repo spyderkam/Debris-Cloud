@@ -95,8 +95,8 @@ class Cloud:
         # Note: This is an approximation; for high precision, implement rejection sampling
 
         # Sample radial distances (approximate Gaussian, clipped to avoid negative r)
-        r = np.random.normal(loc=mean_r, scale=std_r, size=n)
-        r = np.maximum(r, 0)  # Ensure non-negative radial distances
+        𝒩 = np.random.normal(loc=mean_r, scale=std_r, size=n)
+        r = np.maximum(𝒩, 0)  # Ensure non-negative radial distances
 
         # Sample angular coordinates for isotropic distribution
         theta = np.arccos(2 * np.random.uniform(0, 1, n) - 1)  # Uniform in cos(θ)
