@@ -1,12 +1,13 @@
 #!usr/bin/env python3
 
 __author__ = "Kamyar Modjtahedzadeh"
-__date__ = "May 1, 2025 - May 5, 2025"
+__date__ = "May 1, 2025 - May 14, 2025"
 
 """
     Ceres asteroid; let the origin be the center of the parent body at impact (𝑡 = 0).
 """
 
+from turtle import position
 from gdmpidc_tools import calculate_mass, cross_sectional_area, empirical_parameters, expansion_velocity, get_AM_value, packing_density
 import numpy as np
 
@@ -65,7 +66,7 @@ class Cloud:
         positions = self.sample_positions(self.nFrag)
         return [Fragment(self.fragSize, pos, creation_type=self.breakup_type) for pos in positions]
 
-    def sample_positions(self, n: int) -> list:
+    def sample_positions(self, n: int = None) -> list:
         """
         Sample n positions from the cloud's Gaussian density distribution.
 
@@ -75,6 +76,9 @@ class Cloud:
         Returns:
             list: List of [x, y, z] coordinates
         """
+
+        if n is None:
+            n = self.nFrag
         
         # Get empirical parameters for the Gaussian distribution
         μ, _, _, _, _ = empirical_parameters(self.fragSize)
@@ -110,9 +114,6 @@ class Cloud:
         # Return list of [x, y, z] coordinates
         return [[x[i], y[i], z[i]] for i in range(n)]
 
-
-
-
     def cloud_radius(self, t: float, inplace: bool = False) -> float:
         """
             Cloud radius at time t; Equation (3.1) of gdmpidc.md.
@@ -144,15 +145,11 @@ class Cloud:
 
 
 if __name__ == "__main__":
-    cloud = Cloud(10.0, 10)  # Initial radius
-
-    # Calculate radius at t=2 without updating self.radius
-    result = cloud.cloud_radius(t=2.0)
-    print(result)  # Uses self.radius = 10.0
-    print(cloud.radius)  # Still 10.0
-
-    # Calculate radius at t=2 and update self.radius
-    result = cloud.cloud_radius(t=2.0, inplace=True)
-    print(result)  # Uses updated self.radius = 20.0
-    print(cloud.radius)  # Now 20.0
+    #import matplotlib; matplotlib.use('TkAgg')
+    import matplotlib.pyplot as plt
     
+    cloud = Cloud(characteristic_length=0.05, num_fragments=100, breakup_type="collision")
+    vec_r = init_positions = cloud.sample_positions()
+
+    for x,y,z in vec_r:
+        print(f"(x,y,z) = ({x}, {y}, {x})")
