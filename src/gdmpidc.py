@@ -37,20 +37,6 @@ class Fragment:
         # Get empirical parameters
         self.μ, self.ρ0, self.σ0, self.α, self.γ = empirical_parameters(self.size)
 
-    '''  Not sure if I need this method, since it is already defined for Cloud..?
-    def dispersion(self, t: float) -> float:
-        """
-            Spacial Distribution of Fragment; Equation (4.11) of gdmpidc.md. 
-
-            Args:
-                𝑡 (float): Time since impact [s]
-
-            Returns:
-                float: Spacial distribution of fragment with specific charachteristic length at time 𝑡.
-        """
-        return self.σ0*self.size**(-self.α) + self.γ*t*self.size**(-self.α)
-    '''
-
 
 class Cloud:
     def __init__(self, characteristic_length, num_fragments, breakup_type: str = "collision") -> None:
@@ -152,4 +138,3 @@ if __name__ == "__main__":
         code = file.read()
         exec(code)
     del code
-    
