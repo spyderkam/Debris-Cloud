@@ -100,13 +100,13 @@ class Cloud:
         # Return list of [x, y, z] coordinates
         return [[x[i], y[i], z[i]] for i in range(n)]
 
-    def cloud_radius(self, t: float, inplace: bool = False) -> float:
+    def updated_radius(self, t: float, inplace: bool = False) -> float:
         """
             Cloud radius at time t; Equation (3.1) of gdmpidc.md.
             
             Args:
                 t (float): Time since impact [s]
-                cloud_radius (float, optional): If provided, updates self.radius with this value [m]
+                updated_radius (float, optional): If provided, updates self.radius with this value [m]
             
             Returns:
                 float: Cloud radius at time t [m]
@@ -121,7 +121,7 @@ class Cloud:
         r = np.sqrt(pos[0]**2 + pos[1]**2 + pos[2]**2)
         μ, ρ0, _, _, _ = empirical_parameters(self.fragSize)
         σ = self.spatial_dispersion(t)
-        Rc = self.cloud_radius(t)
+        Rc = self.updated_radius(t)
         return ρ0*np.exp(-0.5 * ((r - μ*Rc)/(σ*Rc))**2)
 
     def spatial_dispersion(self, t: float) -> float:
@@ -137,4 +137,15 @@ if __name__ == "__main__":
     with open('plotter.py', 'r') as file:
         code = file.read()
         exec(code)
-    del code
+    #del code
+
+    inside, outside = [], []
+    for r in vec_r:
+        if np.linalg.norm(r) <= cloud.updated_radius(t=0):
+            inside.append(r)
+        else:
+            outside.append(r)
+
+
+    print(f"{int(len(inside)/cloud.nFrag*100)}% of the fragments are inside.")
+    print(f"{int(len(outside)/cloud.nFrag*100)}% of the fragments are outside.")
