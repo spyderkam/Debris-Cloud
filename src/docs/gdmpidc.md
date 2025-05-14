@@ -230,7 +230,7 @@ symmetric about the peak of the distribution. I would also like to acknowledge t
 
 ## References
 
-[1] Johnson, N. L., Liou, J.-C., Sommer, M., Wambolt, T., & Anderson, R. (2001). NASA's Orbital Debris Baseline Projections. _Advances in Space Research_, **38**(9), 1,626–1,633.
+[1] Johnson, N. L., Liou, J.-C., Sommer, M., Wambolt, T., & Anderson, R. (2001). NASA's Orbital Debris Baseline Projections. _Advances in Space Research_, **28**(9), 1377–1383.
 
 [2] Liou, J.-C., Johnson, N. L., & Hill, N. (2001). Risks in Space from Orbiting Debris. _\mathrm{s}cience_, **311**(5759), 340–341.
 
