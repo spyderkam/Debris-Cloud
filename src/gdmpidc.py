@@ -77,8 +77,8 @@ class Cloud:
         # We sample r from a distribution proportional to r^2 * exp(-0.5 * ((r - μ*R)/(σ*R))^2)
 
         # Define the mean and standard deviation in radial distance
-        mean_r = μ * Rc
-        std_r = σ * Rc
+        mean_r = μ*Rc
+        std_r = σ*Rc
 
         # To sample from the non-standard distribution, use rejection sampling or approximate with a Gaussian
         # For simplicity, we'll approximate by sampling from a Gaussian and adjust for spherical symmetry
@@ -89,13 +89,13 @@ class Cloud:
         r = np.maximum(𝒩, 0)  # Ensure non-negative radial distances
 
         # Sample angular coordinates for isotropic distribution
-        theta = np.arccos(2 * np.random.uniform(0, 1, n) - 1)  # Uniform in cos(θ)
-        varphi = np.random.uniform(0, 2 * np.pi, n)            # Uniform in ϕ
+        θ = np.arccos(2 * np.random.uniform(0, 1, n) - 1)  # Uniform in cos(θ)
+        ϕ = np.random.uniform(0, 2 * np.pi, n)             # Uniform in ϕ
 
         # Convert to Cartesian coordinates
-        x = r * np.sin(theta) * np.cos(varphi)
-        y = r * np.sin(theta) * np.sin(varphi)
-        z = r * np.cos(theta)
+        x = r*np.sin(θ)*np.cos(ϕ)
+        y = r*np.sin(θ)*np.sin(ϕ)
+        z = r*np.cos(θ)
 
         # Return list of [x, y, z] coordinates
         return [[x[i], y[i], z[i]] for i in range(n)]
@@ -131,13 +131,12 @@ class Cloud:
 
 
 if __name__ == "__main__":    
-    cloud = Cloud(characteristic_length=0.15, num_fragments=1000, breakup_type="collision")
+    cloud = Cloud(characteristic_length=0.15, num_fragments=100, breakup_type="collision")
     vec_r = init_positions = cloud.sample_positions()
 
     with open('plotter.py', 'r') as file:
         code = file.read()
-        exec(code)
-    #del code
+        #exec(code)
 
     inside, outside = [], []
     for r in vec_r:
@@ -146,6 +145,5 @@ if __name__ == "__main__":
         else:
             outside.append(r)
 
-
-    print(f"{int(len(inside)/cloud.nFrag*100)}% of the fragments are inside.")
-    print(f"{int(len(outside)/cloud.nFrag*100)}% of the fragments are outside.")
+    print(f"{round(len(inside)/cloud.nFrag*100, 2)}% of the fragments are INside.")
+    print(f"{round(len(outside)/cloud.nFrag*100, 2)}% of the fragments are OUTside.")

@@ -3,9 +3,10 @@
 __author__ = "Claude 3.7 Sonnet, Kamyar Modjtahedzadeh, Claude 3.5 Sonnet V2"
 __date__ = "May 1, 2025 - May 13, 2025"
 
+import warnings
 from scipy import integrate
 import numpy as np
-
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 # NASA Standard Breakup Model
 def get_AM_value(log_Lc, fragment_type="upper_stage"):
