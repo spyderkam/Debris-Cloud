@@ -4,8 +4,8 @@ __author__ = "Claude 3.7 Sonnet, Kamyar Modjtahedzadeh, Claude 3.5 Sonnet V2"
 __date__ = "May 1, 2025 - May 14, 2025"
 
 import warnings     # Must be imported before scipy and numpy.
+from numpy import log10, random
 from scipy import integrate
-import numpy as np
 
 warnings.filterwarnings("ignore", category=integrate.IntegrationWarning)
 
@@ -24,13 +24,13 @@ def get_AM_value(log_Lc, fragment_type="upper_stage"):
     """
 
     # Determine which distribution to use based on size
-    if log_Lc > np.log10(0.11):  # Larger than 11 cm
+    if log_Lc > log10(0.11):  # Larger than 11 cm
         return sample_large_AM_distribution(log_Lc, fragment_type)
-    elif log_Lc < np.log10(0.08):  # Smaller than 8 cm
+    elif log_Lc < log10(0.08):  # Smaller than 8 cm
         return sample_small_AM_distribution(log_Lc)
     else:  # Between 8 and 11 cm - transition region
         # Linearly interpolate between small and large fragment distributions
-        weight = (log_Lc - np.log10(0.08)) / (np.log10(0.11) - np.log10(0.08))
+        weight = (log_Lc - log10(0.08)) / (log10(0.11) - log10(0.08))
         large_sample = sample_large_AM_distribution(log_Lc, fragment_type)
         small_sample = sample_small_AM_distribution(log_Lc)
         return small_sample * (1 - weight) + large_sample * weight
@@ -112,12 +112,12 @@ def sample_large_AM_distribution(log_Lc, fragment_type):
             sigma2 = 0.3
 
     # Sample from the bimodal distribution
-    if np.random.random() < alpha:
+    if random.random() < alpha:
         # Sample from first distribution
-        log_AM = np.random.normal(mu1, sigma1)
+        log_AM = random.normal(mu1, sigma1)
     else:
         # Sample from second distribution
-        log_AM = np.random.normal(mu2, sigma2)
+        log_AM = random.normal(mu2, sigma2)
 
     # Convert from log to linear
     return 10**log_AM
@@ -142,7 +142,7 @@ def sample_small_AM_distribution(log_Lc):
         sigma = 0.2 + 0.1333 * (log_Lc + 3.5)
 
     # Sample from normal distribution
-    log_AM = np.random.normal(mu, sigma)
+    log_AM = random.normal(mu, sigma)
 
     # Convert from log to linear
     return 10**log_AM
@@ -160,7 +160,7 @@ def cross_sectional_area(Lc):
 def calculate_mass(Lc, fragment_type="upper_stage"):
     """Calculate fragment mass based on characteristic length using NASA model."""
     area = cross_sectional_area(Lc)
-    log_Lc = np.log10(Lc)
+    log_Lc = log10(Lc)
     AM_ratio = get_AM_value(log_Lc, fragment_type)
     mass = area / AM_ratio
     return mass
@@ -191,13 +191,13 @@ def expansion_velocity(parent_mass=1000, L_min=0.001, L_max=1.0, breakup_type="c
     # Define average velocity for fragments of size L_c based on Eq. (2.4), (2.5)
     def avg_velocity(L_c):
         # Calculate A/M ratio for this characteristic length
-        log_Lc = np.log10(L_c)
+        log_Lc = log10(L_c)
         AM_ratio = get_AM_value(log_Lc)
 
         if breakup_type == "explosion":
-            return 0.2 * np.log10(AM_ratio) + 1.85
+            return 0.2 * log10(AM_ratio) + 1.85
         else:  # collision
-            return 0.9 * np.log10(AM_ratio) + 2.9
+            return 0.9 * log10(AM_ratio) + 2.9
 
     # Numerator: ∫ v̄(L_c) × n(L_c) dL_c
     def integrand_numerator(L_c):
