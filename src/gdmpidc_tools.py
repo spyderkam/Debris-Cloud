@@ -1,7 +1,7 @@
 #!usr/bin/env python3
 
 __author__ = "Claude 3.7 Sonnet, Kamyar Modjtahedzadeh, Claude 3.5 Sonnet V2"
-__date__ = "May 1, 2025 - May 13, 2025"
+__date__ = "May 1, 2025 - May 14, 2025"
 
 import warnings     # Must be imported before scipy and numpy.
 from scipy import integrate
