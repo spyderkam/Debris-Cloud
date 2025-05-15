@@ -1,2 +1,0 @@
-59.0% of the fragments are INside.
-41.0% of the fragments are OUTside.
