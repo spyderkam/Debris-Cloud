@@ -6,7 +6,8 @@ __date__ = "May 1, 2025 - May 13, 2025"
 import warnings
 from scipy import integrate
 import numpy as np
-warnings.filterwarnings("ignore", category=DeprecationWarning)
+from scipy.integrate import IntegrationWarning
+warnings.filterwarnings("ignore", category=IntegrationWarning)
 
 # NASA Standard Breakup Model
 def get_AM_value(log_Lc, fragment_type="upper_stage"):
