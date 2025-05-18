@@ -243,12 +243,11 @@ def empirical_parameters(Lc):
         α = 1.0
     # Large fragments (≳ 10 cm)
     else:
-        ρ0 = 1.5           # Lower normalization constant for larger fragments
-        # Peak closer to origin (less affected by dispersion)
-        μ = 0.60
-        γ = 0.001          # Slower evolution due to smaller perturbation effects
-        σ0 = 0.2           # Narrower distribution (less affected by ejection)
-        α = 0.8            # Weaker size dependency
+        ρ0 = 3        # \sout{Lower normalization constant for larger fragments}
+        μ = 0.60      # Peak closer to origin (less affected by dispersion)
+        γ = 0.001     # Slower evolution due to smaller perturbation effects
+        σ0 = 0.05     # Narrower/concentrated distribution (less affected by ejection)
+        α = 0.7       # Weak size dependency
 
     return μ, ρ0, σ0, α, γ
 
