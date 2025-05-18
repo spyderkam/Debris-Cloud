@@ -136,4 +136,3 @@ if __name__ == "__main__":
     with open('plotter.py', 'r') as file:
         code = file.read()
         exec(code)
-

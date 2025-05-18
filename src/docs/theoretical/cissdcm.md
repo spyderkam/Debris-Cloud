@@ -1,13 +1,12 @@
 # Computational Implementation of Spherically Symmetric Debris Cloud Models
 
-Kamyar Modjtahedzadeh
-Boeing Intelligence & Analytics
+Kamyar Modjtahedzadeh <br>
+Boeing Intelligence & Analytics <br>
 May 13, 2025
-
 
 ## 1 Distribution of Area-to-Mass Ratios
 
-  Based on the NASA breakup model's area-to-mass ratio distribution [3], a piecewise statistical function has been structured for the fragment's logarithm characteristic length ($L_c$) input and its cross-sectional area-to-mass ratio ($A/M$) output. The function partitions the domain into three regions based on fragment size:
+Based on the NASA breakup model's area-to-mass ratio distribution [3], a piecewise statistical function has been structured for the fragment's logarithm characteristic length ($L_c$) input and its cross-sectional area-to-mass ratio ($A/M$) output. The function partitions the domain into three regions based on fragment size:
 
 $$
 \xi (x) \,=\,
