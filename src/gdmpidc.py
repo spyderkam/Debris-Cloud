@@ -130,4 +130,10 @@ class Cloud:
 
 
 if __name__ == "__main__":
-  pass
+    cloud = Cloud(characteristic_length=0.15, num_fragments=100, breakup_type="collision")
+    vec_r = init_positions = cloud.sample_positions()
+    
+    with open('plotter.py', 'r') as file:
+        code = file.read()
+        exec(code)
+
