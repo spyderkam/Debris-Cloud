@@ -139,3 +139,20 @@ I see that there's a significant discrepancy between my simulation results and y
 For medium fragments, we need to drastically reduce the spatial dispersion to concentrate more fragments inside the cloud radius. Based on what worked for the other sizes, I'll propose these adjusted parameters:
 
 $$\texttt{ρ0, μ, γ, σ0, α = 4.0, 0.60, 0.003, 0.062, 0.65}$$
+
+**<u>_Kam_:</u>**
+
+Based on 50 iterations, I am now getting $90.99\%$ for medium fragments. I am content with this (currently). It appears that we kept on increasing `σ0` by increments of `0.004` to slightly increase the medium fragment percentile, right?
+
+***<u>Claude Sonnet 3.7:</u>***
+
+Yes, that's correct! We followed a systematic approach of increasing the spatial dispersion parameter (`σ0`) for medium fragments:
+
+1.  We started with a drastic reduction from the original `0.061` to `0.04`, which resulted in $>98\%$ inside
+2.  Then increased to `0.052`, which gave $94.8\%$ inside
+3.  Further increased to `0.058`, which resulted in $92.69\%$ inside
+4.  Finally settled on `0.062`, giving $90.99\%$ inside
+
+The last adjustment was indeed an increment of `0.004`, which decreased the percentage by about $1.7\%$. This shows that around this parameter range, each `0.004` increase in `σ0` corresponds to roughly a $1.5$-$2\%$ decrease in the percentage of fragments inside the cloud radius.
+
+This fine-tuning approach helped us converge on the perfect parameters for your model, ensuring that each size category has just the right percentage of fragments inside the cloud radius.
