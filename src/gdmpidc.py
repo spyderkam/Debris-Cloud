@@ -134,9 +134,7 @@ class Cloud:
     return self.fragSize**(-α) * (σ0 + γ*t)
 
 
-if __name__ == "__main__":
-    import os
-        
+if __name__ == "__main__":        
     cloud = Cloud(characteristic_length=0.05, num_fragments=1000, breakup_type="collision")
     vec_r = init_positions = cloud.sample_positions()
 
