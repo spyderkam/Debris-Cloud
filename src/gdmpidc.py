@@ -135,9 +135,12 @@ class Cloud:
 
 
 if __name__ == "__main__":
+    import os
+        
     cloud = Cloud(characteristic_length=0.05, num_fragments=1000, breakup_type="collision")
     vec_r = init_positions = cloud.sample_positions()
 
-    with open('./subscripts/plotter_inside.py', 'r') as file:
+    absolute_plotter_path = '/home/runner/workspace/src/subscripts/plotter_inside.py'
+    with open(absolute_plotter_path, 'r') as file:
         code = file.read()
         exec(code)
