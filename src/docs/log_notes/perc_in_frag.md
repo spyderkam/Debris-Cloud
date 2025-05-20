@@ -81,9 +81,9 @@ def empirical_parameters(Lc):
     """
         Define empirical parameters for the fragment based on its characteristic length.
         These parameters have been calibrated to achieve the following coverage:
-        - Small fragments (Lc ≤ 0.08 cm): ≳75% inside cloud radius
-        - Medium fragments (0.08 < Lc ≤ 0.11 cm): ≳90% inside cloud radius
-        - Large fragments (Lc > 0.11 cm): ≳99% inside cloud radius
+        - Small fragments (Lc ≤ 8 cm): ≳75% inside cloud radius
+        - Medium fragments (8 < Lc ≤ 11 cm): ≳90% inside cloud radius
+        - Large fragments (Lc > 11 cm): ≳99% inside cloud radius
         
         Returns:
             tuple: (μ, ρ0, σ0, α, γ)
@@ -172,9 +172,7 @@ For instance, both $L_\mathrm c = 5\,\mathrm{cm}$ and $L_\mathrm c = 9\,\mathrm{
 
 **<u>*Claude Sonnet 3.7*:</u>**
 
-Yes, the inside percentile will indeed change with $L_{\mathrm{c}}$ even within the same fragment size category.
-
-Looking at the formula used to calculate the spatial dispersion parameter:
+Yes, the inside percentile will indeed change with $L_{\mathrm{c}}$ even within the same fragment size category. Looking at the formula used to calculate the spatial dispersion parameter:
 
 $$\sigma(L_{\mathrm{c}}) = \sigma_0 \cdot L_{\mathrm{c}}^{-\alpha}$$
 
@@ -185,11 +183,11 @@ For medium fragments, we have:
 
 Let's calculate the spatial dispersion values for different $L_{\mathrm{c}}$ values within the medium fragments category:
 
-For $L_\mathrm c = 0.09 \, \mathrm{m}$ ($9 \, \mathrm{cm}$): $$\sigma(0.09) = 0.062 \cdot (0.09)^{-0.65} = 0.062 \cdot 3.96 \approx 0.246$$
+  - For $L_\mathrm c = 0.09 \, \mathrm{m}$ ($9 \, \mathrm{cm}$): $$\sigma(0.09) = 0.062 \cdot (0.09)^{-0.65}  \approx 0.246$$
 
-For $L_\mathrm c = 0.085 \, \mathrm{m}$ ($8.5 \, \mathrm{cm}$): $$\sigma(0.085) = 0.062 \cdot (0.085)^{-0.65} = 0.062 \cdot 4.11 \approx 0.255$$
+  - For $L_\mathrm c = 0.085 \, \mathrm{m}$ ($8.5 \, \mathrm{cm}$): $$\sigma(0.085) = 0.062 \cdot (0.085)^{-0.65}  \approx 0.255$$
 
-Since the negative exponent $-\alpha$ causes smaller $L_{\mathrm{c}}$ values to have higher spatial dispersion, the smaller fragment ($8.5 \,\mathrm{cm}$) would have a slightly more dispersed distribution than the larger fragment ($9 \,\mathrm{cm}$).
+Since the negative exponent causes smaller $L_{\mathrm{c}}$ values to have higher spatial dispersion, the smaller fragment ($8.5 \,\mathrm{cm}$) would have a slightly more dispersed distribution than the larger fragment ($9 \,\mathrm{cm}$).
 
 This means that **larger fragments within the same category will have a higher inside percentile** than smaller fragments. In your example, the $9 \,\mathrm{cm}$ fragments would have a slightly higher percentage inside the cloud radius than $8.5 \,\mathrm{cm}$ fragments.
 
