@@ -115,7 +115,7 @@ The key changes from the original parameters:
     
     -   Reduced $σ_0$ from $0.3$ to $0.061$
     -   Reduced $α$ from $1.0$ to $0.63$
-    -   Increased $ρ_0$ from $2.0 $to $3.2$
+    -   Increased $ρ_0$ from $2.0$ to $3.2$
     -   Kept $μ$ at $0.64$ (was $0.65$)
 
 3.  **Large fragments**:
@@ -197,11 +197,21 @@ Now testing inside percentile for various $L_\mathrm c$ within the same size cat
 
 #### Large Fragments
 
-Starting by comparing $L_{\mathrm{c}} = 11.5 \,\mathrm{cm}$ to $L_{\mathrm{c}} = 15 \,\mathrm{cm}$ within the *large*  size category. We have already established parameters such that $15 \,\mathrm{cm}$ fragments average roughly $98.89\%$ inside the wireframe-like spherical debris cloud at $t = 0$. Based on fifty runs, $11.5 \,\mathrm{cm}$ fragments, which are the smallest large fragments, are
-
-***
- $98.95\%$ inside the sphere, which tells me that the so-called observable parameters for fragments with $L_\mathrm c > 11\,\mathrm{cm}$ are good (at least for now).
+Starting by comparing $L_{\mathrm{c}} = 11.5 \,\mathrm{cm}$ to $L_{\mathrm{c}} = 15 \,\mathrm{cm}$ within the *large*  size category. We have already established parameters such that $15 \,\mathrm{cm}$ fragments average roughly $98.89\%$ inside the wireframe-like spherical debris cloud at $t = 0$. Based on fifty runs, $11.5 \,\mathrm{cm}$ fragments, which are the smallest large fragments, are $97.36\%$ inside the sphere, which is good enough for me (at least for now).
 
 #### Medium Fragments
 
-Medium sized fragments range from to anything greater than $8$ centimeters up to and including $11$ centimeters. We have already established parameters such that $9 \,\mathrm{cm}$ fragments average roughly $90.99\%$ inside the wireframe-like spherical debris cloud at $t = 0$ - which was and is the desired value. For $8.5 \,\mathrm{cm}$ after fifty iterations I get 
+Medium sized fragments range from to anything greater than $8$ centimeters up to and including $11$ centimeters. We have already established parameters such that $9 \,\mathrm{cm}$ fragments average roughly $90.99\%$ inside the wireframe-like spherical debris cloud at $t = 0$, which was and is the desired value. For $8.5 \,\mathrm{cm}$ after fifty iterations I get $90.39\%$ inside and for $L_\mathrm c = 11 \,\mathrm{cm}$ fragments I get $93.71\%$. These values are good (at least for now).
+
+#### Small Fragments 
+
+$L_\mathrm c \leq 8 \,\mathrm{cm}$ defines small fragments; the current parameters all but guarantee an approximate $75\%$ inside percentile for $L_\mathrm c = 5 \,\mathrm{cm}$. For $8$ centimeter fragments, $X\%$ of $1000$ particles are within the sphere
+
+  -  $L_\mathrm c = 1\,\mathrm{cm}\!\!: ~ A\%$
+  - $L_\mathrm c = 2\,\mathrm{cm}\!\!: ~ B\%$
+  - $L_\mathrm c = 3\,\mathrm{cm}\!\!: ~ C\%$
+  - $L_\mathrm c = 4\,\mathrm{cm}\!\!: ~ D\%$
+  - $L_\mathrm c = 5\,\mathrm{cm}\!\!: ~ E\%$
+  - $L_\mathrm c = 6\,\mathrm{cm}\!\!: ~ F\%$
+  - $L_\mathrm c = 7\,\mathrm{cm}\!\!: ~ G\%$
+  - $L_\mathrm c = 8\,\mathrm{cm}\!\!: ~ H\%$
