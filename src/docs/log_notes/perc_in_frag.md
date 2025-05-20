@@ -22,14 +22,14 @@ l_Lc = 0.15     # [m]
 Running the <u>@percent_inside.py</u> script with the above parameters five times (fifty iterations) is how I concluded the following statistics:
 
 **Total average:**
-- _Small fragments: 51.6% inside $R_{\mathrm{c}}$ at $t = 0$_
-- _Medium fragments: 54.43% inside $R_{\mathrm{c}}$ at $t = 0$_
-- _Large fragments: 66.70% inside $R_{\mathrm{c}}$ at $t = 0$_
+- _Small fragments: $51.6\%$ inside $R_{\mathrm{c}}$ at $t = 0$_
+- _Medium fragments: $54.43\%$ inside $R_{\mathrm{c}}$ at $t = 0$_
+- _Large fragments: $66.70\%$ inside $R_{\mathrm{c}}$ at $t = 0$_
 
 I don't like these values at all. I believe that the so-called empirical parameters are what we need to modify to get modified values for the total averages. What I want is:
-- Small fragments: ≳ 75% inside
-- Medium fragments: ≳ 90% inside
-- Large fragments: ≳ 99% inside
+- Small fragments: $≳ 75\%$ inside
+- Medium fragments: $≳ 90\%$ inside
+- Large fragments: $≳ 99\%$ inside
 
 The (empirical) parameters are: $\rho_0$, $\mu$, $\sigma_0$, $\alpha$, $\gamma$, and $\eta$; from these six parameters, all but $\gamma$ are being used to obtain these averages, and, I don't think there is a need to modify $\mu$ or $\eta$ either.
 
