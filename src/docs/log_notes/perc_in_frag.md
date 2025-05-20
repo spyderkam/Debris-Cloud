@@ -162,7 +162,7 @@ The last adjustment was indeed an increment of `0.004`, which decreased the perc
 
 This fine-tuning approach helped us converge on the perfect parameters for your model, ensuring that each size category has just the right percentage of fragments inside the cloud radius.
 
-## Q&A
+## Percentile Dependence on $L_{\mathrm{c}}$ Within  Stratification
 
 **<u>_Kam_:</u>**
 
