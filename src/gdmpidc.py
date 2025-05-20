@@ -7,7 +7,12 @@ __date__ = "May 1, 2025 - May 14, 2025"
   Ceres asteroid; let the origin be the center of the parent body at impact (𝑡 = 0).
 """
 
-from .gdmpidc_tools import calculate_mass, cross_sectional_area, empirical_parameters, expansion_velocity, get_AM_value, packing_density
+try:
+    # When imported as a module from parent directory
+    from src.gdmpidc_tools import calculate_mass, cross_sectional_area, empirical_parameters, expansion_velocity, get_AM_value, packing_density
+except ImportError:
+    # When run directly from src directory
+    from gdmpidc_tools import calculate_mass, cross_sectional_area, empirical_parameters, expansion_velocity, get_AM_value, packing_density
 import numpy as np
 
 # M_EARTH = 5.972e+24       # [kg]
@@ -132,7 +137,7 @@ class Cloud:
 if __name__ == "__main__":
     cloud = Cloud(characteristic_length=0.05, num_fragments=1000, breakup_type="collision")
     vec_r = init_positions = cloud.sample_positions()
- 
+
     with open('./subscripts/plotter_inside.py', 'r') as file:
         code = file.read()
         exec(code)
