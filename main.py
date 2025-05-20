@@ -3,7 +3,9 @@
 __author__ = "Kamyar Modjtahedzadeh"
 __date__ = "May 5, 2025"
 
-import gdmpidc
+from src.gdmpidc import *
+
+print("Hello World!")
 
 
 if __name__ == "__main__":
