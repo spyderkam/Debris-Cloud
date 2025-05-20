@@ -143,7 +143,7 @@ I see that there's a significant discrepancy between my simulation results and y
 
 For medium fragments, we need to drastically reduce the spatial dispersion to concentrate more fragments inside the cloud radius. Based on what worked for the other sizes, I'll propose these adjusted parameters:
 
-$$\texttt{ρ0, μ, γ, σ0, α = 4.0, 0.60, 0.003, 0.062, 0.65}$$
+$$\texttt{ρ0, μ, γ, σ0, α} \,=\, \texttt{4.0, 0.60, 0.003, 0.062, 0.65}$$
 
 **<u>_Kam_:</u>**
 
@@ -168,7 +168,7 @@ This fine-tuning approach helped us converge on the perfect parameters for your 
 
 Relative to fragment size, e.g., medium fragments, will the _inside percentile_ change with $L_\mathrm c$?
 
-For instance, both $L_\mathrm c = 5\,\mathrm{cm}$ and $L_\mathrm c = 9\,\mathrm{cm}$ are classified as medium fragments. But, will the $9\,\mathrm{cm}$ have a higher inside percentile than $9\,\mathrm{cm}$, based on this math?
+For instance, both $L_\mathrm c = 8.5\,\mathrm{cm}$ and $L_\mathrm c = 9\,\mathrm{cm}$ are classified as medium fragments. But, will the $9\,\mathrm{cm}$ have a higher inside percentile than $9\,\mathrm{cm}$, based on this math?
 
 **<u>*Claude Sonnet 3.7*:</u>**
 
@@ -183,13 +183,16 @@ For medium fragments, we have:
 
 Let's calculate the spatial dispersion values for different $L_{\mathrm{c}}$ values within the medium fragments category:
 
-  - For $L_\mathrm c = 0.09 \, \mathrm{m}$ ($9 \, \mathrm{cm}$): $$\sigma(0.09) = 0.062 \cdot (0.09)^{-0.65}  \approx 0.246$$
+  - For $L_\mathrm c = 9 \, \mathrm{cm}$: $$\sigma(0.09) = 0.062 \cdot (0.09)^{-0.65}  \approx 0.246$$
 
-  - For $L_\mathrm c = 0.085 \, \mathrm{m}$ ($8.5 \, \mathrm{cm}$): $$\sigma(0.085) = 0.062 \cdot (0.085)^{-0.65}  \approx 0.255$$
+  - For $L_\mathrm c = 8.5 \, \mathrm{cm}$: $$\sigma(0.085) = 0.062 \cdot (0.085)^{-0.65}  \approx 0.255$$
 
 Since the negative exponent causes smaller $L_{\mathrm{c}}$ values to have higher spatial dispersion, the smaller fragment ($8.5 \,\mathrm{cm}$) would have a slightly more dispersed distribution than the larger fragment ($9 \,\mathrm{cm}$).
 
 This means that **larger fragments within the same category will have a higher inside percentile** than smaller fragments. In your example, the $9 \,\mathrm{cm}$ fragments would have a slightly higher percentage inside the cloud radius than $8.5 \,\mathrm{cm}$ fragments.
 
-Note that your example mentioned $5 \,\mathrm{cm}$, but that would actually be classified as a small fragment ($≤ 0.08 \,\mathrm{m}$), so it would use different parameter values. But the principle remains the same - within any fragment size category, the inside percentile increases with increasing $L_{\mathrm{c}}$.
+### Comparative Testing
+
+Now testing inside percentile for various $L_\mathrm c$ within the same size category. Start by comparing $L_{\mathrm{c}} = 11.5 \,\mathrm{cm}$ to $L_{\mathrm{c}} = 15 \,\mathrm{cm}$ within the *large*  size category. We have already established parameters such that $15 \,\mathrm{cm}$ fragments average roughly $98.89\%$ inside the wireframe-like spherical debris cloud at $t = 0$. Based on fifty runs, $11.5 \,\mathrm{cm}$ fragments, which are the smallest large fragments, are $X\%$ inside
+
 
