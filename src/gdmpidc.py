@@ -7,7 +7,7 @@ __date__ = "May 1, 2025 - May 14, 2025"
   Ceres asteroid; let the origin be the center of the parent body at impact (𝑡 = 0).
 """
 
-from gdmpidc_tools import calculate_mass, cross_sectional_area, empirical_parameters, expansion_velocity, get_AM_value, packing_density
+from .gdmpidc_tools import calculate_mass, cross_sectional_area, empirical_parameters, expansion_velocity, get_AM_value, packing_density
 import numpy as np
 
 # M_EARTH = 5.972e+24       # [kg]
