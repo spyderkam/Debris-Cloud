@@ -245,7 +245,9 @@ $$U \,\leq\, \frac{\mathcal{P}_r(r)}{\beta \cdot q(r)} \tag{2.23}$$
 
 where $\beta$ is a constant such that $\mathcal{P}_r(r) \leq \beta \cdot q(r)$ for all $r$ [6, 7].
 
-**Example for a Gaussian Dispersion** For a Gaussian volumetric mass density, such as the one proposed in Modjtahedzadeh (2025) [1],
+###### Example for a Gaussian Dispersion
+
+For a Gaussian volumetric mass density, such as the one proposed in Modjtahedzadeh (2025) [1],
 
 $$\rho(r) \,=\, \rho_0 \exp\left[-0.5 \left(\frac{r - \mu_R}{\sigma_R}\right)^2\right] \tag{2.24}$$
 
