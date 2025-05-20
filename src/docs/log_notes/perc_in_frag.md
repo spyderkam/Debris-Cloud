@@ -19,7 +19,7 @@ l_Lc = 0.15     # [m]
 - Medium fragments: $55.44\%$, $53.99\%$, $54.14\%$, $54.25\%$, and $54.34\%$ inside
 - Large fragments: $66.66\%$, $66.78\%$, $66.64\%$, $66.80\%$, and $66.6\%$ inside
 
-Running the <u>@percent_inside.py</u> script with the above parameters five times (fifty iterations) is how I concluded the following statistics:
+Running the <u>@percent_inside.py</u> script with the above parameters five times (fifty iterations) is how I concluded the following statistics.
 
 **Total average:**
 - _Small fragments: $51.6\%$ inside $R_{\mathrm{c}}$ at $t = 0$_
