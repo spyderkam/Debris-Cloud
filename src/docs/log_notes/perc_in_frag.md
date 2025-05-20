@@ -143,7 +143,7 @@ I see that there's a significant discrepancy between my simulation results and y
 
 For medium fragments, we need to drastically reduce the spatial dispersion to concentrate more fragments inside the cloud radius. Based on what worked for the other sizes, I'll propose these adjusted parameters:
 
-$$\texttt{ρ0, μ, γ, σ0, α} \,=\, \texttt{4.0, 0.60, 0.003, 0.062, 0.65}$$
+$$\texttt{ρ0, μ, γ, σ0, α} \ =\ \texttt{4.0, 0.60, 0.003, 0.062, 0.65}$$
 
 **<u>_Kam_:</u>**
 
