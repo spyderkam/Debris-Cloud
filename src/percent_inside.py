@@ -7,38 +7,38 @@ __date__ = "May 14, 2025"
 
 nRuns = 50
 nFrags = 1000
-#s_Lc = 0.05     # [m]
-m_Lc = 0.11     # [m]
+s_Lc = 0.001     # [m]
+#m_Lc = 0.11     # [m]
 #l_Lc = 0.115     # [m]
 
 from gdmpidc import *
 from numpy import linalg, mean
 
 ## Inside and outside probabilities of s/m/l fragments.
-#in_ratios_s = []
-in_ratios_m = []
+in_ratios_s = []
+#in_ratios_m = []
 #in_ratios_l = []
 
 for _ in range(nRuns):
     ## Generate s/m/l clouds and fragments.
-    #smallCloud = Cloud(s_Lc, nFrags);  vec_r_s = smallCloud.sample_positions()
-    medCloud =  Cloud(m_Lc, nFrags);   vec_r_m = medCloud.sample_positions()
+    smallCloud = Cloud(s_Lc, nFrags);  vec_r_s = smallCloud.sample_positions()
+    #medCloud =  Cloud(m_Lc, nFrags);   vec_r_m = medCloud.sample_positions()
     #largeCloud = Cloud(l_Lc, nFrags);  vec_r_l = largeCloud.sample_positions()
         
     ## Inside and outside numbers of s/m/l fragments.
-    #inl_s = []
-    inl_m = []
+    inl_s = []
+    #inl_m = []
     #inl_l = []
 
     fragment_data = {
-        #'small': [smallCloud, inl_s, in_ratios_s],
-        'medium': [medCloud, inl_m, in_ratios_m],
+        'small': [smallCloud, inl_s, in_ratios_s],
+        #'medium': [medCloud, inl_m, in_ratios_m],
         #'large': [largeCloud, inl_l, in_ratios_l],
     }
 
     for i in range(nFrags):
-        #r_s = vec_r_s[i]
-        r_m = vec_r_m[i]
+        r_s = vec_r_s[i]
+        #r_m = vec_r_m[i]
         #r_l = vec_r_l[i]
         
         for size_category in fragment_data.keys():
@@ -55,5 +55,4 @@ for _ in range(nRuns):
 
 for size_category in fragment_data.keys():
     _, _, in_ratios = fragment_data[size_category]
-    print(f"{size_category.capitalize()} fragments (Lc = {locals()[size_category[0]+'_Lc']}*100 cm): {mean(in_ratios)*100}% inside")
-
+    print(f"{size_category.capitalize()} fragments (Lc = {locals()[size_category[0]+'_Lc']*100} cm): {mean(in_ratios)*100}% inside")
