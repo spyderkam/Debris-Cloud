@@ -44,7 +44,7 @@ Currently, for large fragments ($L_\mathrm c > 0.11\,\mathrm{cm}$), your paramet
 -   $σ_0 = 0.2$ (initial spatial dispersion)
 -   $α = 0.8$ (size dependency)
 -   $γ = 0.001$ (temporal evolution)
--   $η ≈ 0.75$ (packing density)
+-   $η ≈ 0.75$ (packing density coefficient)
 
 To increase the percentage of fragments inside $R_\mathrm c$ from $66.7\%$ to $≳99\%$, we need to make the distribution more concentrated. The most effective way is to decrease $σ_0$ and adjust $α$.
 
