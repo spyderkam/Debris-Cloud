@@ -147,7 +147,7 @@ $$\texttt{ρ0, μ, γ, σ0, α = 4.0, 0.60, 0.003, 0.062, 0.65}$$
 
 **<u>_Kam_:</u>**
 
-Based on fifty iterations, I am now getting $90.99\%$ for medium fragments. I am content with this (currently). It appears that we kept on increasing `σ0` by increments of `0.004` to slightly increase the medium fragment percentile, right?
+Based on fifty iterations, I am now getting $90.99\%$ for medium fragments. I am content with this (currently). It appears that we kept on increasing `σ0` by increments of `0.004` to slightly decrease the medium fragment percentile, right?
 
 **<u>*Claude Sonnet 3.7*:</u>**
 
