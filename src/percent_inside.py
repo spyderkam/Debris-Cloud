@@ -13,11 +13,14 @@ s_Lc = 0.001     # [m]
 
 from gdmpidc import *
 from numpy import linalg, mean
+from time import time
 
 ## Inside and outside probabilities of s/m/l fragments.
 in_ratios_s = []
 #in_ratios_m = []
 #in_ratios_l = []
+
+start_time = time()
 
 for _ in range(nRuns):
     ## Generate s/m/l clouds and fragments.
@@ -56,3 +59,6 @@ for _ in range(nRuns):
 for size_category in fragment_data.keys():
     _, _, in_ratios = fragment_data[size_category]
     print(f"{size_category.capitalize()} fragments (Lc = {locals()[size_category[0]+'_Lc']*100} cm): {mean(in_ratios)*100}% inside")
+    
+print(f"Process time: {round(time() - start_time, 2)} seconds")
+
