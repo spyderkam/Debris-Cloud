@@ -1,3 +1,4 @@
+
 # Percentile of Inner Fragments
 
 Kam Modjtahedzadeh
@@ -193,3 +194,4 @@ Since the negative exponent $-\alpha$ causes smaller $L_{\mathrm{c}}$ values to 
 This means that **larger fragments within the same category will have a higher inside percentile** than smaller fragments. In your example, the $9 \,\mathrm{cm}$ fragments would have a slightly higher percentage inside the cloud radius than $8.5 \,\mathrm{cm}$ fragments.
 
 Note that your example mentioned $5 \,\mathrm{cm}$, but that would actually be classified as a small fragment ($≤ 0.08 \,\mathrm{m}$), so it would use different parameter values. But the principle remains the same - within any fragment size category, the inside percentile increases with increasing $L_{\mathrm{c}}$.
+
