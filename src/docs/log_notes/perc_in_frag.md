@@ -205,13 +205,16 @@ Medium sized fragments range from to anything greater than $8$ centimeters up to
 
 #### Small Fragments 
 
-$L_\mathrm c \leq 8 \,\mathrm{cm}$ defines small fragments; the current parameters all but guarantee an approximate $75\%$ inside percentile for $L_\mathrm c = 5 \,\mathrm{cm}$. For $8$ centimeter fragments, $X\%$ of $1000$ particles are within the sphere
+$L_\mathrm c \leq 8 \,\mathrm{cm}$ defines small fragments; the current parameters all but guarantee an approximate $75\%$ inside percentile for $L_\mathrm c = 5 \,\mathrm{cm}$. Based on the average of twenty runs, the percentiles of $1000$ particles within the sphere are:
 
-  -  $L_\mathrm c = 1\,\mathrm{cm}\!\!: ~ A\%$
-  - $L_\mathrm c = 2\,\mathrm{cm}\!\!: ~ B\%$
-  - $L_\mathrm c = 3\,\mathrm{cm}\!\!: ~ C\%$
-  - $L_\mathrm c = 4\,\mathrm{cm}\!\!: ~ D\%$
-  - $L_\mathrm c = 5\,\mathrm{cm}\!\!: ~ E\%$
-  - $L_\mathrm c = 6\,\mathrm{cm}\!\!: ~ F\%$
-  - $L_\mathrm c = 7\,\mathrm{cm}\!\!: ~ G\%$
-  - $L_\mathrm c = 8\,\mathrm{cm}\!\!: ~ H\%$
+$\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 1\,\mathrm{mm}\!\!: ~ A\%$ &nbsp; (fifty iterations for this one only)
+$\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 1\,\mathrm{cm}\!\!: ~~~ 73.79\%$
+$\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 2\,\mathrm{cm}\!\!: ~~~ 72.65\%$
+$\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 3\,\mathrm{cm}\!\!: ~~~ 76.09\%$
+$\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 4\,\mathrm{cm}\!\!: ~~~ 73.65\%$
+$\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 5\,\mathrm{cm}\!\!: ~~~ 74.70\%$
+$\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 6\,\mathrm{cm}\!\!: ~~~ 77.58\%$
+$\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 7\,\mathrm{cm}\!\!: ~~~ 76.55\%$
+$\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 8\,\mathrm{cm}\!\!: ~~~ 77.79\%$
+
+It *is* what I originally wanted, but I might adjust the parameters (later) to increase all the immediate above values.
