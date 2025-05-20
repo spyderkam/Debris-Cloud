@@ -33,7 +33,7 @@ I don't like these values at all. I believe that the so-called empirical paramet
 
 The (empirical) parameters are: $\rho_0$, $\mu$, $\sigma_0$, $\alpha$, $\gamma$, and $\eta$; from these six parameters, all but $\gamma$ are being used to obtain these averages, and, I don't think there is a need to modify $\mu$ or $\eta$ either.
 
-Let's start with the <u>large</u> fragments. Suggest to me updated values for $\rho_0$, $\sigma_0$ and $\alpha$, that you think will fit my requirement of nearly all fragments being inside $R_{\mathrm{c}}(t)$ at $t = 0$. 
+Let's start with the *large* fragments. Suggest to me updated values for $\rho_0$, $\sigma_0$ and $\alpha$, that you think will fit my requirement of nearly all fragments being inside $R_{\mathrm{c}}(t)$ at $t = 0$. 
 
 ## Proposal of Large $L_\mathrm{c}$ Parameters
 
