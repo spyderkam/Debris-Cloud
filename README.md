@@ -70,6 +70,5 @@ Detailed documentation is available in the `src/docs/` directory:
 
 ## Author
 
-Kamyar Modjtahedzadeh
-Boeing Intelligence & Analytics
-May 2025
+Kamyar Modjtahedzadeh  
+Boeing Intelligence & Analytics  
