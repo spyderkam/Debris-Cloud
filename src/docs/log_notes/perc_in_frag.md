@@ -81,9 +81,9 @@ def empirical_parameters(Lc):
     """
         Define empirical parameters for the fragment based on its characteristic length.
         These parameters have been calibrated to achieve the following coverage:
-        - Small fragments (Lc ≤ 8 cm): ≳75% inside cloud radius
-        - Medium fragments (8 < Lc ≤ 11 cm): ≳90% inside cloud radius
-        - Large fragments (Lc > 11 cm): ≳99% inside cloud radius
+        - Small fragments (Lc ≈ 5 cm): ≳75% inside cloud radius
+        - Medium fragments (Lc ≈ 9 cm): ≳90% inside cloud radius
+        - Large fragments (Lc ≈ 15 cm): ≳99% inside cloud radius
         
         Returns:
             tuple: (μ, ρ0, σ0, α, γ)
