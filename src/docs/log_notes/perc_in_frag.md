@@ -3,7 +3,7 @@
 
 Kam Modjtahedzadeh  
 Boeing Intelligence & Analytics  
-May 15, 2025 -- May 18, 2025
+May 15, 2025 -- May 20, 2025
 
 ## Percent Inside Results
 
@@ -174,7 +174,7 @@ For instance, both $L_\mathrm c = 8.5\,\mathrm{cm}$ and $L_\mathrm c = 9\,\mathr
 
 Yes, the inside percentile will indeed change with $L_{\mathrm{c}}$ even within the same fragment size category. Looking at the formula used to calculate the spatial dispersion parameter:
 
-$$\sigma(L_{\mathrm{c}}) = \sigma_0 \cdot L_{\mathrm{c}}^{-\alpha}$$
+$$\sigma(L_{\mathrm{c}}) \,=\, \sigma_0 \cdot L_{\mathrm{c}}^{-\alpha}$$
 
 For medium fragments, we have:
 
@@ -184,7 +184,6 @@ For medium fragments, we have:
 Let's calculate the spatial dispersion values for different $L_{\mathrm{c}}$ values within the medium fragments category:
 
   - For $L_\mathrm c = 9 \, \mathrm{cm}$: $$\sigma(0.09) = 0.062 \cdot (0.09)^{-0.65}  \approx 0.246$$
-
   - For $L_\mathrm c = 8.5 \, \mathrm{cm}$: $$\sigma(0.085) = 0.062 \cdot (0.085)^{-0.65}  \approx 0.255$$
 
 Since the negative exponent causes smaller $L_{\mathrm{c}}$ values to have higher spatial dispersion, the smaller fragment ($8.5 \,\mathrm{cm}$) would have a slightly more dispersed distribution than the larger fragment ($9 \,\mathrm{cm}$).
@@ -207,7 +206,7 @@ Medium sized fragments range from to anything greater than $8$ centimeters up to
 
 $L_\mathrm c \leq 8 \,\mathrm{cm}$ defines small fragments; the current parameters all but guarantee an approximate $75\%$ inside percentile for $L_\mathrm c = 5 \,\mathrm{cm}$. Based on the average of twenty runs, the percentiles of $1000$ particles within the sphere are:
 
-$\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 1\,\mathrm{mm}\!\!: ~ A\%$ &nbsp; (fifty iterations for this one only)
+$\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 1\,\mathrm{mm}\!\!: ~\, 54.21\%$ &nbsp; (fifty iterations for this one only)
 $\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 1\,\mathrm{cm}\!\!: ~~~ 73.79\%$
 $\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 2\,\mathrm{cm}\!\!: ~~~ 72.65\%$
 $\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 3\,\mathrm{cm}\!\!: ~~~ 76.09\%$
@@ -217,4 +216,5 @@ $\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 6\,\mathrm{cm}\!\!: ~~~ 77.5
 $\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 7\,\mathrm{cm}\!\!: ~~~ 76.55\%$
 $\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 8\,\mathrm{cm}\!\!: ~~~ 77.79\%$
 
-It *is* what I originally wanted, but I might adjust the parameters (later) to increase all the immediate above values.
+Apart from the $$L_\mathrm c = 1\,\mathrm{mm}$, which I did not even consider, these values *are* what I originally wanted; be that as it may, I might adjust the parameters (later) to increase all the immediate above values.
+
