@@ -5,9 +5,9 @@
 ```python
 nRuns = 10
 nFrags = 1000
-s_Lc = 0.05     # [cm]
-m_Lc = 0.09     # [cm]
-l_Lc = 0.15     # [cm]
+s_Lc = 0.05     # [m]
+m_Lc = 0.09     # [m]
+l_Lc = 0.15     # [m]
 ```
 
 - Small fragments: $52.15\%$, $51.36\%$, $51.32\%$, $51.59\%$, and $50.88\%$ inside
