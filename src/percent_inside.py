@@ -5,10 +5,10 @@ __date__ = "May 14, 2025"
 
 # This script calculates the portion of fragments inside cloud radii and prints the average.
 
-nRuns = 1
+nRuns = 50
 nFrags = 1000
 #s_Lc = 0.05     # [m]
-m_Lc = 0.085     # [m]
+m_Lc = 0.11     # [m]
 #l_Lc = 0.115     # [m]
 
 from gdmpidc import *
@@ -55,5 +55,5 @@ for _ in range(nRuns):
 
 for size_category in fragment_data.keys():
     _, _, in_ratios = fragment_data[size_category]
-    print(f"{size_category.capitalize()} fragments (Lc = {locals()[size_category[0]+'_Lc']}): {mean(in_ratios)*100}% inside")
+    print(f"{size_category.capitalize()} fragments (Lc = {locals()[size_category[0]+'_Lc']}*100 cm): {mean(in_ratios)*100}% inside")
 
