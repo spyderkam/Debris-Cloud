@@ -1,4 +1,8 @@
-# Percentile of Inner Fragments 
+# Percentile of Inner Fragments
+
+Kam Modjtahedzadeh
+Boeing Intelligence & Analytics  
+May 15, 2025 -- May 18, 2025
 
 ## Percent Inside Results
 
@@ -108,7 +112,7 @@ The key changes from the original parameters:
 
 2.  **Medium fragments**:
     
-    -   Reduced $σ_0$ from 0.3 to 0.061
+    -   Reduced $σ_0$ from $0.3$ to $0.061$
     -   Reduced $α$ from $1.0$ to $0.63$
     -   Increased $ρ_0$ from $2.0 $to $3.2$
     -   Kept $μ$ at $0.64$ (was $0.65$)
