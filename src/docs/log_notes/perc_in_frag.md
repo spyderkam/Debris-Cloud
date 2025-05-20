@@ -216,5 +216,5 @@ $\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 6\,\mathrm{cm}\!\!: ~~~ 77.5
 $\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 7\,\mathrm{cm}\!\!: ~~~ 76.55\%$
 $\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 8\,\mathrm{cm}\!\!: ~~~ 77.79\%$
 
-Apart from the $$L_\mathrm c = 1\,\mathrm{mm}$, which I did not even consider, these values *are* what I originally wanted; be that as it may, I might adjust the parameters (later) to increase all the immediate above values.
+Apart from the $L_\mathrm c = 1\,\mathrm{mm}$, which I did not even consider, these values *are* what I originally wanted; be that as it may, I might adjust the parameters (later) to increase all the immediate above values.
 
