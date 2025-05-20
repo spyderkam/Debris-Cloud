@@ -50,9 +50,9 @@ To increase the percentage of fragments inside $R_\mathrm c$ from $66.7\%$ to $�
 
 For large fragments ($0.15\,\mathrm{cm}$), I recommend:
 
--   $ρ_0 = 3.0$ (increased to maintain mass conservation with narrower distribution)
--   $σ_0 = 0.05$ (significantly reduced from $0.2$)
--   $α = 0.7$ (slightly reduced to weaken size dependency)
+  -   $ρ_0 = 3.0$ (increased to maintain mass conservation with narrower distribution)
+  -   $σ_0 = 0.05$ (significantly reduced from $0.2$)
+  -   $α = 0.7$ (slightly reduced to weaken size dependency)
 
 The spatial dispersion at $t=0$ would be: $\sigma = L_{\mathrm{c}}^{-\alpha} \cdot \sigma_0 = 0.15^{-0.7} \cdot 0.05 \approx 0.142$. This narrower distribution should contain approximately $99\%$ of fragments within the cloud radius, meeting your requirement for large fragments.
 
