@@ -14,7 +14,7 @@ l_Lc = 0.15     # [m]
 - Medium fragments: $55.44\%$, $53.99\%$, $54.14\%$, $54.25\%$, and $54.34\%$ inside
 - Large fragments: $66.66\%$, $66.78\%$, $66.64\%$, $66.80\%$, and $66.6\%$ inside
 
-Running the <u>@percent_inside.py</u> script with the above parameters $5$ times ($50$ iterations) is how I concluded the following statistics:
+Running the <u>@percent_inside.py</u> script with the above parameters five times (fifty iterations) is how I concluded the following statistics:
 
 **Total average:**
 - _Small fragments: 51.6% inside $R_{\mathrm{c}}$ at $t = 0$_
@@ -41,7 +41,7 @@ Currently, for large fragments ($L_\mathrm c > 0.11\,\mathrm{cm}$), your paramet
 -   $γ = 0.001$ (temporal evolution)
 -   $η ≈ 0.75$ (packing density)
 
-To increase the percentage of fragments inside $R_\mathrm k$ from $66.7\%$ to $≳99\%$, we need to make the distribution more concentrated. The most effective way is to decrease $σ_0$ and adjust $α$.
+To increase the percentage of fragments inside $R_\mathrm c$ from $66.7\%$ to $≳99\%$, we need to make the distribution more concentrated. The most effective way is to decrease $σ_0$ and adjust $α$.
 
 For large fragments ($0.15\,\mathrm{cm}$), I recommend:
 
@@ -49,13 +49,13 @@ For large fragments ($0.15\,\mathrm{cm}$), I recommend:
 -   $σ_0 = 0.05$ (significantly reduced from $0.2$)
 -   $α = 0.7$ (slightly reduced to weaken size dependency)
 
-The spatial dispersion at $t=0$ would be: $\sigma = L_{\mathrm{c}}^{-\alpha} \cdot \sigma_0 = 0.15^{-0.7} \cdot 0.05 \approx 0.142$. This narrower distribution should contain approximately 99% of fragments within the cloud radius, meeting your requirement for large fragments.
+The spatial dispersion at $t=0$ would be: $\sigma = L_{\mathrm{c}}^{-\alpha} \cdot \sigma_0 = 0.15^{-0.7} \cdot 0.05 \approx 0.142$. This narrower distribution should contain approximately $99\%$ of fragments within the cloud radius, meeting your requirement for large fragments.
 
 **New Values**
 
 - Large fragments: $98.15\%$, $98.23\%$, $98.32\%$, $98.15\%$, and $98.43\%$ inside
 
-So, the total average of these 100 test runs is $98.26\%$, less than the minimum of $99\%$ but good enough (for now).
+So, the total average of these one hundred test runs is $98.26\%$, less than the minimum of $99\%$ but good enough (for now).
 
 ## Full Proposal
 
@@ -142,7 +142,7 @@ $$\texttt{ρ0, μ, γ, σ0, α = 4.0, 0.60, 0.003, 0.062, 0.65}$$
 
 **<u>_Kam_:</u>**
 
-Based on $50$ iterations, I am now getting $90.99\%$ for medium fragments. I am content with this (currently). It appears that we kept on increasing `σ0` by increments of `0.004` to slightly increase the medium fragment percentile, right?
+Based on fifty iterations, I am now getting $90.99\%$ for medium fragments. I am content with this (currently). It appears that we kept on increasing `σ0` by increments of `0.004` to slightly increase the medium fragment percentile, right?
 
 **<u>*Claude Sonnet 3.7*:</u>**
 
