@@ -85,7 +85,7 @@ I have two points $\mathbf{p}_1 = (x_1, y_1, z_1)$ and $\mathbf{p}_2 = (x_2, y_2
 
 Given two points $\mathbf{p}_1 = (x_1, y_1, z_1)$ and $\mathbf{p}_2 = (x_2, y_2, z_2)$ in 3D Euclidean space, the line passing through them can be expressing in *parametric form*:
 
-$$r(\lambda) = (x_1, y_1, z_1) + \lambda (x_1 - x_2,\, y_1 - y_2,\, z_1 - z_2)$$
+$$r(\lambda) = (x_1, y_1, z_1) + \lambda \cdot \underbrace{(x_1 - x_2,\, y_1 - y_2,\, z_1 - z_2)}_{\text{direction vector}}$$
 
 or, in component form:
 
@@ -107,7 +107,3 @@ $$
 
 If any denominator is zero (e.g., $x_2 = x_1$), the corresponding coordinate is constant (e.g., $X = x_1$), and that term is omitted from the symmetric form.
 
-***
-
-**What I have:**
-1. 
