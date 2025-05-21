@@ -1,4 +1,4 @@
-# Fragment Proximity to a Euclidean Line Event Zero
+# Fragment Proximity to a Euclidean Line at Event Zero
 
 Kam Modjtahedzadeh  
 Boeing Intelligence & Analytics  
