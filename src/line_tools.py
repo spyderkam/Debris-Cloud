@@ -73,22 +73,10 @@ def line_parametric_3d(p1, p2):
     return evaluate
 
 
-def cloud_intersect_line(entry_point, exit_point, t):
-    """
-    Given the entry and exit points of the cloud at time 𝑡, compute the slope 
-    and 𝑦-intercept of the line that passes through these points.
-
-    Args:
-        entry_point (list): (𝑥,𝑦,𝑧) coordinates of the entry point
-        exit_point (list): (𝑥,𝑦,𝑧) coordinates of the exit point
-        t (float): Time since impact [s]
-
-    Returns:
-        tuple: (slope, y_intercept)
-    """
-
-    return None    
-    
+def give_it_a_name(line, points, distance): -> int
+    """"This is where Claude will put its code. Also, please give this function a name!""""
+    x = "number of points in points that are within distance distance from line"
+    return int(x)
 
 if __name__ == "__main__":
     cloud0 = Cloud(characteristic_length=0.05, num_fragments=10)
