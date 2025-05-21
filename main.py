@@ -1,6 +1,6 @@
 #!usr/bin/env python3
 
-__author__ = "Kamyar Modjtahedzadeh, Claude 3.7 Sonnet"
+__author__ = "Kamyar Modjtahedzadeh, Claude 3.7 Sonnet, Grok 3"
 __date__ = "May 20, 2025"
 
 from src.gdmpidc import *
@@ -12,7 +12,7 @@ def get_entry_exit(radius, center=(0, 0, 0), diameter=False):
     
     Parameters:
     - radius (float): The radius of the sphere.
-    - center (tuple): Center of the sphere in (x, y, z) coordinates. Default is (0, 0, 0).
+    - center (tuple): Center of the sphere in (𝑥,𝑦,𝑧) coordinates. Default is (0,0,0).
     - diameter (bool): If True, the points will be diametrically opposite.
                       If False, the points will not be diametrically opposite. Default is False.
     
@@ -49,6 +49,39 @@ def get_entry_exit(radius, center=(0, 0, 0), diameter=False):
     return entry_point, exit_point
 
 
+def line_parametric_3d(p1, p2):
+    """
+    Compute the parametric equation of the 3D line through points p1 and p2.
+    
+    Args:
+        p1 (tuple): First point as (x1, y1, z1)
+        p2 (tuple): Second point as (x2, y2, z2)
+    
+    Returns:
+        dict: Contains 'point' (p1), 'direction' (vector from p1 to p2), and
+              a function 'evaluate(t)' that returns the point on the line at parameter t
+    """
+    
+    x1, y1, z1 = p1
+    x2, y2, z2 = p2
+    
+    # Direction vector: (x2 - x1, y2 - y1, z2 - z1)
+    direction = (x2 - x1, y2 - y1, z2 - z1)
+    
+    # Function to evaluate the line at parameter t
+    def evaluate(t):
+        x = x1 + t * (x2 - x1)
+        y = y1 + t * (y2 - y1)
+        z = z1 + t * (z2 - z1)
+        return (x, y, z)
+    
+    return {
+        'point': p1,
+        'direction': direction,
+        'evaluate': evaluate
+    }
+
+
 def cloud_intersect_line(entry_point, exit_point, t):
     """
     Given the entry and exit points of the cloud at time 𝑡, compute the slope 
@@ -66,16 +99,21 @@ def cloud_intersect_line(entry_point, exit_point, t):
     return None    
     
 
-
-
 if __name__ == "__main__":
     cloud0 = Cloud(characteristic_length=0.05, num_fragments=10)
-    #all_initial_positions = cloud.sample_positions()
-    #inside_points = [point for point in all_initial_positions if np.linalg.norm(point) <= cloud.radius]
+    p1, p2 = get_entry_exit(cloud0.radius)
 
-    cloud1 = Cloud(0.15, num_fragments=100)
-
-    print(np.linalg.norm(get_entry_exit(cloud0.radius)[0]))
-    print(np.linalg.norm(get_entry_exit(cloud1.radius)[0]))
-    print(np.linalg.norm(get_entry_exit(cloud0.radius)[1]))
-    print(np.linalg.norm(get_entry_exit(cloud1.radius)[1]))
+    # Example usage of line_parametric_3d
+    print("p1 = ", p1)
+    print(f"p2 = {p2}")
+    line = line_parametric_3d(p1, p2)
+    
+    # Access components
+    print(f"Starting point: {line['point']}")
+    print(f"Direction vector: {line['direction']}")
+    # Parametric equation: r(t) = (1, 2, 3) + t (3, 3, 3)
+    
+    # Evaluate at specific t values
+    print(f"Point at t = 0: {line['evaluate'](0)}")  # Should return P1: (1, 2, 3)
+    print(f"Point at t = 1: {line['evaluate'](1)}")  # Should return P2: (4, 5, 6)
+    print(f"Point at t = 0.5: {line['evaluate'](0.5)}")  # Midpoint: (2.5, 3.5, 4.5)
