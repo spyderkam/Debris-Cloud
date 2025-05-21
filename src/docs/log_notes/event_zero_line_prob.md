@@ -25,7 +25,21 @@ The approach aligns with the computational methods detailed in Section 2 of the 
 
 ***
 
-Note that I renamed `generate_sphere_entry_exit_points` to `get_entry_exit`.
+Now to complete the following function.
 
-Anyway,  ...
+```python
+def cloud_intersect_line(entry_point, exit_point, t):
+    """
+    Given the entry and exit points of the cloud at time 𝑡, compute the slope 
+    and 𝑦-intercept of the line that passes through these points.
+
+    Args:
+        entry_point (list): (𝑥,𝑦,𝑧) coordinates of the entry point
+        exit_point (list): (𝑥,𝑦,𝑧) coordinates of the exit point
+        t (float): Time since impact [s]
+
+    Returns:
+        tuple: (slope, y_intercept)
+    """
+```
 
