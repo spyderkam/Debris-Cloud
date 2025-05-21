@@ -4,13 +4,13 @@ Kam Modjtahedzadeh
 Boeing Intelligence & Analytics  
 May 20, 2025
 
-> I have a spherical shell centered with radius $R_\mathrm c(t)$ centered at $(x, y, z) = (0, 0, 0)$ at $t=0$. I want to find the probability that a particle in the shell will be within $r$ meters of a straight line passing through that shell.
+> I have a spherical shell with radius $R_\mathrm c(t)$ centered at $(x, y, z) = (0, 0, 0)$ at $t=0$. I want to find the probability that a particle in the shell will be within $r$ meters of a straight line passing through that shell.
 
 ## Creating a Sphere Entry/Exit Point Generator
 
 **<u>_Kam_:</u>**
 
-I want a Python 3.11+ (that only uses NumPy and if needed SciPy) function that generates two random points on the surface of a sphere with radius `radius` (entry and exit). This function has three inputs: a *required* input, the `radius`, an *optional* input, the `center=(0,0,0)` (Cartesian coordinates), and another *optional* input called `diameter=False`. If `True`, then the endpoints have the possibility of creating a diameter as the line that passes through `entry_point` and `exit_point` also passes through the center of the sphere, i.e., a diameter of the spherical shell. If it is set to its default `False`, then `entry_point`  and `exit_point` *cannot* be the endpoints of a diameter. Needless to say by now, but the output of this function is to be a tuple: `(entry_point, exit_point)`; name the function appropriately.
+I want a Python 3.11+  function that generates two random points on the surface of a sphere with radius `radius` (entry and exit). This function has three inputs: a *required* input, the `radius`, an *optional* input, the `center=(0,0,0)` (Cartesian coordinates), and another *optional* input called `diameter=False`. If `True`, then the endpoints have the possibility of creating a diameter as the line that passes through `entry_point` and `exit_point` also passes through the center of the sphere, i.e., a diameter of the spherical shell. If it is set to its default `False`, then `entry_point`  and `exit_point` *cannot* be the endpoints of a diameter. Needless to say by now, but the output of this function is to be a tuple: `(entry_point, exit_point)`; name the function appropriately.
 
 **<u>_Claude Sonnet 3.7_:</u>**
 
