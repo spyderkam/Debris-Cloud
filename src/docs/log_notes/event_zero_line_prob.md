@@ -107,3 +107,40 @@ $$
 
 If any denominator is zero (e.g., $x_2 = x_1$), the corresponding coordinate is constant (e.g., $X = x_1$), and that term is omitted from the symmetric form.
 
+## Counting Hits
+
+**<u>_Kam_:</u>**
+
+**What I have:**
+
+1. _`get_entry_exit`_: Generates entry point ($\mathbf p_1 = \mathbf p_{\mathrm{entry}}$) and exit point ($\mathbf p_2 = \mathbf p_{\mathrm{exit}}$).
+2. _`line_parametric_3d`_: Computes a parametric equation of the line through points $\mathbf p_1$and $\mathbf p_2$ and returns $r(\lambda)$.
+
+**What I want:**
+
+First, I will generate debris particles inside the cloud at time $t = 0$.
+ 
+```python
+cloud = Cloud(characteristic_length=0.05, num_fragments=500)
+all_points = cloud.sample_positions()
+inside_points = np.array([point for point in all_points if np.linalg.norm(point) <= cloud.radius])
+```
+
+Next, I will generate entry and exit points and compute the parametric three-dimensional line equation that passes through those points.
+
+```python
+p1, p2 = get_entry_exit(cloud.radius)
+line = line_parametric_3d(p1, p2)
+```
+
+Then I will use the `give_it_a_name` function to calculate and return the integer number of how many points in `inside_points` are within `l` distance from `line`. (This is what I want.)
+
+**<u>_Claude 3.5 Sonnet V2_:</u>**
+
+Let's call this `give_it_a_name`  function `count_points_near_line`. Its implementation:
+
+1.  Takes the parametric line function, array of points, and maximum distance
+2.  For each point, finds the closest point on the line using vector projection
+3.  Calculates the minimum distance from point to line
+4.  Counts points within the specified distance
+
