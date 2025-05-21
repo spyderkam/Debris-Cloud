@@ -6,9 +6,6 @@ __date__ = "May 20, 2025"
 from src.gdmpidc import *
 import numpy as np
 
-
-import numpy as np
-
 def get_entry_exit(radius, center=(0, 0, 0), diameter=False):
     """
     Generate two random points (entry and exit) on the surface of a sphere.
