@@ -1,6 +1,6 @@
 #!usr/bin/env python3
 
-__author__ = "Kamyar Modjtahedzadeh"
+__author__ = "Kamyar Modjtahedzadeh, Claude 3.7 Sonnet"
 __date__ = "May 20, 2025"
 
 from src.gdmpidc import *
