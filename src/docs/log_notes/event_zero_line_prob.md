@@ -97,7 +97,7 @@ $$
 \end{align*}
 $$
 
-where $\lambda \in \mathbb{R}$ is the parameter. So, if $\lambda = 0$ then $X = x_1$ and if $\lambda = 1$ then $X = x_2$.
+where $\lambda \in \mathbb{R}$ is the parameter. So, if $\lambda = 0$ then $(X, Y, Z) = (x_1, y_1. y_1)$; likewise, if $\lambda = 1 \Rightarrow X = x_2$ and $\lambda = 0.5 \Rightarrow X = (x_1 + x_2)/2$.
 
 Alternatively, if $x_2 \neq x_1$, $y_2 \neq y_1$, and $z_2 \neq z_1$, the line can be written in *symmetric form*:
 
