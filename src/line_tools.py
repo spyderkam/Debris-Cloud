@@ -1,7 +1,7 @@
 #!usr/bin/env python3
 
 __author__ = "Kamyar Modjtahedzadeh, Claude 3.7 Sonnet, Grok 3"
-__date__ = "May 20, 2025" - "May 21, 2025"
+__date__ = "May 20, 2025 - May 21, 2025"
 
 from gdmpidc import *
 import numpy as np
@@ -60,6 +60,7 @@ def line_parametric_3d(p1, p2):
     Returns:
         callable: Function evaluate(λ) that returns the point (x,y,z) on the line at parameter λ
     """
+    
     x1, y1, z1 = p1
     x2, y2, z2 = p2
     
@@ -94,16 +95,10 @@ if __name__ == "__main__":
     p1, p2 = get_entry_exit(cloud0.radius)
 
     # Example usage of line_parametric_3d
-    print("p1 = ", p1)
-    print(f"p2 = {p2}")
+    print("p1 = ", p1, f"\np2 = {p2}")
     line = line_parametric_3d(p1, p2)
-    
-    # Access components
-    print(f"Starting point: {line['point']}")
-    print(f"Direction vector: {line['direction']}")
-    # Parametric equation: r(t) = (1, 2, 3) + t (3, 3, 3)
-    
+       
     # Evaluate at specific t values
-    print(f"Point at t = 0: {line['evaluate'](0)}")  # Should return P1: (1, 2, 3)
-    print(f"Point at t = 1: {line['evaluate'](1)}")  # Should return P2: (4, 5, 6)
-    print(f"Point at t = 0.5: {line['evaluate'](0.5)}")  # Midpoint: (2.5, 3.5, 4.5)
+    print(f"Point at λ = 0: {line(0)}")      # Should return P1
+    print(f"Point at λ = 1: {line(1)}")      # Should return P2
+    print(f"Point at λ = 0.5: {line(0.5)}")  # Midpoint
