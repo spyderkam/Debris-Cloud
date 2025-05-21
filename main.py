@@ -7,6 +7,8 @@ from src.gdmpidc import *
 import numpy as np
 
 
+import numpy as np
+
 def get_entry_exit(radius, center=(0, 0, 0), diameter=False):
     """
     Generate two random points (entry and exit) on the surface of a sphere.
@@ -14,17 +16,17 @@ def get_entry_exit(radius, center=(0, 0, 0), diameter=False):
     Parameters:
     - radius (float): The radius of the sphere.
     - center (tuple): Center of the sphere in (x, y, z) coordinates. Default is (0, 0, 0).
-    - diameter (bool): If True, the entry and exit points will be the endpoints of a diameter
-                      (i.e., they will be diametrically opposite).
-                      If False, the entry and exit points will not be the endpoints of a diameter
-                      (i.e., they will not be diametrically opposite). Default is False.
+    - diameter (bool): If True, the points will be diametrically opposite.
+                      If False, the points will not be diametrically opposite. Default is False.
     
     Returns:
     - tuple: ((x1, y1, z1), (x2, y2, z2)) - entry and exit points on the sphere's surface.
     """
     
-    # Generate a random point on the unit sphere using the Gaussian method
-    # This creates a uniform distribution of points on the sphere
+    # Convert center to numpy array for vectorized operations
+    center = np.array(center)
+    
+    # Generate first random point on unit sphere using Gaussian method
     vec1 = np.random.normal(0, 1, 3)
     vec1 = vec1 / np.linalg.norm(vec1)
     
@@ -32,25 +34,20 @@ def get_entry_exit(radius, center=(0, 0, 0), diameter=False):
         # For diameter, the opposite point is simply negated
         vec2 = -vec1
     else:
-        # Generate another random point on the unit sphere
-        # Make sure it's not diametrically opposite
-        vec2 = np.random.normal(0, 1, 3)
-        vec2 = vec2 / np.linalg.norm(vec2)
-        
-        # Check if the points are nearly diametrically opposite (dot product close to -1)
-        dot_product = np.dot(vec1, vec2)
-        
-        # If the dot product is close to -1, the points are nearly diametrically opposite
-        if dot_product < -0.9999:
-            # Regenerate the second point until it's not diametrically opposite
-            while dot_product < -0.9999:
-                vec2 = np.random.normal(0, 1, 3)
-                vec2 = vec2 / np.linalg.norm(vec2)
-                dot_product = np.dot(vec1, vec2)
+        # Keep generating random points until we get one that's not diametrically opposite
+        while True:
+            vec2 = np.random.normal(0, 1, 3)
+            vec2 = vec2 / np.linalg.norm(vec2)
+            
+            # Check if points are not diametrically opposite
+            # We use -0.98 as threshold rather than -1 to avoid numerical precision issues
+            # This allows for more variation while still preventing diameter-like configurations
+            if np.dot(vec1, vec2) > -0.98:
+                break
     
-    # Scale to the desired radius and shift to the desired center
-    entry_point = tuple(center[i] + radius * vec1[i] for i in range(3))
-    exit_point = tuple(center[i] + radius * vec2[i] for i in range(3))
+    # Scale by radius and shift to center (vectorized)
+    entry_point = tuple(center + radius * vec1)
+    exit_point = tuple(center + radius * vec2)
     
     return entry_point, exit_point
 
