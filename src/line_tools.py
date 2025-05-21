@@ -1,7 +1,7 @@
 #!usr/bin/env python3
 
 __author__ = "Kamyar Modjtahedzadeh, Claude 3.7 Sonnet, Grok 3"
-__date__ = "May 20, 2025"
+__date__ = "May 20, 2025" - "May 21, 2025"
 
 from gdmpidc import *
 import numpy as np
