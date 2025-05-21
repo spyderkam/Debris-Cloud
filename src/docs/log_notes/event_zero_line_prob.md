@@ -20,11 +20,11 @@ The ***`get_entry_exit`*** function uses the Gaussian sampling method to generat
   2.  For `diameter=True`, it creates the second point exactly opposite to the first
   3.  For `diameter=False`, it ensures the points aren't diametrically opposite by checking their dot product
   4.  Both points are scaled by the radius and shifted according to the center coordinates
+  5. The function uses the dot product threshold of $-0.98$ to ensure the points aren't nearly diametrically opposite. This corresponds to avoiding angles greater than about $168°$ between the points, since $\cos(168°) ≈ -0.98$.
 
 The approach aligns with the computational methods detailed in Section 2 of the "Computational Implementation of Spherically Symmetric Debris Cloud Models" document.
 
 ***
 
 Now to complete the ***`cloud_intersect_line`*** function, which given the entry and exit points of the cloud at time $t$, computes the slope and $y$-intercept of the line that passes through these points.
-
 
