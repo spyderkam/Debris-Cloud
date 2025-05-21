@@ -59,7 +59,7 @@ def line_parametric_3d(p1, p2):
     
     Returns:
         dict: Contains 'point' (p1), 'direction' (vector from p1 to p2), and
-              a function 'evaluate(τ)' that returns the point on the line at parameter t
+              a function 'evaluate(λ)' that returns the point on the line at parameter t
     """
     
     x1, y1, z1 = p1
@@ -69,10 +69,10 @@ def line_parametric_3d(p1, p2):
     direction = (x2 - x1, y2 - y1, z2 - z1)
     
     # Function to evaluate the line at parameter t
-    def evaluate(τ):
-        x = x1 + τ*(x2 - x1)
-        y = y1 + τ*(y2 - y1)
-        z = z1 + τ*(z2 - z1)
+    def evaluate(λ):
+        x = x1 + λ*(x2 - x1)
+        y = y1 + λ*(y2 - y1)
+        z = z1 + λ*(z2 - z1)
         return (x, y, z)
     
     return {
