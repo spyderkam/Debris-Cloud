@@ -28,7 +28,7 @@ The approach aligns with the computational methods detailed in Section 2 of the 
 
 ### Mathematical Formulation of `get_entry_exit`
 
-$$\text{Function: } \texttt{get\_entry\_exit}(R, \mathbf{c}, d)$$
+$$\text{inputs: } R, \mathbf{c}, d$$
 
 where:
 
@@ -36,7 +36,7 @@ where:
   - $\mathbf{c} \in \mathbb{R}^3$ is the center of the sphere, default $(0,0,0)$
   - $d \in \{\texttt{True}, \,\texttt{False}\}$ is the diameter flag, default False
 
-$$\text{Output: } (\mathbf{p}_{\text{entry}}, \mathbf{p}_{\text{exit}}) \in \mathbb{R}^3 \times \mathbb{R}^3$$
+$$\text{output: } (\mathbf{p}_{\text{entry}}, \mathbf{p}_{\text{exit}}) \in \mathbb{R}^3 \times \mathbb{R}^3$$
 
 #### Algorithm
 
@@ -85,24 +85,24 @@ I have two points $\mathbf{p}_1 = (x_1, y_1, z_1)$ and $\mathbf{p}_2 = (x_2, y_2
 
 Given two points $\mathbf{p}_1 = (x_1, y_1, z_1)$ and $\mathbf{p}_2 = (x_2, y_2, z_2)$ in 3D Euclidean space, the line passing through them can be expressing in *parametric form*:
 
-$$r(\tau) = (x_1, y_1, z_1) + \tau (x_1 - x_2,\, y_1 - y_2,\, z_1 - z_2)$$
+$$r(\lambda) = (x_1, y_1, z_1) + \lambda (x_1 - x_2,\, y_1 - y_2,\, z_1 - z_2)$$
 
 or, in component form:
 
 $$
 \begin{align*}
-	&x = x_1 + \tau(x_2 - x_1)  \\
-	&y = y_1 + \tau(y_2 - y_1)  \\
-	&z = z_1 + \tau(z_2 - z_1)
+	&X = x_1 + \lambda(x_2 - x_1)  \\
+	&Y = y_1 + \lambda(y_2 - y_1)  \\
+	&Z = z_1 + \lambda(z_2 - z_1)
 \end{align*}
 $$
 
-where $\tau \in \mathbb{R}$ is the parameter. So, if $\tau = 0$ then $x = x_1$ and if $\tau = 1$ then $x = x_2$
+where $\lambda \in \mathbb{R}$ is the parameter. So, if $\lambda = 0$ then $X = x_1$ and if $\lambda = 1$ then $X = x_2$.
 
 Alternatively, if $x_2 \neq x_1$, $y_2 \neq y_1$, and $z_2 \neq z_1$, the line can be written in *symmetric form*:
 
 $$
-\frac{x-x_1}{x_2-x_1} = \frac{y-y_1}{y_2-y_1} = \frac{z-z_1}{z_2-z_1}
+\frac{X-x_1}{x_2-x_1} = \frac{Y-y_1}{y_2-y_1} = \frac{Z-z_1}{z_2-z_1}
 $$
 
-If any denominator is zero (e.g., $x_2 = x_1$), the corresponding coordinate is constant (e.g., $x = x_1$), and that term is omitted from the symmetric form. 
+If any denominator is zero (e.g., $x_2 = x_1$), the corresponding coordinate is constant (e.g., $X = x_1$), and that term is omitted from the symmetric form.
