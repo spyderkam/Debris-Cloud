@@ -1,6 +1,6 @@
 #!usr/bin/env python3
 
-__author__ = "Kamyar Modjtahedzadeh, Claude 3.7 Sonnet, Grok 3"
+__author__ = "Kamyar Modjtahedzadeh, Claude 3.7 Sonnet, Grok 3, Claude 3.5 Sonnet V2"
 __date__ = "May 20, 2025 - May 21, 2025"
 
 from gdmpidc import *
@@ -85,6 +85,8 @@ def count_points_near_line(line, points, distance) -> int:
     Returns:
         int: Number of points within the distance from the line
     """
+    
+    # Initialize count
     count = 0
     
     # For each point
