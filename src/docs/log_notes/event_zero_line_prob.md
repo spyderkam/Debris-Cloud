@@ -38,7 +38,7 @@ $$\text{Output: } (\mathbf{p}_{\text{entry}}, \mathbf{p}_{\text{exit}}) \in \mat
 
 ### Algorithm
 
-1. Generate a random unit vector $\mathbf{v}_1$ on the unit sphere:
+1. Generate a random unit vector $\mathbf u$ on the unit sphere and normalize it to be $\mathbf{v}_1$:
 
 $$
 \begin{align*}
@@ -47,18 +47,15 @@ $$
 \end{align*}
 $$
 
-2. Compute the second vector $\mathbf{v}_2$ based on the diameter flag:
-
+2. Compute the second vector $\mathbf{v}_2$ based on the diameter flag: 
 $$
 \mathbf{v}_2 = \begin{cases}
 	-\mathbf{v}_1, & \text{if } d = \text{True} \\
 	\frac{\mathbf{w}}{\|\mathbf{w}\|_2}, & \text{if } d = \text{False and } \mathbf{v}_1 \cdot \frac{\mathbf{w}}{\|\mathbf{w}\|_2} > -0.98
 \end{cases}
-$$
+$$ where $\mathbf{w} \sim \mathrm{Normal}(0, 1)^3$ and is regenerated until the dot product condition is satisfied.
 
-Where $\mathbf{w} \sim \mathrm{Normal}(0, 1)^3$ and is regenerated until the dot product condition is satisfied.
-
-3. Compute the entry and exit points:
+4. Compute the entry and exit points:
 
 $$
 \begin{align*}
@@ -73,7 +70,7 @@ $$
 
 - The function uses the property that normalizing vectors sampled from a multivariate normal distribution $\mathrm{Normal}(0, 1)^3$ creates a uniform distribution on the unit sphere.
 
-- For the non-diameter case, the constraint $\mathbf{v}_1 \cdot \mathbf{v}_2 > -0.98$ ensures the vectors are not nearly antipodal, as: $$\mathbf{v}_1 \cdot \mathbf{v}_2 = \cos(\theta)$$ where $\theta$ is the angle between the vectors. The value $-0.98$ corresponds to approximately $\theta < 168^{\circ}$.​​​​​​​​​​​​​​​​
+- For the non-diameter case, the constraint $\mathbf{v}_1 \cdot \mathbf{v}_2 > -0.98$ ensures the vectors are not nearly antipodal, as: $$\mathbf{v}_1 \cdot \mathbf{v}_2 = \cos(\vartheta)$$ where $\vartheta$ is the angle between the vectors. The value $-0.98$ corresponds to approximately $\vartheta < 168^{\circ}$.​​​​​​​​​​​​​​​​
 
 
 
