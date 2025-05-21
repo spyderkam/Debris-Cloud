@@ -58,28 +58,18 @@ def line_parametric_3d(p1, p2):
         p2 (tuple): Second point as (x2, y2, z2)
     
     Returns:
-        dict: Contains 'point' (p1), 'direction' (vector from p1 to p2), and
-              a function 'evaluate(λ)' that returns the point on the line at parameter t
+        callable: Function evaluate(λ) that returns the point (x,y,z) on the line at parameter λ
     """
-    
     x1, y1, z1 = p1
     x2, y2, z2 = p2
     
-    # Direction vector: (x2 - x1, y2 - y1, z2 - z1)
-    direction = (x2 - x1, y2 - y1, z2 - z1)
-    
-    # Function to evaluate the line at parameter t
     def evaluate(λ):
         x = x1 + λ*(x2 - x1)
         y = y1 + λ*(y2 - y1)
         z = z1 + λ*(z2 - z1)
         return (x, y, z)
     
-    return {
-        'point': p1,
-        'direction': direction,
-        'evaluate': evaluate
-    }
+    return evaluate
 
 
 def cloud_intersect_line(entry_point, exit_point, t):
