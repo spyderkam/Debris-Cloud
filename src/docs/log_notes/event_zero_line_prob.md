@@ -28,7 +28,7 @@ The approach aligns with the computational methods detailed in Section 2 of the 
 
 ### Mathematical Formulation of `get_entry_exit`
 
-$$\text{inputs: } R, \mathbf{c}, d$$
+$$\text{inputs:} ~ R, \mathbf{c}, d$$
 
 where:
 
@@ -36,7 +36,7 @@ where:
   - $\mathbf{c} \in \mathbb{R}^3$ is the center of the sphere, default $(0,0,0)$
   - $d \in \{\texttt{True}, \,\texttt{False}\}$ is the diameter flag, default False
 
-$$\text{output: } (\mathbf{p}_{\text{entry}}, \mathbf{p}_{\text{exit}}) \in \mathbb{R}^3 \times \mathbb{R}^3$$
+$$\text{output:} ~ (\mathbf{p}_{\text{entry}}, \mathbf{p}_{\text{exit}}) \in \mathbb{R}^3 \times \mathbb{R}^3$$
 
 #### Algorithm
 
@@ -106,3 +106,8 @@ $$
 $$
 
 If any denominator is zero (e.g., $x_2 = x_1$), the corresponding coordinate is constant (e.g., $X = x_1$), and that term is omitted from the symmetric form.
+
+***
+
+**What I have:**
+1. 
