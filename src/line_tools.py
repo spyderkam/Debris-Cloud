@@ -73,10 +73,45 @@ def line_parametric_3d(p1, p2):
     return evaluate
 
 
-def give_it_a_name(line, points, distance): -> int
-    """"This is where Claude will put its code. Also, please give this function a name!""""
-    x = "number of points in points that are within distance distance from line"
-    return int(x)
+def count_points_near_line(line, points, distance) -> int:
+    """
+    Count number of points that are within given distance from a parametric line.
+    
+    Args:
+        line (callable): Parametric line function r(λ) = p1 + λ(p2-p1)
+        points (np.ndarray): Array of points to check, shape (N,3)
+        distance (float): Maximum distance from line
+        
+    Returns:
+        int: Number of points within the distance from the line
+    """
+    count = 0
+    
+    # For each point
+    for point in points:
+        # Find λ that minimizes distance to line by projecting point onto line
+        # Let v = p2-p1, then λ = (point-p1)·v / |v|^2
+        p1 = line(0)  # Get p1 by evaluating at λ=0
+        p2 = line(1)  # Get p2 by evaluating at λ=1
+        v = tuple(b-a for a,b in zip(p1,p2))
+        v_mag_sq = sum(x*x for x in v)
+        
+        # Vector from p1 to point
+        w = tuple(b-a for a,b in zip(p1,point))
+        
+        # Projection coefficient
+        λ = sum(a*b for a,b in zip(w,v)) / v_mag_sq
+        
+        # Get closest point on line
+        closest = line(λ)
+        
+        # Calculate distance from point to line
+        dist = sum((a-b)**2 for a,b in zip(point,closest))**0.5
+        
+        if dist <= distance:
+            count += 1
+            
+    return count
 
 if __name__ == "__main__":
     cloud0 = Cloud(characteristic_length=0.05, num_fragments=10)
