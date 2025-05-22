@@ -114,7 +114,7 @@ If any denominator is zero (e.g., $x_2 = x_1$), the corresponding coordinate is 
 **What I have:**
 
 1. _`get_entry_exit`_: Generates entry point ($\mathbf p_1 = \mathbf p_{\mathrm{entry}}$) and exit point ($\mathbf p_2 = \mathbf p_{\mathrm{exit}}$).
-2. _`line_parametric_3d`_: Computes a parametric equation of the line through points $\mathbf p_1$and $\mathbf p_2$ and returns $r(\lambda)$.
+2. _`line_parametric_3d`_: Computes a parametric equation of the line passing through points $\mathbf p_1$and $\mathbf p_2$ and returns $r(\lambda)$.
 
 **What I want:**
 
