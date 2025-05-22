@@ -116,14 +116,16 @@ def count_points_near_line(line, points, distance) -> int:
     return count
 
 if __name__ == "__main__":
-    cloud0 = Cloud(characteristic_length=0.05, num_fragments=10)
-    p1, p2 = get_entry_exit(cloud0.radius)
+    cloud = Cloud(characteristic_length=0.05, num_fragments=1000)
+    
+    all_points = cloud.sample_positions()
+    inside_points = [point for point in all_points if np.linalg.norm(point) <= cloud.radius]
+    inside_points = np.array(inside_points)
 
-    # Example usage of line_parametric_3d
-    print("p1 = ", p1, f"\np2 = {p2}")
+    p1, p2 = get_entry_exit(cloud.radius, diameter=False)
     line = line_parametric_3d(p1, p2)
+
+    x = count_points_near_line(line, inside_points, 1)
+    print(x)
        
-    # Evaluate at specific t values
-    print(f"Point at λ = 0: {line(0)}")      # Should return P1
-    print(f"Point at λ = 1: {line(1)}")      # Should return P2
-    print(f"Point at λ = 0.5: {line(0.5)}")  # Midpoint
+
