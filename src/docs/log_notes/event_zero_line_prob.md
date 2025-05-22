@@ -180,7 +180,7 @@ solving for $\lambda^\star$:
 
 $$\lambda^\star = \frac{\mathbf{q} \cdot\mathbf{k}}{|\mathbf{k}|^2} = \frac{(\mathbf{p} - \mathbf{p}_1) \cdot (\mathbf{p}_2 - \mathbf{p}_1)}{|\mathbf{p}_2 - \mathbf{p}_1|^2}$$
 
-This formula represents the scalar projection of $\mathbf{w}$ onto $\mathbf{v}$, normalized by the squared magnitude of $\mathbf{v}$; in other words,
+This formula represents the scalar projection of $\mathbf{q}$ onto $\mathbf{k}$, normalized by the squared magnitude of $\mathbf{k}$; in other words,
 
 $$\lambda^\star = \frac{\text{scalar projection of } \mathbf{q} \text{ onto } \mathbf{k}}{|\mathbf{k}|} $$
 
