@@ -1,5 +1,11 @@
 # Size Distribution
 
+Kamyar Modjtahedzadeh  
+Boeing Intelligence & Analytics  
+May 22, 2025
+
+> What is the quantitative distribution of fragment size (small, medium, large) immediately post impact? What about distribution of specific $L_\mathrm{c}$? How _many_ total fragments for each $L_\mathrm{c}$ to _almost_ satisfy mass conservation (doesn’t and _shouldn’t_ have to be exact!)?
+
 ## Framework from NASA EVOLVE 4.0
 
 $n(L_\mathrm c)$ is the differential number density of fragments at _exactly_ size $L_\mathrm c$ and $N(L_\mathrm c)$ represents the cumulative number of fragments *larger* than $L_{\mathrm{c}}$.
