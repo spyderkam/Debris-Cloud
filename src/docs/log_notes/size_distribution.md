@@ -50,6 +50,6 @@ $$N_{\mathrm{total}} \,=\, N_{\mathrm{small}} + N_{\mathrm{medium}} + N_{\mathrm
 
 The percentage distributions are:
 
-  - Small fragments: $\frac{13482.1}{13489.5} = 99.95\%$
-  - Medium fragments: $\frac{3.15}{13489.5} = 0.023\%$
-  - Large fragments: $\frac{4.26}{13489.5} = 0.032\%$
+  - Small fragments: $99.95\%$
+  - Medium fragments: $0.023\%$
+  - Large fragments: $0.032\%$
