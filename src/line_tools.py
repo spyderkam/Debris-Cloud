@@ -92,17 +92,17 @@ def count_points_near_line(line, points, distance) -> int:
     # For each point
     for point in points:
         # Find λ that minimizes distance to line by projecting point onto line
-        # Let v = p2-p1, then λ = (point-p1)·v / |v|^2
+        # Let k = p2-p1, then λ = (point-p1)·k / |k|^2
         p1 = line(0)  # Get p1 by evaluating at λ=0
         p2 = line(1)  # Get p2 by evaluating at λ=1
-        v = tuple(b-a for a,b in zip(p1,p2))
-        v_mag_sq = sum(x*x for x in v)
+        k = tuple(b-a for a,b in zip(p1,p2))
+        k_mag_sq = sum(x*x for x in k)
         
         # Vector from p1 to point
-        w = tuple(b-a for a,b in zip(p1,point))
+        q = tuple(b-a for a,b in zip(p1,point))
         
         # Projection coefficient
-        λ = sum(a*b for a,b in zip(w,v)) / v_mag_sq
+        λ = sum(a*b for a,b in zip(q,k)) / k_mag_sq
         
         # Get closest point on line
         closest = line(λ)
