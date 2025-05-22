@@ -148,7 +148,7 @@ Let's call this `give_it_a_name`  function `count_points_near_line`. Its impleme
 
 The `count_points_near_line` function implements a fundamental geometric algorithm for calculating the shortest distance between points and a line in three-dimensional space. This analysis breaks down the mathematical principles underlying the implementation.
 
-#### Vector Projection Method
+#### Orthogonal Projection Method <!--Vector Projection (onto a Line)-->
 
 Recall the parametric line representation,
 
