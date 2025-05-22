@@ -85,9 +85,9 @@ I have two points $\mathbf{p}_1 = (x_1, y_1, z_1)$ and $\mathbf{p}_2 = (x_2, y_2
 
 Given two points $\mathbf{p}_1 = (x_1, y_1, z_1)$ and $\mathbf{p}_2 = (x_2, y_2, z_2)$ in 3D Euclidean space, the line passing through them can be expressing in *parametric form*:
 
-$$r(\lambda) = (x_1, y_1, z_1) + \lambda \cdot \underbrace{(x_1 - x_2,\, y_1 - y_2,\, z_1 - z_2)}_{\text{direction vector (} \mathbf v\mathrm{)}}$$
+$$r(\lambda) = (x_1, y_1, z_1) + \lambda \cdot \underbrace{(x_1 - x_2,\, y_1 - y_2,\, z_1 - z_2)}_{\text{direction vector (} \mathbf{k}\mathrm{)}}$$
 
-or, in component form:
+or, in (parametric ) component form:
 
 $$
 \begin{align*}
@@ -123,7 +123,7 @@ First, I will generate debris particles inside the cloud at time $t = 0$.
 ```python
 cloud = Cloud(characteristic_length=0.05, num_fragments=500)
 all_points = cloud.sample_positions()
-inside_points = np.array([point for point in all_points if np.linalg.norm(point) <= cloud.radius])
+inside_points = [point for point in all_points if np.linalg.norm(point) <= cloud.radius]
 ```
 
 Next, I will generate entry and exit points and compute the parametric three-dimensional line equation that passes through those points.
@@ -154,35 +154,35 @@ Recall the parametric line representation,
 
 $$\mathbf{r}(\lambda) = \mathbf{p}_1 + \lambda(\mathbf{p}_2 - \mathbf{p}_1)$$
 
-where the direction vector of the line is $\mathbf{v} = \mathbf{p}_2 - \mathbf{p}_1$. For any point $\mathbf{p}$ in space, finding the closest point on the line requires determining the optimal parameter $\lambda^\star$ that minimizes the distance $|\mathbf{p} - \mathbf{r}(\lambda)|$. 
+where the direction vector of the line is $\mathbf{k} = \mathbf{p}_2 - \mathbf{p}_1$. For any point $\mathbf{p}$ in space, finding the closest point on the line requires determining the optimal parameter $\lambda^\star$ that minimizes the distance $|\mathbf{p} - \mathbf{r}(\lambda)|$. 
 
 ##### Mathematical Derivation of $\lambda^\star$
 
-To find the optimal parameter, instead of minimizing the distance, minimize the _squared_ distance between $\mathbf{p}$ and the line point $\mathbf{r}(\lambda)$. The condition for minimization requires that the vector from $\mathbf{p}$ to the closest line point be perpendicular to the direction vector $\mathbf{v}$.
+To find the optimal parameter, instead of minimizing the distance, minimize the _squared_ distance between $\mathbf{p}$ and the line point $\mathbf{r}(\lambda)$. The condition for minimization requires that the vector from $\mathbf{p}$ to the closest line point be perpendicular to the direction vector $\mathbf{k}$.
 
 Setting up the _perpendicularity condition_:
 
-$$(\mathbf{p} - \mathbf{r}(\lambda^*)) \cdot \mathbf{v} = 0$$
+$$(\mathbf{p} - \mathbf{r}(\lambda^\star)) \cdot \mathbf{k} = 0$$
 
 substituting the parametric equation:
 
-$$(\mathbf{p} - \mathbf{p}_1 - \lambda^*\mathbf{v}) \cdot \mathbf{v} = 0$$
+$$(\mathbf{p} - \mathbf{p}_1 - \lambda^\star\mathbf{k}) \cdot \mathbf{k} = 0$$
 
 expanding the dot product:
 
-$$(\mathbf{p} - \mathbf{p}_1) \cdot \mathbf{v} - \lambda^*(\mathbf{v} \cdot \mathbf{v}) = 0$$
+$$(\mathbf{p} - \mathbf{p}_1) \cdot \mathbf{k} - \lambda^\star(\mathbf{k} \cdot \mathbf{k}) = 0$$
 
-The vector from $\mathbf{p}_1$ to the query point $\mathbf{p}$ is defined as (displacement vector) $\bm{\omega} = \mathbf{p} - \mathbf{p}_1$;
+The vector from $\mathbf{p}_1$ to the query point $\mathbf{p}$  (displacement vector) is defined as $\mathbf{q} = \mathbf{p} - \mathbf{p}_1$;
 
-$$\bm{\omega} \cdot \mathbf{v} - \lambda^*|\mathbf{v}|^2 = 0$$
+$$\mathbf{q} \cdot \mathbf{k} - \lambda^\star|\mathbf{k}|^2 = 0$$
 
-solving for $\lambda^*$:
+solving for $\lambda^\star$:
 
-$$\lambda^\star = \frac{\mathbf{w} \cdot \mathbf{v}}{|\mathbf{v}|^2} = \frac{(\mathbf{p} - \mathbf{p}_1) \cdot (\mathbf{p}_2 - \mathbf{p}_1)}{|\mathbf{p}_2 - \mathbf{p}_1|^2}$$
+$$\lambda^\star = \frac{\mathbf{q} \cdot\mathbf{k}}{|\mathbf{k}|^2} = \frac{(\mathbf{p} - \mathbf{p}_1) \cdot (\mathbf{p}_2 - \mathbf{p}_1)}{|\mathbf{p}_2 - \mathbf{p}_1|^2}$$
 
 This formula represents the scalar projection of $\mathbf{w}$ onto $\mathbf{v}$, normalized by the squared magnitude of $\mathbf{v}$; in other words,
 
-$$\lambda^* = \frac{\text{scalar projection of } \mathbf{w} \text{ onto } \mathbf{v}}{|\mathbf{v}|} $$
+$$\lambda^\star = \frac{\text{scalar projection of } \mathbf{q} \text{ onto } \mathbf{k}}{|\mathbf{k}|} $$
 
 #### Distance Calculation
 
@@ -198,9 +198,9 @@ $$l_{\mathrm{min}} = |\mathbf{p} - \mathbf{r}(\lambda^\star)| = \sqrt{\sum_{i=1}
 
 #### Implementation Analysis
 
-The function implementation follows this mathematical framework precisely. The code extracts $\mathbf{p}_1$ and $\mathbf{p}_2$ by evaluating the parametric line function at $\lambda = 0$ and $\lambda = 1$ respectively. It then computes the direction vector $\mathbf{v} = \mathbf{p}_2 - \mathbf{p}_1$ and the displacement vector $\mathbf{w} = \mathbf{p} - \mathbf{p}_1$.
+The function implementation follows this mathematical framework precisely. The code extracts $\mathbf{p}_1$ and $\mathbf{p}_2$ by evaluating the parametric line function at $\lambda = 0$ and $\lambda = 1$ respectively. It then computes the direction vector $\mathbf{k} = \mathbf{p}_2 - \mathbf{p}_1$ and the displacement vector $\mathbf{q} = \mathbf{p} - \mathbf{p}_1$.
 
-The projection coefficient calculation implements the dot product formula $\lambda^\star = \mathbf{w} \cdot \mathbf{v} / |\mathbf{v}|^2$ using component-wise operations. The closest point determination and final distance calculation follow the standard Euclidean distance formula. If $l_\mathrm{min} \leq \ell$, then that point is counted as a hit.
+The projection coefficient calculation implements the dot product formula $\lambda^\star = \mathbf{q} \cdot \mathbf{k} / |\mathbf{k}|^2$ using component-wise operations. The closest point determination and final distance calculation follow the standard Euclidean distance formula. If $l_\mathrm{min} \leq \ell$, then that point is counted as a hit. 
 
 # Computational Complexity
 
