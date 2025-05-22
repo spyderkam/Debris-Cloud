@@ -87,7 +87,7 @@ Given two points $\mathbf{p}_1 = (x_1, y_1, z_1)$ and $\mathbf{p}_2 = (x_2, y_2,
 
 $$r(\lambda) = (x_1, y_1, z_1) + \lambda \cdot \underbrace{(x_1 - x_2,\, y_1 - y_2,\, z_1 - z_2)}_{\text{direction vector (} \mathbf{k}\mathrm{)}}$$
 
-or, in (parametric ) component form:
+or, in (parametric) component form:
 
 $$
 \begin{align*}
