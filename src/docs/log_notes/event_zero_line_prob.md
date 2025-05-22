@@ -4,7 +4,7 @@ Kam Modjtahedzadeh
 Boeing Intelligence & Analytics  
 May 20, 2025 -- May 21, 2025
 
-> I have a spherical shell with radius $R_\mathrm c(t)$ centered at $(x, y, z) = (0, 0, 0)$ at $t=0$. I want to find the probability that a particle in the shell will be within $\ell$ meters of a straight line passing through that shell.
+> I have a spherical shell with radius $R_\mathrm c(t)$ centered at $(x, y, z) = (0, 0, 0)$ at $t=0$. I want to find the probability that a particle in the shell will be within a distance $\ell$ away from a straight line passing through that shell.
 
 ## Creating a Sphere Element in Entry/Exit Point Generator
 
@@ -85,7 +85,7 @@ I have two points $\mathbf{p}_1 = (x_1, y_1, z_1)$ and $\mathbf{p}_2 = (x_2, y_2
 
 Given two points $\mathbf{p}_1 = (x_1, y_1, z_1)$ and $\mathbf{p}_2 = (x_2, y_2, z_2)$ in 3D Euclidean space, the line passing through them can be expressing in *parametric form*:
 
-$$r(\lambda) = (x_1, y_1, z_1) + \lambda \cdot \underbrace{(x_1 - x_2,\, y_1 - y_2,\, z_1 - z_2)}_{\text{direction vector}}$$
+$$r(\lambda) = (x_1, y_1, z_1) + \lambda \cdot \underbrace{(x_1 - x_2,\, y_1 - y_2,\, z_1 - z_2)}_{\text{direction vector (} \mathbf v\mathrm{)}}$$
 
 or, in component form:
 
@@ -150,25 +150,39 @@ The `count_points_near_line` function implements a fundamental geometric algorit
 
 #### Vector Projection Method
 
-Recall the parametric line representation
+Recall the parametric line representation,
 
 $$\mathbf{r}(\lambda) = \mathbf{p}_1 + \lambda(\mathbf{p}_2 - \mathbf{p}_1)$$
 
-where the direction vector of the line is $\mathbf{v} = \mathbf{p}_2 - \mathbf{p}_1$. For any point $\mathbf{p}$ in space, finding the closest point on the line requires determining the optimal parameter $\lambda^\star$ that minimizes the distance $|\mathbf{p} - \mathbf{r}(\lambda)|$. This optimization problem has a closed-form solution using vector projection.
+where the direction vector of the line is $\mathbf{v} = \mathbf{p}_2 - \mathbf{p}_1$. For any point $\mathbf{p}$ in space, finding the closest point on the line requires determining the optimal parameter $\lambda^\star$ that minimizes the distance $|\mathbf{p} - \mathbf{r}(\lambda)|$. 
 
-The vector from $\mathbf{p}_1$ to the query point $\mathbf{p}$ is defined as:
+##### Mathematical Derivation of $\lambda^\star$
 
-$$\mathbf{w} = \mathbf{p} - \mathbf{p}_1$$
+To find the optimal parameter, instead of minimizing the distance, minimize the _squared_ distance between $\mathbf{p}$ and the line point $\mathbf{r}(\lambda)$. The condition for minimization requires that the vector from $\mathbf{p}$ to the closest line point be perpendicular to the direction vector $\mathbf{v}$.
 
-The optimal parameter $\lambda^\star$ is found by projecting $\mathbf{w}$ onto the direction vector $\mathbf{v}$:
+Setting up the _perpendicularity condition_:
+
+$$(\mathbf{p} - \mathbf{r}(\lambda^*)) \cdot \mathbf{v} = 0$$
+
+substituting the parametric equation:
+
+$$(\mathbf{p} - \mathbf{p}_1 - \lambda^*\mathbf{v}) \cdot \mathbf{v} = 0$$
+
+expanding the dot product:
+
+$$(\mathbf{p} - \mathbf{p}_1) \cdot \mathbf{v} - \lambda^*(\mathbf{v} \cdot \mathbf{v}) = 0$$
+
+The vector from $\mathbf{p}_1$ to the query point $\mathbf{p}$ is defined as;
+
+$$\mathbf{w} \cdot \mathbf{v} - \lambda^*|\mathbf{v}|^2 = 0$$
+
+solving for $\lambda^*$:
 
 $$\lambda^\star = \frac{\mathbf{w} \cdot \mathbf{v}}{|\mathbf{v}|^2} = \frac{(\mathbf{p} - \mathbf{p}_1) \cdot (\mathbf{p}_2 - \mathbf{p}_1)}{|\mathbf{p}_2 - \mathbf{p}_1|^2}$$
 
-This formula represents the scalar projection of $\mathbf{w}$ onto $\mathbf{v}$, normalized by the squared magnitude of $\mathbf{v}$.
+This formula represents the scalar projection of $\mathbf{w}$ onto $\mathbf{v}$, normalized by the squared magnitude of $\mathbf{v}$; in other words,
 
-#### Geometric Interpretation
-
-The projection coefficient $\lambda^\star$ has clear geometric meaning. When $\lambda^\star < 0$, the closest point on the infinite line lies beyond $\mathbf{p}_1$ in the direction opposite to $\mathbf{v}$. When $\lambda^\star > 1$, the closest point lies beyond $\mathbf{p}_2$ in the direction of $\mathbf{v}$. For $0 \leq \lambda^\star \leq 1$, the closest point lies between $\mathbf{p}_1$ and $\mathbf{p}_2$.
+$$\lambda^* = \frac{\text{scalar projection of } \mathbf{w} \text{ onto } \mathbf{v}}{|\mathbf{v}|} $$
 
 #### Distance Calculation
 
@@ -178,13 +192,15 @@ $$\mathbf{r}(\lambda^\star) = \mathbf{p}_1 + \lambda^\star(\mathbf{p}_2 - \mathb
 
 The minimum distance from point $\mathbf{p}$ to the line is the Euclidean distance between $\mathbf{p}$ and this closest point:
 
-$$d_{\mathrm{min}} = |\mathbf{p} - \mathbf{r}(\lambda^\star)| = \sqrt{\sum_{i=1}^{3}(P_i - r_i(\lambda^\star))^2}$$
+$$l_{\mathrm{min}} = |\mathbf{p} - \mathbf{r}(\lambda^\star)| = \sqrt{\sum_{i=1}^{3}(p_i - r_i(\lambda^\star))^2}$$
+
+### Computational Implementation
 
 #### Implementation Analysis
 
 The function implementation follows this mathematical framework precisely. The code extracts $\mathbf{p}_1$ and $\mathbf{p}_2$ by evaluating the parametric line function at $\lambda = 0$ and $\lambda = 1$ respectively. It then computes the direction vector $\mathbf{v} = \mathbf{p}_2 - \mathbf{p}_1$ and the displacement vector $\mathbf{w} = \mathbf{p} - \mathbf{p}_1$.
 
-The projection coefficient calculation implements the dot product formula $\lambda^\star = \mathbf{w} \cdot \mathbf{v} / |\mathbf{v}|^2$ using component-wise operations. The closest point determination and final distance calculation follow the standard Euclidean distance formula.
+The projection coefficient calculation implements the dot product formula $\lambda^\star = \mathbf{w} \cdot \mathbf{v} / |\mathbf{v}|^2$ using component-wise operations. The closest point determination and final distance calculation follow the standard Euclidean distance formula. If $l_\mathrm{min} \leq \ell$, then that point is counted as a hit.
 
 #### Computational Complexity
 
