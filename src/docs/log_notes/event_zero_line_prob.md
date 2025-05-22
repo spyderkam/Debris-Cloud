@@ -202,15 +202,8 @@ The function implementation follows this mathematical framework precisely. The c
 
 The projection coefficient calculation implements the dot product formula $\lambda^\star = \mathbf{w} \cdot \mathbf{v} / |\mathbf{v}|^2$ using component-wise operations. The closest point determination and final distance calculation follow the standard Euclidean distance formula. If $l_\mathrm{min} \leq \ell$, then that point is counted as a hit.
 
-#### Computational Complexity
+# Computational Complexity
 
-The algorithm exhibits linear time complexity $\mathcal{O}(n)$ with respect to the number of points, as each point requires a constant number of operations regardless of the problem size. The space complexity is $\mathcal{O}(1)$ since the function proces
-The approach aligns with the computational methods detailed in Section 2 of the "Computational Implementation of Spherically Symmetric Debris Cloud Models" document.
+The algorithm exhibits linear time complexity $\mathcal O(n)$ with respect to the number of points, as each point requires a constant number of operations regardless of the problem size. The space complexity is $\mathcal O(1)$ since the function processes points individually without storing intermediate results.
 
-***
-
-Now to complete the ***`cloud_intersect_line`*** function, which given the entry and exit points of the cloud at time $t$, computes the slope and $y$-intercept of the line that passes through theses points individually without storing intermediate results.
-
-This mathematical approach provides an exact solution to the point-to-line distance problem, making it suitable for precise proximity analysis in debris cloud modeling applications where accurate geometric calculations are essential for risk assessment and trajectory planning..
-
-
+This mathematical approach provides an exact solution to the point-to-line distance problem, making it suitable for precise proximity analysis in debris cloud modeling applications where accurate geometric calculations are essential for risk assessment and trajectory planning.​​​​​​​​​​​​​​​​
