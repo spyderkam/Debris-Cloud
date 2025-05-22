@@ -34,7 +34,7 @@ where:
 
   - $R \in \mathbb{R}^+$ is the radius of the sphere
   - $\mathbf{c} \in \mathbb{R}^3$ is the center of the sphere, default $(0,0,0)$
-  - $d \in \{\texttt{True}, \,\texttt{False}\}$ is the diameter flag, default False
+  - $d \in \{\texttt{True}, \,\texttt{False}\}$ is the diameter flag, default $\texttt{False}$
 
 $$\text{output:} ~ (\mathbf{p}_{\text{entry}}, \mathbf{p}_{\text{exit}}) \in \mathbb{R}^3 \times \mathbb{R}^3$$
 
@@ -97,7 +97,7 @@ $$
 \end{align*}
 $$
 
-where $\lambda \in \mathbb{R}$ is the parameter. So, if $\lambda = 0$ then $(X, Y, Z) = (x_1, y_1. y_1)$; likewise, if $\lambda = 1 \Rightarrow X = x_2$ and $\lambda = 0.5 \Rightarrow X = (x_1 + x_2)/2$.
+where $\lambda \in \mathbb{R}$ is the scaling parameter. So, if $\lambda = 0$ then $(X, Y, Z) = (x_1, y_1. y_1)$; likewise, if $\lambda = 1 \Rightarrow X = x_2$ and $\lambda = 0.5 \Rightarrow X = (x_1 + x_2)/2$.
 
 Alternatively, if $x_2 \neq x_1$, $y_2 \neq y_1$, and $z_2 \neq z_1$, the line can be written in *symmetric form*:
 
