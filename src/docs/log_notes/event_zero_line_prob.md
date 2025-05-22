@@ -172,9 +172,9 @@ expanding the dot product:
 
 $$(\mathbf{p} - \mathbf{p}_1) \cdot \mathbf{v} - \lambda^*(\mathbf{v} \cdot \mathbf{v}) = 0$$
 
-The vector from $\mathbf{p}_1$ to the query point $\mathbf{p}$ is defined as;
+The vector from $\mathbf{p}_1$ to the query point $\mathbf{p}$ is defined as (displacement vector) $\bm{\omega} = \mathbf{p} - \mathbf{p}_1$;
 
-$$\mathbf{w} \cdot \mathbf{v} - \lambda^*|\mathbf{v}|^2 = 0$$
+$$\bm{\omega} \cdot \mathbf{v} - \lambda^*|\mathbf{v}|^2 = 0$$
 
 solving for $\lambda^*$:
 
@@ -204,6 +204,13 @@ The projection coefficient calculation implements the dot product formula $\lamb
 
 #### Computational Complexity
 
-The algorithm exhibits linear time complexity $\mathcal{O}(n)$ with respect to the number of points, as each point requires a constant number of operations regardless of the problem size. The space complexity is $\mathcal{O}(1)$ since the function processes points individually without storing intermediate results.
+The algorithm exhibits linear time complexity $\mathcal{O}(n)$ with respect to the number of points, as each point requires a constant number of operations regardless of the problem size. The space complexity is $\mathcal{O}(1)$ since the function proces
+The approach aligns with the computational methods detailed in Section 2 of the "Computational Implementation of Spherically Symmetric Debris Cloud Models" document.
 
-This mathematical approach provides an exact solution to the point-to-line distance problem, making it suitable for precise proximity analysis in debris cloud modeling applications where accurate geometric calculations are essential for risk assessment and trajectory planning.
+***
+
+Now to complete the ***`cloud_intersect_line`*** function, which given the entry and exit points of the cloud at time $t$, computes the slope and $y$-intercept of the line that passes through theses points individually without storing intermediate results.
+
+This mathematical approach provides an exact solution to the point-to-line distance problem, making it suitable for precise proximity analysis in debris cloud modeling applications where accurate geometric calculations are essential for risk assessment and trajectory planning..
+
+
