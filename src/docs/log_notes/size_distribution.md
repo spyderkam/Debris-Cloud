@@ -19,7 +19,7 @@ $$N_{\mathrm{collision}}(L_{\mathrm{c}}) \,=\, 0.1 L_{\mathrm{c}}^{-1.71} M_{\ma
 
 where $N_{\mathrm{collision}}$ will just be written as $N$ for short. The number of fragments between two characteristic lengths $L_1$ and $L_2$ (where $L_1 < L_2$) is calculated as:
 
-$$\text{fragments between } L_1 \text{ and } L_2 \,=\, N(L_1) - N(L_2)$$
+$$\text{number of fragments between } L_1 \text{ and } L_2 \,=\, N(L_1) - N(L_2)$$
 
 The practical bounds for all size categories are set to $L_{\mathrm{min}} = 0.001 \, \mathrm{m}$ and $L_{\mathrm{max}} = 1.0 \, \mathrm{m}$.
 
