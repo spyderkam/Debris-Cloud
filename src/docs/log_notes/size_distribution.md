@@ -102,7 +102,7 @@ This same stratification pattern applies to small and large fragment categories 
 | $2.0$--$3.0$    | $40M_{\mathrm{parent}}^{0.75}$    | $0.3\%$       | $0.3\%$       |
 | $3.0$--$4.0$    | $16M_{\mathrm{parent}}^{0.75}$    | $0.1\%$       | $0.1\%$       |
 | $4.0$--$5.0$    | $8M_{\mathrm{parent}}^{0.75}$     | $0.1\%$       | $0.1\%$       |
-| $5.0$--$6.0$    | $4M_{\mathrm{parent}}^{0.75}$     | $0.0\%$       | $0.0\%$       |
+| $5.0$--$6.0$    | $5M_{\mathrm{parent}}^{0.75}$     | $0.0\%$       | $0.0\%$       |
 | $6.0$--$7.0$    | $3M_{\mathrm{parent}}^{0.75}$     | $0.0\%$       | $0.0\%$       |
 | $7.0$--$8.0$    | $2M_{\mathrm{parent}}^{0.75}$     | $0.0\%$       | $0.0\%$       |
 
