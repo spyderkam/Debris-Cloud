@@ -231,10 +231,10 @@ def empirical_parameters(Lc):
     """
 
     # Small fragments
-    if Lc <= 0.08:
+    if Lc < 0.08:
         μ, ρ0, σ0, α, γ = 0.64, 3.0, 0.12, 0.5, 0.005
     # Medium fragments
-    elif 0.08 < Lc <= 0.11:
+    elif 0.08 <= Lc <= 0.11:
         μ, ρ0, σ0, α, γ = 0.60, 4.0, 0.062, 0.65, 0.003
     # Large fragments
     else:
