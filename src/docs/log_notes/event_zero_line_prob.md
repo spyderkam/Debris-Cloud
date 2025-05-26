@@ -207,3 +207,9 @@ The projection coefficient calculation implements the dot product formula $\lamb
 The algorithm exhibits linear time complexity $\mathcal O(n)$ with respect to the number of points, as each point requires a constant number of operations regardless of the problem size. The space complexity is $\mathcal O(1)$ since the function processes points individually without storing intermediate results.
 
 This mathematical approach provides an exact solution to the point-to-line distance problem, making it suitable for precise proximity analysis in debris cloud modeling applications where accurate geometric calculations are essential for risk assessment and trajectory planning.​​​​​​​​​​​​​​​​
+
+
+
+***
+
+Everything up till here is part of <u>@geometric_analysis.py</u>'s' setup. Once <u>@size_distribution.md</u> has a first draft, continue...
