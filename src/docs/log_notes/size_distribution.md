@@ -2,7 +2,7 @@
 
 Kamyar Modjtahedzadeh  
 Boeing Intelligence & Analytics  
-May 22, 2025 -- May 25, 2025
+May 22, 2025 -- May 26, 2025
 
 > What is the quantitative distribution of fragment size (small, medium, large) immediately post impact? What about distribution of specific $L_\mathrm{c}$? How _many_ total fragments for each $L_\mathrm{c}$ to _almost_ satisfy mass conservation (doesn’t and _shouldn’t_ have to be exact!)?
 
