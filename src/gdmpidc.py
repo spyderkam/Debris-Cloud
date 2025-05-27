@@ -42,7 +42,7 @@ class Fragment:
     self.μ, self.ρ0, self.σ0, self.α, self.γ = empirical_parameters(self.size)
 
 
-class Cloud:
+class SubCloud:
   def __init__(self, characteristic_length, num_fragments, breakup_type: str = "collision") -> None:
     self.nFrag = num_fragments
     self.fragSize = characteristic_length
@@ -106,14 +106,14 @@ class Cloud:
 
   def updated_radius(self, t: float, inplace: bool = False) -> float:
     """
-      Cloud radius at time t; Equation (3.1) of gdmpidc.md.
+      SubCloud radius at time t; Equation (3.1) of gdmpidc.md.
       
       Args:
         t (float): Time since impact [s]
         updated_radius (float, optional): If provided, updates self.radius with this value [m]
       
       Returns:
-        float: Cloud radius at time t [m]
+        float: SubCloud radius at time t [m]
     """
     updated_radius = self.radius + t*expansion_velocity(parent_mass=1000, L_min=0.001, L_max=15.0)
     if inplace:
@@ -135,7 +135,7 @@ class Cloud:
 
 
 if __name__ == "__main__":        
-    cloud = Cloud(characteristic_length=0.05, num_fragments=1000, breakup_type="collision")
+    cloud = SubCloud(characteristic_length=0.05, num_fragments=1000, breakup_type="collision")
     vec_r = init_positions = cloud.sample_positions()
 
     absolute_plotter_path = '/home/runner/workspace/src/subscripts/plotter_inside.py'
