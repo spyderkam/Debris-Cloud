@@ -1,8 +1,8 @@
-# Size Distribution
+# Numerical Size Distribution
 
 Kamyar Modjtahedzadeh  
 Boeing Intelligence & Analytics  
-May 22, 2025 -- May 26, 2025
+May 22, 2025 -- May 27, 2025
 
 > What is the quantitative distribution of fragment size (small, medium, large) immediately post impact? What about distribution of specific $L_\mathrm{c}$? How _many_ total fragments for each $L_\mathrm{c}$ to _almost_ satisfy mass conservation (doesn’t and _shouldn’t_ have to be exact!)?
 
@@ -135,11 +135,11 @@ The computational formulation employs different increment sizes optimized for ea
 
 **Large fragments** ($0.11$ to $1.0$ meters) use increments of $\Delta L_{\mathrm{c}} = 0.001$ meters, creating $890$ discrete calculation intervals. This increment size provides adequate resolution across the extended size range while maintaining computational efficiency.
 
-### Size Increment Processing
+### Interval Sampling <!--Size Increment Processing-->
 
 To estimate the number of fragments for any particular characteristic length, the following formula is used:
 
 $$\Upsilon(L_{\mathrm{c}}) \,=\, N(L_{\mathrm{c}}) - N(L_{\mathrm{c}} +\epsilon)$$
 
-where $\epsilon = dL_{\mathrm{c}}$ is set to `0.00001` meters. With this formulation, $n(L_{\mathrm{c}}) = \lim_{\epsilon\to0} \frac{\Upsilon(L_{\mathrm{c}})}{\epsilon}$. Loop through the discrete $L_{\mathrm{c}}$ values with the assigned $\Delta L_{\mathrm{c}}$ increments and calculate each `nFrags` with the above equation for $\Upsilon(L_{\mathrm{c}})$.
+where $\epsilon = dL_{\mathrm{c}}$ is set to `0.00001` meters. With this formulation, $\Upsilon(L_{\mathrm{c}}) \approx {\epsilon} \cdot n(L_{\mathrm{c}})$. Loop through the discrete $L_{\mathrm{c}}$ values with the assigned $\Delta L_{\mathrm{c}}$ increments and calculate each `nFrag` with the above equation for $\Upsilon(L_{\mathrm{c}})$.
 
