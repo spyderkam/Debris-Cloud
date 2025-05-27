@@ -141,5 +141,5 @@ To estimate the number of fragments for any particular characteristic length, th
 
 $$\Upsilon(L_{\mathrm{c}}) \,=\, N(L_{\mathrm{c}}) - N(L_{\mathrm{c}} +\epsilon)$$
 
-where $\epsilon = dL_{\mathrm{c}}$ is set to `0.00001` meters. With this formulation, $\Upsilon(L_{\mathrm{c}}) \approx {\epsilon} \cdot n(L_{\mathrm{c}})$. Loop through the discrete $L_{\mathrm{c}}$ values with the assigned $\Delta L_{\mathrm{c}}$ increments and calculate each `nFrag` with the above equation for $\Upsilon(L_{\mathrm{c}})$.
+where the size step $\epsilon$ is set to `0.00001` meters. With this formulation, $\Upsilon(L_{\mathrm{c}}) \approx {\epsilon} \cdot n(L_{\mathrm{c}})$. Loop through the discrete $L_{\mathrm{c}}$ values with the assigned $\Delta L_{\mathrm{c}}$ increments and calculate each `nFrag` with the above equation for $\Upsilon(L_{\mathrm{c}})$.
 
