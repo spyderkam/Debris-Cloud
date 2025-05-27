@@ -116,7 +116,7 @@ def count_points_near_line(line, points, distance) -> int:
     return count
 
 if __name__ == "__main__":
-    cloud = Cloud(characteristic_length=0.05, num_fragments=1000)
+    cloud = SubCloud(characteristic_length=0.05, num_fragments=1000)
     
     all_points = cloud.sample_positions()
     inside_points = [point for point in all_points if np.linalg.norm(point) <= cloud.radius]
