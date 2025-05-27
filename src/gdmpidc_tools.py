@@ -254,3 +254,11 @@ def packing_density(Lc: float) -> float:
         return 0.65  # Moderate packing
     else:  # Large fragments
         return 0.75  # More tightly packed due to lower dispersion
+
+
+def cumulative_distribution(Lc: float, M_parent: float = None, breakup_type: str ="collision") -> float:
+    """Cumulative Distibution function (N); represents the number of particles greater than Lc."""
+    if breakup_type == "collision":
+        return 0.1*Lc**(-1.71)*M_parent**(0.75)
+    elif breakup_type == "explosion":
+        return 6*Lc**(-1.71)
