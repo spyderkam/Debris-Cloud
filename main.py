@@ -3,6 +3,8 @@
 __author__ = "Kamyar Modjtahedzadeh"
 __date__ = "May 27, 2025"
 
+
+from src.geometric_analysis import *
 from src.gdmpidc import *
 from src.gdmpidc_tools import *
 import numpy as np
