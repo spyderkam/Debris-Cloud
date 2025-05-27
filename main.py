@@ -6,7 +6,6 @@ __date__ = "May 27, 2025"
 from src.geometric_analysis import *
 from src.gdmpidc import *
 from src.gdmpidc_tools import *
-# import numpy as np
 
 ϵ = 0.00001              # [m]
 parent_mass = 9.39e20    # [kg]
@@ -23,7 +22,6 @@ def point_count(Lc: float, size_step: float = ϵ, breakup_type: str = "collision
         return cumulative_distribution(Lc, parent_mass) - cumulative_distribution(Lc + size_step, parent_mass)
     elif breakup_type == "explosion":
         return cumulative_distribution(Lc, parent_mass, "explosion") - cumulative_distribution(Lc + size_step, parent_mass, "explosion")
-
 
 small_cloud, ΔLc_small = dict(), 0.0001
 med_cloud, ΔLc_med     = dict(), 0.0005
