@@ -3,7 +3,13 @@
 __author__ = "Kamyar Modjtahedzadeh, Claude 3.7 Sonnet, Grok 3, Claude 3.5 Sonnet V2"
 __date__ = "May 20, 2025 - May 21, 2025"
 
-from gdmpidc import *
+try:
+    # When imported as a module from parent directory
+    from src.gdmpidc import *
+except ImportError:
+    # When run directly from src directory
+    from gdmpidc import *
+
 import numpy as np
 
 def get_entry_exit(radius, center=(0, 0, 0), diameter=False):
