@@ -5,13 +5,14 @@ __date__ = "May 27, 2025"
 
 from src.gdmpidc import *
 from src.gdmpidc_tools import *
+import numpy as np
 import time
 
 start_time = time.time()
 
 ϵ = 0.00001              # [m]
 #parent_mass = 9.39e20    # [kg]
-parent_mass = 10000
+parent_mass = 100
 N = cumulative_distribution
 
 def subrange_count(L1, L2, breakup_type: str = "collision") -> int:
@@ -46,4 +47,12 @@ while 0.11 < Lc <= 1.0:
 
 cloud = {"small": small_cloud, "medium": med_cloud, "large": large_cloud}
 
+relavent_points = []
+for category in cloud:
+    for Lc, sub_cloud in cloud[category].items():
+        sub_points = sub_cloud.sample_positions()
+        inside_points = [point for point in sub_points if np.linalg.norm(point) <= sub_cloud.radius]
+        relavent_points.extend(inside_points)
+
+print(len(relavent_points))
 print(f"Processing time: {time.time() - start_time:.2f} seconds")
