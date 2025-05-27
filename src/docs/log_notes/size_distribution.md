@@ -1,8 +1,8 @@
-# Size Distribution
+# Numerical Size Distribution
 
 Kamyar Modjtahedzadeh  
 Boeing Intelligence & Analytics  
-May 22, 2025 -- May 25, 2025
+May 22, 2025 -- May 27, 2025
 
 > What is the quantitative distribution of fragment size (small, medium, large) immediately post impact? What about distribution of specific $L_\mathrm{c}$? How _many_ total fragments for each $L_\mathrm{c}$ to _almost_ satisfy mass conservation (doesn’t and _shouldn’t_ have to be exact!)?
 
@@ -122,4 +122,24 @@ The power-law distribution creates **extreme stratification** within small fragm
 | $80$--$100$     | $0.05M_{\mathrm{parent}}^{0.75}$ | $1.1\%$       | $0.0003\%$    |
 
 The distribution across large fragment subranges is more spread out: the $20.0$ to $30.0$ centimeter range still contains a meaningful $\mathbf{18.4\%}$ of large fragments, and even the $30.0$ to $40.0$ centimeter range holds $\mathbf{7.2\%}$. This indicates that while smaller sizes still dominate within the large category, the distribution is more balanced across different size subranges compared to the extreme concentration observed in small fragments. The large fragments represent the most **trackable and observable** debris pieces, despite comprising only **$\boldsymbol{0.032\%}$ of the total fragment count**.
+
+## Discrete Fragment Count
+
+### Size Step Configuration
+
+The computational formulation employs different increment sizes optimized for each fragment category:
+
+**Small fragments** ($0.001$ to $0.08$ meters) use increments of $\Delta L_{\mathrm{c}} = 0.0001$ meters, creating $790$ discrete calculation intervals. This fine granularity captures the steep power-law distribution where fragment counts change rapidly over small size ranges.
+
+**Medium fragments** ($0.08$ to $0.11$ meters) use increments of $\Delta L_{\mathrm{c}} = 0.005$ meters, creating $60$ discrete calculation intervals. The larger increment size reflects the more moderate rate of change in this transition region.
+
+**Large fragments** ($0.11$ to $1.0$ meters) use increments of $\Delta L_{\mathrm{c}} = 0.001$ meters, creating $890$ discrete calculation intervals. This increment size provides adequate resolution across the extended size range while maintaining computational efficiency.
+
+### Interval Sampling <!--Size Increment Processing-->
+
+To estimate the number of fragments for any particular characteristic length, the following formula is used:
+
+$$\Upsilon(L_{\mathrm{c}}) \,=\, N(L_{\mathrm{c}}) - N(L_{\mathrm{c}} +\epsilon)$$
+
+where the size step $\epsilon$ is set to `0.00001` meters. With this formulation, $\Upsilon(L_{\mathrm{c}}) \approx {\epsilon} \cdot n(L_{\mathrm{c}})$. Loop through the discrete $L_{\mathrm{c}}$ values with the assigned $\Delta L_{\mathrm{c}}$ increments and calculate each `nFrag` with the above equation for $\Upsilon(L_{\mathrm{c}})$.
 
