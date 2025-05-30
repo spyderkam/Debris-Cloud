@@ -210,10 +210,10 @@ $\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 1\,\mathrm{cm}\!\!: ~~~ 73.7
 $\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 2\,\mathrm{cm}\!\!: ~~~ 72.65\%$
 $\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 3\,\mathrm{cm}\!\!: ~~~ 76.09\%$
 $\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 4\,\mathrm{cm}\!\!: ~~~ 73.65\%$
-$\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 5\,\mathrm{cm}\!\!: ~~~ 74.70\%$
+$\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 5\,\mathrm{cm}\!\!: ~~~ 74.70\%$ &nbsp; (for `nFrag = 500` and `nRuns = 50`, $76.16\%$ inside)
 $\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 6\,\mathrm{cm}\!\!: ~~~ 77.58\%$
 $\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 7\,\mathrm{cm}\!\!: ~~~ 76.55\%$
-$\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 8\,\mathrm{cm}\!\!: ~~~ 77.79\%$
+$\hspace{0.5in}$▶&nbsp;&nbsp;&nbsp;$L_\mathrm c = 8\,\mathrm{cm}\!\!: ~~~ 77.79\%$ &nbsp; (⛌ should be classed as medium!)
 
 Apart from the $L_\mathrm c = 1\,\mathrm{mm}$, which I did not even consider, these values *are* what I originally wanted; be that as it may, I might adjust the parameters (later) to increase all the immediate above values.
 
