@@ -2,7 +2,7 @@
 
 Kam Modjtahedzadeh  
 Boeing Intelligence & Analytics  
-May 20, 2025 -- May 21, 2025
+May 20, 2025 -- June 4, 2025
 
 > I have a spherical shell with radius $R_\mathrm c(t)$ centered at $(x, y, z) = (0, 0, 0)$ at $t=0$. I want to find the probability that a particle in the shell will be within a distance $\ell$ away from a straight line passing through that shell.
 
@@ -28,13 +28,13 @@ The approach aligns with the computational methods detailed in Section 2 of the 
 
 ### Mathematical Formulation of `get_entry_exit`
 
-$$\text{inputs:} ~ R, \mathbf{c}, d$$
+$$\text{inputs:} ~ R, \mathbf{c}, \texttt{d}$$
 
 where:
 
   - $R \in \mathbb{R}^+$ is the radius of the sphere
   - $\mathbf{c} \in \mathbb{R}^3$ is the center of the sphere, default $(0,0,0)$
-  - $d \in \{\texttt{True}, \,\texttt{False}\}$ is the diameter flag, default $\texttt{False}$
+  - $\texttt{d} \in \{\texttt{True}, \,\texttt{False}\}$ is the diameter flag, default $\texttt{False}$
 
 $$\text{output:} ~ (\mathbf{p}_{\text{entry}}, \mathbf{p}_{\text{exit}}) \in \mathbb{R}^3 \times \mathbb{R}^3$$
 
@@ -52,8 +52,8 @@ $$
 2. Compute the second vector $\mathbf{v}_2$ based on the diameter flag: 
 $$
 \mathbf{v}_2 = \begin{cases}
-	-\mathbf{v}_1, & \text{if } d = \texttt{True} \\
-	\frac{\mathbf{w}}{\|\mathbf{w}\|_2}, & \text{if } d = \texttt{False}\text{ and } \mathbf{v}_1 \cdot \frac{\mathbf{w}}{\|\mathbf{w}\|_2} > -0.98
+	-\mathbf{v}_1, & \text{if } \texttt{d} = \texttt{True} \\
+	\frac{\mathbf{w}}{\|\mathbf{w}\|_2}, & \text{if } \texttt{d} = \texttt{False}\text{ and } \mathbf{v}_1 \cdot \frac{\mathbf{w}}{\|\mathbf{w}\|_2} > -0.98
 \end{cases}
 $$ where $\mathbf{w} \sim \mathrm{Normal}(0, 1)^3$ is regenerated until the dot product condition is satisfied.
 
@@ -208,8 +208,53 @@ The algorithm exhibits linear time complexity $\mathcal O(n)$ with respect to th
 
 This mathematical approach provides an exact solution to the point-to-line distance problem, making it suitable for precise proximity analysis in debris cloud modeling applications where accurate geometric calculations are essential for risk assessment and trajectory planning.​​​​​​​​​​​​​​​​
 
+## Analytical Framework for Impact Probability Calculation
 
+Given the parent mass, initial cloud radius, cumulative distribution function, $\rho(r,\, L_{\mathrm{c}})$, and hit distance threshold, the impact probability will be calculated such that a linear trajectory passing through random entry and exit points on the cloud sphere at time $t = 0$ will encounter at least one fragment within distance $\ell$. A fundamental result in stochastic processes from *Poisson process theory* is the application of a *non-homogeneous Poisson process*; since encounters occur randomly at rate (per unit length) $\Lambda(\mathcal{L}')$ along path $\mathcal{L}'$, then the number of encounters follows a Poisson distribution with parameter $\int\Lambda d\mathcal{L}'$. The probability of at least one encounter is $1 - \mathbb{P}_{\text{avoid}} = 1 - \exp[-\int\Lambda\, d\mathcal{L}']$. The total impact probability is computed as the weighted sum over all fragment size categories: $$ 
+\begin{align*}
+    \mathbb{P}_\text{impact} \,=\, 
+    %%%%%  
+    \sum_{L_\mathrm c \,=\, L_\mathrm{min} }^{L_{\mathrm{max}}} f \cdot \mathbb{P}_\text{impact}(L_{\mathrm{c}})
+\end{align*}
+$$ where $f$ represents the fraction of fragments given from percentage distributions per size category. For a specific characteristic length, the probability of impact along a trajectory is: $$
+\begin{align*}
+    \mathbb{P}_{\text{impact}}(L_\mathrm c,\, \mathcal{L}) \,=\, 1 - \exp\left[-\int_\mathcal{L}\Lambda (L_\mathrm c,\, \mathcal{L}^\prime) \,d\mathcal{L}^\prime\right]
+\end{align*}
+$$ The collision rate at position $s$ along trajectory $\mathcal{L}$ is: $$\Lambda(s,\, \mathcal{L}) \,=\, \rho_N(r(s),\, \mathcal{L}) \cdot A_{\mathrm{eff}}$$ where $A_{\mathrm{eff}} = \pi\ell^2$ is the effective impact cross-sectional area and $\rho_N(r)$ is the the number density of fragments at radial $r$. The number density is related to the mass density through, $$
+\begin{align*}
+    \rho(r, L_\mathrm{c}) \,=\, \frac{\rho(r, L_\mathrm{c})}{\overline{M}} \frac{dN}{dL\mathrm{c}} 
+\end{align*}
+$$ where $\overline{M}$ is the average mass of fragments with characteristic length $L_\mathrm{c}$.
 
-***
+### Monte Carlo Implementation
 
-Everything up till here is part of <u>@geometric_analysis.py</u>'s' setup. Once <u>@size_distribution.md</u> has a first draft, continue...
+#### Basic Monte Carlo Estimator
+
+The impact probability is estimated through repeated sampling:
+
+$$ \hat{\mathbb{P}}_{\text{impact}} \,=\, \frac{1}{\Upsilon_{\mathrm{trials}}} \sum_{j=1}^{\Upsilon_{\mathrm{trials}}} I_j $$
+
+where $I_j$ is an indicator function:
+
+$$ I_j \,=\, \begin{cases} 1 & \text{if trajectory } j \text{ encounters any fragment} \\ 0 & \text{otherwise} \end{cases} $$
+
+#### Variance and Confidence Intervals
+
+The variance of the Monte Carlo estimator is:
+
+$$ \mathrm{Var}\!\left(\hat{\mathbb{P}}\right) \,=\, \frac{\mathbb{P}(1-\mathbb{P})}{\Upsilon_{\mathrm{trials}}} $$
+
+The $95\%$ confidence interval using the Wilson score method is:
+
+$$ \mathbb{P} \,\in\, \left[\frac{\hat{\mathbb{P}} + \frac{z^2}{2\Upsilon} - z\sqrt{\frac{\hat{\mathbb{P}}(1-\hat{\mathbb{P}})}{\Upsilon} + \frac{z^2}{4\Upsilon^2}}}{1 + \frac{z^2}{\Upsilon}},\ \frac{\hat{\mathbb{P}} + \frac{z^2}{2\Upsilon} + z\sqrt{\frac{\hat{\mathbb{P}}(1-\hat{\mathbb{P}})}{\Upsilon} + \frac{z^2}{4\Upsilon^2}}}{1 + \frac{z^2}{\Upsilon}}\right] $$
+
+where $z = 1.96$ for $95\%$ confidence.
+
+#### Required Sample Size
+
+To achieve relative error $\epsilon$ with confidence level $1-\beta$:
+
+$$ \Upsilon_{\mathrm{trials}} \,\geq\, \frac{z_{\beta/2}^2 (1-\mathbb{P})}{\mathbb{P} \epsilon^2} $$
+
+For $\mathbb{P} \approx 10^{-3}$ and $\epsilon = 0.05$ ($5\%$ relative error), approximately $4 \times 10^6$ trials are required.
+
