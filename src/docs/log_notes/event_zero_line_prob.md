@@ -222,7 +222,7 @@ $$ where $f$ represents the fraction of fragments given from percentage distribu
 \end{align*}
 $$ The collision rate at position $s$ along trajectory $\mathcal{L}$ is: $$\Lambda(s,\, \mathcal{L}) \,=\, \rho_N(r(s),\, \mathcal{L}) \cdot A_{\mathrm{eff}}$$ where $A_{\mathrm{eff}} = \pi\ell^2$ is the effective impact cross-sectional area and $\rho_N(r)$ is the the number density of fragments at radial $r$. The number density is related to the mass density through, $$
 \begin{align*}
-    \rho(r, L_\mathrm{c}) \,=\, \frac{\rho(r, L_\mathrm{c})}{\overline{M}} \frac{dN}{dL\mathrm{c}} 
+    \rho(r, L_\mathrm{c}) \,=\, \frac{\rho(r, L_\mathrm{c})}{\overline{M}} \frac{dN}{dL_\mathrm{c}} 
 \end{align*}
 $$ where $\overline{M}$ is the average mass of fragments with characteristic length $L_\mathrm{c}$.
 
@@ -230,7 +230,7 @@ $$ where $\overline{M}$ is the average mass of fragments with characteristic len
 
 #### Basic Monte Carlo Estimator
 
-The impact probability is estimated through repeated sampling:
+The impact probability is estimated through repeated sampling [4--6]:
 
 $$ \hat{\mathbb{P}}_{\text{impact}} \,=\, \frac{1}{\Upsilon_{\mathrm{trials}}} \sum_{j=1}^{\Upsilon_{\mathrm{trials}}} I_j $$
 
@@ -240,21 +240,29 @@ $$ I_j \,=\, \begin{cases} 1 & \text{if trajectory } j \text{ encounters any fra
 
 #### Variance and Confidence Intervals
 
-The variance of the Monte Carlo estimator is:
+The variance of the Monte Carlo estimator is [4, 5]:
 
 $$ \mathrm{Var}\!\left(\hat{\mathbb{P}}\right) \,=\, \frac{\mathbb{P}(1-\mathbb{P})}{\Upsilon_{\mathrm{trials}}} $$
 
-The $95\%$ confidence interval using the Wilson score method is:
+The confidence interval using the Wilson score method is [17]:
 
-$$ \mathbb{P} \,\in\, \left[\frac{\hat{\mathbb{P}} + \frac{z^2}{2\Upsilon} - z\sqrt{\frac{\hat{\mathbb{P}}(1-\hat{\mathbb{P}})}{\Upsilon} + \frac{z^2}{4\Upsilon^2}}}{1 + \frac{z^2}{\Upsilon}},\ \frac{\hat{\mathbb{P}} + \frac{z^2}{2\Upsilon} + z\sqrt{\frac{\hat{\mathbb{P}}(1-\hat{\mathbb{P}})}{\Upsilon} + \frac{z^2}{4\Upsilon^2}}}{1 + \frac{z^2}{\Upsilon}}\right] $$
+$$ \mathbb{P} \,\in\, \left[\frac{\hat{\mathbb{P}} + \frac{q_{\beta/2}^2}{2\Upsilon} - q_{\beta/2}\sqrt{\frac{\hat{\mathbb{P}}(1-\hat{\mathbb{P}})}{\Upsilon} + \frac{q_{\beta/2}^2}{4\Upsilon^2}}}{1 + \frac{q_{\beta/2}^2}{\Upsilon}},\ \frac{\hat{\mathbb{P}} + \frac{q_{\beta/2}^2}{2\Upsilon} + q_{\beta/2}\sqrt{\frac{\hat{\mathbb{P}}(1-\hat{\mathbb{P}})}{\Upsilon} + \frac{q_{\beta/2}^2}{4\Upsilon^2}}}{1 + \frac{q_{\beta/2}^2}{\Upsilon}}\right] $$
 
-where $z = 1.96$ for $95\%$ confidence.
+where $q_{\beta/2}$ is the z-score (standard normal quantile) [4--6].
 
-#### Required Sample Size
 
-To achieve relative error $\epsilon$ with confidence level $1-\beta$:
+#### Adaptive Sample Size with Sequential Refinement
 
-$$ \Upsilon_{\mathrm{trials}} \,\geq\, \frac{z_{\beta/2}^2 (1-\mathbb{P})}{\mathbb{P} \epsilon^2} $$
+Since $\mathbb{P}$ is unknown a priori, an adaptive sampling approach is employed [5, 6]. Starting with an initial batch of $\Upsilon_0 = 10^4$ trials, the required sample size is updated after each batch:
 
-For $\mathbb{P} \approx 10^{-3}$ and $\epsilon = 0.05$ ($5\%$ relative error), approximately $4 \times 10^6$ trials are required.
+$$ \Upsilon_{\mathrm{next}} \,=\, \frac{q_{\beta/2}^2 (1-\hat{\mathbb{P}}_{\mathrm{current}})}{\hat{\mathbb{P}}_{\mathrm{current}} \epsilon^2} $$
+
+The sampling continues until convergence is achieved [4--6]:
+
+$$ \frac{\mathrm{CI}_{\mathrm{upper}} - \mathrm{CI}_{\mathrm{lower}}}{\hat{\mathbb{P}}_{\mathrm{current}}} \,<\, \epsilon $$
+
+where $\mathrm{CI}$ is confidence interval given from the Wilson score method. As more trials are added, the $\sqrt{\Upsilon}$ in the denominator of the Wilson formula makes the interval tighter, reducing the relative width until it's less than the tolerance $\epsilon$ [4--6].
+
+
+
 
