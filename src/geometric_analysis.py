@@ -117,16 +117,82 @@ def count_points_near_line(line, points, distance) -> int:
             
     return count
 
+def importance_sample_entry_exit(R_c, mu=0.6, sigma_IS=None, max_attempts=10000):
+    """
+    Generate entry/exit points biased toward trajectories passing near mu*R_c
+    using rejection sampling.
+    
+    Parameters:
+    - R_c: cloud radius
+    - mu: peak density location as fraction of R_c (default 0.6)
+    - sigma_IS: importance sampling width (default: 0.2*R_c)
+    - max_attempts: maximum rejection sampling attempts
+    
+    Returns:
+    - entry_point, exit_point: 3D coordinates on sphere
+    """
+
+    if sigma_IS is None:
+        sigma_IS = 0.2 * R_c
+    
+    peak_radius = mu * R_c
+    
+    # Maximum value of the importance function (occurs when l_min = 0)
+    max_importance = 1.0
+    
+    for _ in range(max_attempts):
+        # Step 1: Generate uniform entry/exit points (like in geometric_analysis.py)
+        # Random point on unit sphere for entry
+        u1 = np.random.uniform(-1, 1)
+        theta1 = np.arccos(u1)
+        phi1 = np.random.uniform(0, 2*np.pi)
+        entry = R_c * np.array([
+            np.sin(theta1) * np.cos(phi1),
+            np.sin(theta1) * np.sin(phi1),
+            np.cos(theta1)
+        ])
+        
+        # Random point on unit sphere for exit
+        u2 = np.random.uniform(-1, 1)
+        theta2 = np.arccos(u2)
+        phi2 = np.random.uniform(0, 2*np.pi)
+        exit_point = R_c * np.array([
+            np.sin(theta2) * np.cos(phi2),
+            np.sin(theta2) * np.sin(phi2),
+            np.cos(theta2)
+        ])
+        
+        # Step 2: Calculate minimum distance from trajectory to peak sphere
+        # Direction vector of the trajectory
+        direction = exit_point - entry
+        direction_norm = direction / np.linalg.norm(direction)
+        
+        # Find closest point on trajectory to origin
+        t_closest = -np.dot(entry, direction_norm)
+        closest_point = entry + t_closest * direction_norm
+        
+        # Distance from closest point to origin
+        dist_to_origin = np.linalg.norm(closest_point)
+        
+        # Minimum distance to peak sphere
+        l_min = abs(dist_to_origin - peak_radius)
+        
+        # Step 3: Importance function value
+        importance = np.exp(-l_min**2 / (2 * sigma_IS**2))
+        
+        # Step 4: Accept/reject based on importance
+        if np.random.uniform(0, 1) < importance / max_importance:
+            return entry, exit_point
+    
+    # If we fail to find a good sample, return uniform sample
+    print(f"Warning: Rejection sampling failed after {max_attempts} attempts")
+    return entry, exit_point
+
 
 if __name__ == "__main__":
-    cloud = SubCloud(characteristic_length=0.05, parent_rad=4.1439e+11, num_fragments=1000)
-    
-    all_points = cloud.sample_positions()
-    inside_points = [point for point in all_points if np.linalg.norm(point) <= cloud.radius]
-    inside_points = np.array(inside_points)
-
-    p1, p2 = get_entry_exit(cloud.radius, diameter=False)
+    cloud = Cloud(100e3, 10,)
+    p1, p2 = importance_sample_entry_exit(cloud.radius)     # Needs diameter flag, needs center option.
     line = line_parametric_3d(p1, p2)
 
-    x = count_points_near_line(line, inside_points, 1)
-    print(x)
+    x = count_points_near_line(line, cloud.all_points, 1)
+    print(round(x/len(cloud.all_points)*100, 2))
