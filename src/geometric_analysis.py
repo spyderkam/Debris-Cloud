@@ -117,81 +117,116 @@ def count_points_near_line(line, points, distance) -> int:
             
     return count
 
-def importance_sample_entry_exit(R_c, mu=0.6, sigma_IS=None, max_attempts=10000):
+def importance_sample_entry_exit(R_c, center=None, mu=0.6, sigma_IS=None, avoid_diameter=False, max_attempts=10000):
     """
     Generate entry/exit points biased toward trajectories passing near mu*R_c
     using rejection sampling.
     
     Parameters:
-    - R_c: cloud radius
-    - mu: peak density location as fraction of R_c (default 0.6)
-    - sigma_IS: importance sampling width (default: 0.2*R_c)
-    - max_attempts: maximum rejection sampling attempts
+        - R_c: cloud radius
+        - center: sphere center coordinates (default: [0,0,0])
+        - mu: peak density location as fraction of R_c (default 0.6)
+        - sigma_IS: importance sampling width (default: 0.2*R_c)
+        - avoid_diameter: if True, ensure trajectory doesn't pass through sphere
+        - max_attempts: maximum rejection sampling attempts
     
     Returns:
-    - entry_point, exit_point: 3D coordinates on sphere
+        - entry_point, exit_point: 3D coordinates on sphere
     """
 
+    if center is None:
+        center = np.array([0.0, 0.0, 0.0])
+    else:
+        center = np.array(center)
+        
     if sigma_IS is None:
         sigma_IS = 0.2 * R_c
     
     peak_radius = mu * R_c
-    
-    # Maximum value of the importance function (occurs when l_min = 0)
     max_importance = 1.0
     
     for _ in range(max_attempts):
-        # Step 1: Generate uniform entry/exit points (like in geometric_analysis.py)
-        # Random point on unit sphere for entry
+        # Step 1: Generate uniform entry/exit points on unit sphere
         u1 = np.random.uniform(-1, 1)
         theta1 = np.arccos(u1)
         phi1 = np.random.uniform(0, 2*np.pi)
-        entry = R_c * np.array([
+        entry_unit = np.array([
             np.sin(theta1) * np.cos(phi1),
             np.sin(theta1) * np.sin(phi1),
             np.cos(theta1)
         ])
         
-        # Random point on unit sphere for exit
         u2 = np.random.uniform(-1, 1)
         theta2 = np.arccos(u2)
         phi2 = np.random.uniform(0, 2*np.pi)
-        exit_point = R_c * np.array([
+        exit_unit = np.array([
             np.sin(theta2) * np.cos(phi2),
             np.sin(theta2) * np.sin(phi2),
             np.cos(theta2)
         ])
         
-        # Step 2: Calculate minimum distance from trajectory to peak sphere
-        # Direction vector of the trajectory
-        direction = exit_point - entry
+        # Scale and translate to actual sphere
+        entry = center + R_c * entry_unit
+        exit_point = center + R_c * exit_unit
+        
+        # Check diameter constraint if needed
+        if avoid_diameter:
+            # Check if trajectory passes through the sphere
+            # This happens when the closest point to center is inside the sphere
+            direction = exit_point - entry
+            direction_norm = direction / np.linalg.norm(direction)
+            
+            # Vector from entry to center
+            entry_to_center = center - entry
+            
+            # Find closest point on trajectory to center
+            t_closest = np.dot(entry_to_center, direction_norm)
+            
+            # Only check if closest point is between entry and exit
+            if 0 < t_closest < np.linalg.norm(direction):
+                closest_point = entry + t_closest * direction_norm
+                dist_to_center = np.linalg.norm(closest_point - center)
+                
+                if dist_to_center < R_c:
+                    continue  # Reject this sample, try again
+        
+        # Calculate minimum distance from trajectory to peak sphere
+        # (Note: peak sphere is centered at 'center', not origin)
+        entry_relative = entry - center
+        exit_relative = exit_point - center
+        direction = exit_relative - entry_relative
         direction_norm = direction / np.linalg.norm(direction)
         
-        # Find closest point on trajectory to origin
-        t_closest = -np.dot(entry, direction_norm)
-        closest_point = entry + t_closest * direction_norm
+        # Find closest point on trajectory to center (in relative coordinates)
+        t_closest = -np.dot(entry_relative, direction_norm)
+        closest_point_relative = entry_relative + t_closest * direction_norm
         
-        # Distance from closest point to origin
-        dist_to_origin = np.linalg.norm(closest_point)
+        # Distance from closest point to center
+        dist_to_center = np.linalg.norm(closest_point_relative)
         
         # Minimum distance to peak sphere
-        l_min = abs(dist_to_origin - peak_radius)
+        l_min = abs(dist_to_center - peak_radius)
         
-        # Step 3: Importance function value
+        # Importance function value
         importance = np.exp(-l_min**2 / (2 * sigma_IS**2))
         
-        # Step 4: Accept/reject based on importance
+        # Accept/reject based on importance
         if np.random.uniform(0, 1) < importance / max_importance:
             return entry, exit_point
     
-    # If we fail to find a good sample, return uniform sample
-    print(f"Warning: Rejection sampling failed after {max_attempts} attempts")
-    return entry, exit_point
+    # If we fail, return uniform sample (with diameter check)
+    print(f"Warning: Importance sampling failed after {max_attempts} attempts")
+    # Could fall back to uniform sampling here
+    if avoid_diameter:
+        # Use your existing get_entry_exit function as fallback
+        return get_entry_exit(R_c, center, diameter=avoid_diameter)
+    else:
+        return entry, exit_point
 
 
 if __name__ == "__main__":
     cloud = Cloud(100e3, 10,)
-    p1, p2 = importance_sample_entry_exit(cloud.radius)     # Needs diameter flag, needs center option.
+    p1, p2 = importance_sample_entry_exit(cloud.radius)
     line = line_parametric_3d(p1, p2)
 
     x = count_points_near_line(line, cloud.all_points, 1)
