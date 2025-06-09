@@ -15,13 +15,13 @@ def get_entry_exit(radius, center=(0, 0, 0), diameter=False):
     Generate two random points (entry and exit) on the surface of a sphere.
     
     Parameters:
-    - radius (float): The radius of the sphere.
-    - center (tuple): Center of the sphere in (𝑥,𝑦,𝑧) coordinates. Default is (0,0,0).
-    - diameter (bool): If True, the points will be diametrically opposite.
+        - radius (float): The radius of the sphere.
+        - center (tuple): Center of the sphere in (𝑥,𝑦,𝑧) coordinates. Default is (0,0,0).
+        - diameter (bool): If True, the points will be diametrically opposite.
                        If False, the points will not be diametrically opposite. Default is False.
     
     Returns:
-    - tuple: ((𝑥1,𝑦1,𝑧1), (𝑥2,𝑦2,𝑧2)) - entry and exit points on the sphere's surface.
+        - tuple: ((𝑥1,𝑦1,𝑧1), (𝑥2,𝑦2,𝑧2)) - entry and exit points on the sphere's surface.
     """
     
     # Convert center to numpy array for vectorized operations
@@ -52,72 +52,7 @@ def get_entry_exit(radius, center=(0, 0, 0), diameter=False):
     
     return entry_point, exit_point
 
-def line_parametric_3d(p1, p2):
-    """
-    Compute the parametric equation of the 3D line through points 𝑝1 and 𝑝2.
-    
-    Args:
-        𝑝1 (tuple): First point as (𝑥1,𝑦1,𝑧1)
-        𝑝2 (tuple): Second point as (𝑥2,𝑦2,𝑧2)
-    
-    Returns:
-        callable: Function evaluate (𝜆) that returns the point (𝑥,𝑦,𝑧) on the line at parameter 𝜆
-    """
-    
-    x1, y1, z1 = p1
-    x2, y2, z2 = p2
-    
-    def evaluate(λ):
-        x = x1 + λ*(x2 - x1)
-        y = y1 + λ*(y2 - y1)
-        z = z1 + λ*(z2 - z1)
-        return (x, y, z)
-    
-    return evaluate
-
-def count_points_near_line(line, points, distance) -> int:
-    """
-    Count number of points that are within given distance from a parametric line.
-    
-    Args:
-        line (callable): Parametric line function 𝑟(𝜆) = 𝑝1 + 𝜆(𝑝2-𝑝1)
-        points (np.ndarray): Array of points to check, shape (𝑁,3)
-        distance (float): Maximum distance from line
-        
-    Returns:
-        int: Number of points within the distance from the line
-    """
-    
-    # Initialize count
-    count = 0
-    
-    # For each point
-    for point in points:
-        # Find λ that minimizes distance to line by projecting point onto line
-        # Let k = p2-p1, then λ = (point-p1)·k / |k|^2
-        p1 = line(0)  # Get p1 by evaluating at λ=0
-        p2 = line(1)  # Get p2 by evaluating at λ=1
-        k = tuple(b-a for a,b in zip(p1,p2))
-        k_mag_sq = sum(x*x for x in k)
-        
-        # Vector from p1 to point
-        q = tuple(b-a for a,b in zip(p1,point))
-        
-        # Projection coefficient
-        λ = sum(a*b for a,b in zip(q,k)) / k_mag_sq
-        
-        # Get closest point on line
-        closest = line(λ)
-        
-        # Calculate distance from point to line
-        dist = sum((a-b)**2 for a,b in zip(point,closest))**0.5
-        
-        if dist <= distance:
-            count += 1
-            
-    return count
-
-def importance_sample_entry_exit(R_c, center=None, mu=0.6, sigma_IS=None, avoid_diameter=False, max_attempts=10000):
+def importance_sample_entry_exit(R_c: float, center: tuple = None, mu: float = 0.6, sigma_IS: float = None, avoid_diameter: bool = False, max_attempts: int = 10000):
     """
     Generate entry/exit points biased toward trajectories passing near mu*R_c
     using rejection sampling.
@@ -222,6 +157,71 @@ def importance_sample_entry_exit(R_c, center=None, mu=0.6, sigma_IS=None, avoid_
         return get_entry_exit(R_c, center, diameter=avoid_diameter)
     else:
         return entry, exit_point
+
+def line_parametric_3d(p1, p2):
+    """
+    Compute the parametric equation of the 3D line through points 𝑝1 and 𝑝2.
+    
+    Args:
+        𝑝1 (tuple): First point as (𝑥1,𝑦1,𝑧1)
+        𝑝2 (tuple): Second point as (𝑥2,𝑦2,𝑧2)
+    
+    Returns:
+        callable: Function evaluate (𝜆) that returns the point (𝑥,𝑦,𝑧) on the line at parameter 𝜆
+    """
+    
+    x1, y1, z1 = p1
+    x2, y2, z2 = p2
+    
+    def evaluate(λ):
+        x = x1 + λ*(x2 - x1)
+        y = y1 + λ*(y2 - y1)
+        z = z1 + λ*(z2 - z1)
+        return (x, y, z)
+    
+    return evaluate
+
+def count_points_near_line(line, points, distance) -> int:
+    """
+    Count number of points that are within given distance from a parametric line.
+    
+    Args:
+        line (callable): Parametric line function 𝑟(𝜆) = 𝑝1 + 𝜆(𝑝2-𝑝1)
+        points (np.ndarray): Array of points to check, shape (𝑁,3)
+        distance (float): Maximum distance from line
+        
+    Returns:
+        int: Number of points within the distance from the line
+    """
+    
+    # Initialize count
+    count = 0
+    
+    # For each point
+    for point in points:
+        # Find λ that minimizes distance to line by projecting point onto line
+        # Let k = p2-p1, then λ = (point-p1)·k / |k|^2
+        p1 = line(0)  # Get p1 by evaluating at λ=0
+        p2 = line(1)  # Get p2 by evaluating at λ=1
+        k = tuple(b-a for a,b in zip(p1,p2))
+        k_mag_sq = sum(x*x for x in k)
+        
+        # Vector from p1 to point
+        q = tuple(b-a for a,b in zip(p1,point))
+        
+        # Projection coefficient
+        λ = sum(a*b for a,b in zip(q,k)) / k_mag_sq
+        
+        # Get closest point on line
+        closest = line(λ)
+        
+        # Calculate distance from point to line
+        dist = sum((a-b)**2 for a,b in zip(point,closest))**0.5
+        
+        if dist <= distance:
+            count += 1
+            
+    return count
 
 
 if __name__ == "__main__":
