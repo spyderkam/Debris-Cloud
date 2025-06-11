@@ -230,7 +230,7 @@ $$ where $\overline{M}$ is the average mass of fragments with characteristic len
 
 #### Basic Monte Carlo Estimator
 
-The impact probability is estimated through repeated sampling [4--6]:
+The impact probability is estimated through repeated sampling:
 
 $$ \hat{\mathbb{P}}_{\text{impact}} \,=\, \frac{1}{\Upsilon_{\mathrm{trials}}} \sum_{j=1}^{\Upsilon_{\mathrm{trials}}} I_j $$
 
@@ -240,7 +240,7 @@ $$ I_j \,=\, \begin{cases} 1 & \text{if trajectory } j \text{ encounters any fra
 
 #### Variance and Confidence Intervals
 
-The variance of the Monte Carlo estimator is [4, 5]:
+The variance of the Monte Carlo estimator is:
 
 $$ \mathrm{Var}\!\left(\hat{\mathbb{P}}\right) \,=\, \frac{\mathbb{P}(1-\mathbb{P})}{\Upsilon_{\mathrm{trials}}} $$
 
@@ -253,7 +253,7 @@ where $q_{\beta/2}$ is the z-score (standard normal quantile).
 
 #### Adaptive Sample Size with Sequential Refinement
 
-Since $\mathbb{P}$ is unknown a priori, an adaptive sampling approach is employed [5, 6]. Starting with an initial batch of $\Upsilon_0 = 10^4$ trials, the required sample size is updated after each batch:
+Since $\mathbb{P}$ is unknown a priori, an adaptive sampling approach is employed. Starting with an initial batch of $\Upsilon_0 = 10^4$ trials, the required sample size is updated after each batch:
 
 $$ \Upsilon_{\mathrm{next}} \,=\, \frac{q_{\beta/2}^2 (1-\hat{\mathbb{P}}_{\mathrm{current}})}{\hat{\mathbb{P}}_{\mathrm{current}} \epsilon^2} $$
 
