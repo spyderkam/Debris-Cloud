@@ -192,7 +192,7 @@ $$\mathbf{r}(\lambda^\star) = \mathbf{p}_1 + \lambda^\star(\mathbf{p}_2 - \mathb
 
 The minimum distance from point $\mathbf{p}$ to the line is the Euclidean distance between $\mathbf{p}$ and this closest point:
 
-$$l_{\mathrm{min}} = |\mathbf{p} - \mathbf{r}(\lambda^\star)| = \sqrt{\sum_{i=1}^{3}(p_i - r_i(\lambda^\star))^2}$$
+$$\ell_{\mathrm{min}} = |\mathbf{p} - \mathbf{r}(\lambda^\star)| = \sqrt{\sum_{i=1}^{3}(p_i - r_i(\lambda^\star))^2}$$
 
 ### Computational Implementation
 
@@ -268,9 +268,9 @@ where $\mathrm{CI}$ is confidence interval given from the Wilson score method. A
 
 Instead of uniform sampling on the sphere, use importance sampling where samples are drawn from a biased distribution (called the importance distribution) that prioritizes "important" regions of the sample space—those more likely to contribute to the quantity being estimated, and then adjust for this bias by weighting the samples. To sample entry and exit points this way, use the following probability density function (PDF):
 
-$$ \mathcal{P}(\mathbf{p}_{\mathrm{entry}}, \mathbf{p}_{\mathrm{exit}}) \,\propto\, \exp\left[-\frac{l_{\mathrm{min}}^2(\mathbf{p}_{\mathrm{entry}}, \mathbf{p}_{\mathrm{exit}})}{2\sigma_{\mathrm{IS}}^2}\right] $$
+$$ \mathcal{P}(\mathbf{p}_{\mathrm{entry}}, \mathbf{p}_{\mathrm{exit}}) \,\propto\, \exp\left[-\frac{\ell_{\mathrm{min}}^2(\mathbf{p}_{\mathrm{entry}}, \mathbf{p}_{\mathrm{exit}})}{2\sigma_{\mathrm{IS}}^2}\right] $$
 
-where $l_{\mathrm{min}}$ is a function that calculates the minimum distance between the trajectory defined by these points and the peak density sphere at radius $\mu R_{\mathrm{c}}$ and $\sigma_{\mathrm{IS}}$ is the *importance sampling* standard deviation, a tuning parameter that controls how strongly the sampling is biased toward trajectories passing near the peak density radius.[^1]
+where $\ell_{\mathrm{min}}$ is a function that calculates the minimum distance between the trajectory defined by these points and the peak density sphere at radius $\mu R_{\mathrm{c}}$ and $\sigma_{\mathrm{IS}}$ is the *importance sampling* standard deviation, a tuning parameter that controls how strongly the sampling is biased toward trajectories passing near the peak density radius.[^1]
 
 #### Weighted Estimator
 
