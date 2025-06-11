@@ -285,5 +285,5 @@ $$ w_j = \frac{h(\mathbf{p}_{\mathrm{entry}}, \mathbf{p}_{\mathrm{exit}})}{\math
 where and $h$ represents the uniform distribution on the sphere.
 
 
-[^1]: A small $\sigma_{\mathrm{IS}}$ means we heavily favor trajectories close to $\mu R_{\mathrm{c}}$, a large $\sigma_{\mathrm{IS}}$ means the bias is weaker, approaching uniform sampling. Typically, you'd set $\sigma_{\mathrm{IS}} \approx \sigma R_{\mathrm{c}}$ to match the width of your debris cloud distribution.
+[^1]: A small $\sigma_{\mathrm{IS}}$ means we heavily favor trajectories close to $\mu R_{\mathrm{c}}$, a large $\sigma_{\mathrm{IS}}$ means the bias is weaker, approaching uniform sampling. Typically, $\sigma_{\mathrm{IS}} \approx 0.2 R_\mathrm c$ provides a good balance between bias strength and sampling efficiency, though this can be adjusted based on the specific debris distribution.
 
