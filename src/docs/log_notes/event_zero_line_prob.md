@@ -2,7 +2,7 @@
 
 Kam Modjtahedzadeh  
 Boeing Intelligence & Analytics  
-May 20, 2025 -- June 4, 2025
+May 20, 2025 -- June 11, 2025
 
 > I have a spherical shell with radius $R_\mathrm c(t)$ centered at $(x, y, z) = (0, 0, 0)$ at $t=0$. I want to find the probability that a particle in the shell will be within a distance $\ell$ away from a straight line passing through that shell.
 
