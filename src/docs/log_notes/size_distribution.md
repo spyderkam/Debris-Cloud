@@ -135,7 +135,7 @@ The computational formulation employs different increment sizes optimized for ea
 
 **Large fragments** ($0.11$ to $1.0$ meters) use increments of $\Delta L_{\mathrm{c}} = 0.001$ meters, creating $890$ discrete calculation intervals. This increment size provides adequate resolution across the extended size range while maintaining computational efficiency.
 
-### Interval Sampling <!--Size Increment Processing-->
+### Size Increment Processing
 
 To estimate the number of fragments for any particular characteristic length, the following formula is used:
 
