@@ -192,7 +192,7 @@ $$\mathbf{r}(\lambda^\star) = \mathbf{p}_1 + \lambda^\star(\mathbf{p}_2 - \mathb
 
 The minimum distance from point $\mathbf{p}$ to the line is the Euclidean distance between $\mathbf{p}$ and this closest point:
 
-$$\ell_{\mathrm{min}} = |\mathbf{p} - \mathbf{r}(\lambda^\star)| = \sqrt{\sum_{i=1}^{3}(p_i - r_i(\lambda^\star))^2}$$
+$$l_{\mathrm{min}} = |\mathbf{p} - \mathbf{r}(\lambda^\star)| = \sqrt{\sum_{i=1}^{3}(p_i - r_i(\lambda^\star))^2}$$
 
 ### Computational Implementation
 
