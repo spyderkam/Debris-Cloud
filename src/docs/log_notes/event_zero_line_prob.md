@@ -2,7 +2,7 @@
 
 Kam Modjtahedzadeh  
 Boeing Intelligence & Analytics  
-May 20, 2025 -- June 11, 2025
+May 20, 2025 -- June 12, 2025
 
 > I have a spherical shell with radius $R_\mathrm c(t)$ centered at $(x, y, z) = (0, 0, 0)$ at $t=0$. I want to find the probability that a particle in the shell will be within a distance $\ell$ away from a straight line passing through that shell.
 
@@ -272,11 +272,34 @@ $$ \mathcal{P}(\mathbf{p}_{\mathrm{entry}}, \mathbf{p}_{\mathrm{exit}}) \,\propt
 
 where $\ell_{\mathrm{min}}$ is a function that calculates the minimum distance between the trajectory defined by these points and the peak density sphere at radius $\mu R_{\mathrm{c}}$ and $\sigma_{\mathrm{IS}}$ is the *importance sampling* standard deviation, a tuning parameter that controls how strongly the sampling is biased toward trajectories passing near the peak density radius.[^1]
 
+##### Why This Shape
+
+1. **When $\ell_{\mathrm{min}} = 0$** (trajectory passes exactly through the peak density shell):
+    - The exponent is 0
+    - $e^0 = 1$ (maximum value)
+    - These trajectories get the highest sampling probability
+2. **As $\ell_{\mathrm{min}}$ increases** (trajectory gets farther from peak density):
+    - The exponent becomes more negative
+    - The value decreases toward 0
+    - These trajectories get lower sampling probability
+3. **The role of $\sigma_{\mathrm{IS}}$**:
+    - Small $\sigma_{\mathrm{IS}}$: Sharp peak, strong bias (only trajectories very close to peak get sampled)
+    - Large $\sigma_{\mathrm{IS}}$: Gentle peak, weak bias (more like uniform sampling)
+
+##### Why Gaussian
+
+We choose this Gaussian form because:
+
+  1. **It matches your debris distribution** - your fragments follow a Gaussian density distribution, so it makes sense to use a Gaussian importance function
+  2. **Smooth falloff** - trajectories slightly farther from the peak still get sampled, just less frequently
+  3. **Well-understood mathematics** - Gaussian functions have nice properties for analysis
+  4. **Tunable** - the $\sigma_{\mathrm{IS}}$ parameter lets you control how aggressive the biasing is
+
 #### Weighted Estimator
 
 The importance-sampled estimator becomes:
 
-$$ \hat{\mathbb{P}}_{\mathrm{IS}} \,=\, \frac{1}{\Upsilon_{\mathrm{trials}}} \sum_{j=1}^{\Upsilon_{\mathrm{trials}}} I_j \cdot w_j $$
+$$ \hat{\mathbb{P}}_{\mathrm{IS}} \,=\, \frac{1}{\Upsilon_{\mathrm{trials}}} \sum_{j=1}^{\Upsilon_{\mathrm{trials}}} I_j w_j $$
 
 where the weight is:
 
@@ -286,4 +309,5 @@ where and $h$ represents the uniform distribution on the sphere.
 
 
 [^1]: A small $\sigma_{\mathrm{IS}}$ means we heavily favor trajectories close to $\mu R_{\mathrm{c}}$, a large $\sigma_{\mathrm{IS}}$ means the bias is weaker, approaching uniform sampling. Typically, $\sigma_{\mathrm{IS}} \approx 0.2 R_\mathrm c$ provides a good balance between bias strength and sampling efficiency, though this can be adjusted based on the specific debris distribution.
+
 
