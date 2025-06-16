@@ -20,8 +20,9 @@ def calculate_number_density(cloud, Lc, position):
     Calculate number density at a position for fragments of characteristic length Lc.
     Based on Equation (4.4) from cissdcm.md: ρ_N(r, L_c) = ρ(r, L_c)/M * dN/dL_c
     """
+
     # Get mass density at position
-    r = np.sqrt(position[0]**2 + position[1]**2 + position[2]**2)
+    # r = np.sqrt(position[0]**2 + position[1]**2 + position[2]**2)
     
     # Find the appropriate subcloud for this Lc
     subcloud = None
@@ -58,6 +59,7 @@ def collision_rate_along_trajectory(trajectory, cloud, hit_distance, num_points=
     """
     Calculate collision rate along a trajectory using Equation (4.3): Λ(s,ℒ) = ρ_N(r,ℒ) * πℓ²
     """
+
     total_rate = 0.0
     
     # Sample points along the trajectory
@@ -85,6 +87,7 @@ def impact_probability_single_trajectory(trajectory, cloud, hit_distance):
     Calculate impact probability for a single trajectory using Equation (4.2):
     P_impact(L_c, ℒ) = 1 - exp(-∫_ℒ Λ(L_c, ℒ') dℒ')
     """
+
     # Calculate average collision rate along trajectory
     avg_rate = collision_rate_along_trajectory(trajectory, cloud, hit_distance)
     
@@ -104,6 +107,7 @@ def monte_carlo_impact_probability(cloud, hit_distance, num_trials=10000, confid
     Monte Carlo estimation of impact probability using Equations (4.5)-(4.8) from cissdcm.md
     Optimized version with spatial sampling and vectorized operations
     """
+
     print(f"Starting Monte Carlo simulation with {num_trials} trials...")
     start_time = time.time()
     
@@ -183,6 +187,7 @@ def count_points_near_line_optimized(line_func, points_array, distance_threshold
     """
     Optimized version of count_points_near_line using vectorized operations
     """
+
     if len(points_array) == 0:
         return 0
     
