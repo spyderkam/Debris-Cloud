@@ -246,6 +246,6 @@ This project implements scientific research methodologies for orbital debris ana
 
 ---
 
-**Authors**: Kamyar Modjtahedzadeh, Claude 3.7 Sonnet, Grok 3, Claude 3.5 Sonnet V2  
+**Authors**: Kamyar Modjtahedzadeh
 **Institution**: Boeing Intelligence & Analytics  
 **Date**: May 2025 - June 2025
