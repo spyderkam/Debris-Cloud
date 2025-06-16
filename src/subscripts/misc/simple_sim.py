@@ -5,7 +5,7 @@ __date__ = "June 2, 2025"
 
 """
     Simple simulation of a debris cloud. 
-    Rand event zero simulation
+    Random event zero simulation.
 """
 
 from src.gdmpidc import *
