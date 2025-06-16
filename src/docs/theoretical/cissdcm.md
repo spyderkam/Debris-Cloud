@@ -1,3 +1,4 @@
+
 # Computational Implementation of Spherically Symmetric Debris Cloud Models
 
 Kamyar Modjtahedzadeh  
@@ -258,7 +259,10 @@ The total number of fragments is:
 
 $$\Upsilon_{\mathrm{total}} = \Upsilon_{\mathrm{small}} + \Upsilon_{\mathrm{medium}} + \Upsilon_{\mathrm{large}} = 13489.5M_{\mathrm{parent}}^{0.75} \tag{3.4}$$
 
-The percentage distributions are: • Small fragments: 99.95% • Medium fragments: 0.023% • Large fragments: 0.032%
+The percentage distributions are: 
+&nbsp;&nbsp;&nbsp;&nbsp;• Small fragments: $99.95\%$  
+&nbsp;&nbsp;&nbsp;&nbsp;• Medium fragments: $0.023\%$ 
+&nbsp;&nbsp;&nbsp;&nbsp;• Large fragments: $0.032\%$  
 
 #### 3.1.2 Intra-Category Distribution
 
@@ -360,41 +364,41 @@ with $h$ representing the uniform distribution on the sphere. Without weights, e
 
 ## References
 
-[1]  Modjtahedzadeh, K. (2025). _Gaussian distribution model of post-impact debris cloud_. Manuscript in preparation. Boeing Intelligence & Analytics.  
+&nbsp;&nbsp;&nbsp;[1]  Modjtahedzadeh, K. (2025). _Gaussian distribution model of post-impact debris cloud_. Manuscript in preparation. Boeing Intelligence & Analytics.  
   
-[2]  Ellgen, P. (2020). _Probability density functions for velocity components in spherical coordinates_. In _Thermodynamics and chemical equilibrium_. LibreTexts Chemistry.  
+&nbsp;&nbsp;&nbsp;[2]  Ellgen, P. (2020). _Probability density functions for velocity components in spherical coordinates_. In _Thermodynamics and chemical equilibrium_. LibreTexts Chemistry.  
   
-[3]  Johnson, N. L., Krisko, P. H., Liou, J.-C., & Anz-Meador, P. D. (2001). NASA's new breakup model of EVOLVE 4.0. _Advances in Space Research,_ **28**(9), 1377–1384.  
+&nbsp;&nbsp;&nbsp;[3]  Johnson, N. L., Krisko, P. H., Liou, J.-C., & Anz-Meador, P. D. (2001). NASA's new breakup model of EVOLVE 4.0. _Advances in Space Research,_ **28**(9), 1377–1384.  
   
-[4]  Davis-Ross, K., & Chunn, J. (2021). _An introduction to probability and simulation_. Chapman and Hall/CRC.  
+&nbsp;&nbsp;&nbsp;[4]  Davis-Ross, K., & Chunn, J. (2021). _An introduction to probability and simulation_. Chapman and Hall/CRC.  
   
-[5]  Ross, S. M. (2019). _Introduction to probability models_ (12th ed.). Academic Press.  
+&nbsp;&nbsp;&nbsp;[5]  Ross, S. M. (2019). _Introduction to probability models_ (12th ed.). Academic Press.  
   
-[6]  Law, A. M. (2015). _Simulation modeling and analysis_ (5th ed.). McGraw-Hill.  
+&nbsp;&nbsp;&nbsp;[6]  Law, A. M. (2015). _Simulation modeling and analysis_ (5th ed.). McGraw-Hill.  
   
-[7]  Devroye, L. (1986). _Non-uniform random variate generation_. Springer-Verlag.  
+&nbsp;&nbsp;&nbsp;[7]  Devroye, L. (1986). _Non-uniform random variate generation_. Springer-Verlag.  
   
-[8]  Gentle, J. E. (2003). _Random number generation and Monte Carlo methods_ (2nd ed.). Springer.  
+&nbsp;&nbsp;&nbsp;[8]  Gentle, J. E. (2003). _Random number generation and Monte Carlo methods_ (2nd ed.). Springer.  
   
-[9]  Chapman, S., & Cowling, T. G. (1970). _The mathematical theory of non-uniform gases_ (3rd ed.). Cambridge University Press.  
+&nbsp;&nbsp;&nbsp;[9]  Chapman, S., & Cowling, T. G. (1970). _The mathematical theory of non-uniform gases_ (3rd ed.). Cambridge University Press.  
   
-[10] Duderstadt, J. J., & Hamilton, L. J. (1976). _Nuclear reactor analysis_. John Wiley & Sons.  
+&nbsp;&nbsp;&nbsp;[10] Duderstadt, J. J., & Hamilton, L. J. (1976). _Nuclear reactor analysis_. John Wiley & Sons.  
   
-[11] Letizia, F., Colombo, C., & Lewis, H. G. (2016). Collision probability due to space debris clouds through a continuum approach. _Journal of Guidance, Control, and Dynamics,_ **39**(10), 2240–2249.  
+&nbsp;&nbsp;&nbsp;[11] Letizia, F., Colombo, C., & Lewis, H. G. (2016). Collision probability due to space debris clouds through a continuum approach. _Journal of Guidance, Control, and Dynamics,_ **39**(10), 2240–2249.  
   
-[12] Haight, F. A. (1967). _Handbook of the Poisson distribution_. John Wiley & Sons.  
+&nbsp;&nbsp;&nbsp;[12] Haight, F. A. (1967). _Handbook of the Poisson distribution_. John Wiley & Sons.  
   
- [13] McQuarrie, D. A. (2000). _Statistical mechanics_. University Science Books.  
+&nbsp;&nbsp;&nbsp;[13] McQuarrie, D. A. (2000). _Statistical mechanics_. University Science Books.  
   
- [14] Perkins, D. H. (2000). _Introduction to high energy physics_ (4th ed.). Cambridge University Press.  
+&nbsp;&nbsp;&nbsp;[14] Perkins, D. H. (2000). _Introduction to high energy physics_ (4th ed.). Cambridge University Press.  
   
-[15] Grün, E., Zook, H. A., Fechtig, H., & Giese, R. H. (1985). Collisional balance of the meteoritic complex. _Icarus,_ **62**(2), 244–272.  
+&nbsp;&nbsp;&nbsp;[15] Grün, E., Zook, H. A., Fechtig, H., & Giese, R. H. (1985). Collisional balance of the meteoritic complex. _Icarus,_ **62**(2), 244–272.  
   
-[16] Bird, G. A. (1994). _Molecular gas dynamics and the direct simulation of gas flows_. Oxford University Press.  
+&nbsp;&nbsp;&nbsp;[16] Bird, G. A. (1994). _Molecular gas dynamics and the direct simulation of gas flows_. Oxford University Press.  
   
- [17] Wilson, E. B. (1927). Probable inference, the law of succession, and statistical inference. _Journal of the American Statistical Association,_ **22**(158), 209–212.  
+ &nbsp;&nbsp;&nbsp;[17] Wilson, E. B. (1927). Probable inference, the law of succession, and statistical inference. _Journal of the American Statistical Association,_ **22**(158), 209–212.  
   
-[18] Kloek, T., & van Dijk, H. K. (1978). Efficient estimation of income distribution parameters. _Journal of Econometrics,_ **8**(1), 61–74.  
+&nbsp;&nbsp;&nbsp;[18] Kloek, T., & van Dijk, H. K. (1978). Efficient estimation of income distribution parameters. _Journal of Econometrics,_ **8**(1), 61–74.  
 
 
 [^1]: It is called $\xi_{\mathrm{inter}}$ instead of $\xi_{\mathrm{middle}}$ because this function does not represent a unique statistical distribution for medium-sized fragments. Instead, it performs an interpolation (weighted blending) between the small and large fragment distributions. The name describes its mathematical operation rather than just the size category. Without interpolation, a fragment at 7.9 cm would use entirely different statistical parameters than one at 8.1 cm, creating an unrealistic discontinuity in physical properties. Linear interpolation creates a gradual transition: At exactly 8 cm almost entirely small fragment distribution is used, at 9.5 cm (midpoint) weighting of both distributions is used, and at exactly 11 cm almost the entirety of large fragment distribution is used. This represents the physical reality that fragmentation processes produce a continuous spectrum of fragment properties rather than discrete categories with sharp boundaries.
