@@ -5,7 +5,7 @@ __author__ = "Kamyar Modjtahedzadeh"
 __date__ = "June 2, 2025"
 
 """
-Implementation of Section 4 from cissdcm.md: Impact Probability at Event Zero
+Implementation of Section 4 from cissdcm.md:        bability at Event Zero
 Monte Carlo estimation of collision probability for trajectories through debris cloud.
 """
 
