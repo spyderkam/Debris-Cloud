@@ -294,16 +294,17 @@ def main():
     medium_count = 0
     large_count = 0
     
-    # Count fragments that are actually inside the cloud radius
-    for category in cloud.subclouds:
-        for Lc, subcloud in cloud.subclouds[category].items():
-            inside_fragments = [frag for frag in subcloud.fragments if np.linalg.norm(frag.pos) <= cloud.radius]
-            if category == 'small':
-                small_count += len(inside_fragments)
-            elif category == 'medium':
-                medium_count += len(inside_fragments)
-            elif category == 'large':
-                large_count += len(inside_fragments)
+    # Count fragments by category from cloud.all_points directly
+    for fragment in cloud.all_points:
+        # Determine category based on fragment size
+        # Note: cloud.all_points only contains Fragment objects with size attribute
+        if hasattr(fragment, 'size'):
+            if fragment.size < 0.08:  # < 8 cm
+                small_count += 1
+            elif fragment.size <= 0.11:  # 8-11 cm
+                medium_count += 1
+            else:  # > 11 cm
+                large_count += 1
     
     print(f"\nFragment distribution (inside cloud radius only):")
     print(f"  Small fragments (< 8 cm):  {small_count:,} ({100*small_count/len(cloud.all_points):.1f}%)")
