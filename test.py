@@ -3,7 +3,8 @@
 __author__ = "Kamyar Modjtahedzadeh"
 
 """
-    Testing
+    Simple simulation of a debris cloud. 
+    Random event zero simulation.
 """
 
 from src.gdmpidc import *

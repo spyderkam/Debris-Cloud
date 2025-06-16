@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 __author__ = "Claude 4.0 Sonnet"
 __date__ = "June 15, 2025 - June 16, 2025"
@@ -134,7 +135,8 @@ def monte_carlo_impact_probability(cloud, hit_distance, num_trials=10000, confid
             print(f"Trial {trial}/{num_trials} ({100*trial/num_trials:.1f}%) - ETA: {eta:.1f}s")
         
         # Generate random entry and exit points on cloud sphere
-        p1, p2 = get_entry_exit(cloud.radius, center=(0, 0, 0), diameter=False)
+        #p1, p2 = get_entry_exit(cloud.radius, center=(0, 0, 0), diameter=False)
+        p1, p2 = importance_sample_entry_exit(cloud.radius, center=(0, 0, 0), avoid_diameter=False)
         trajectory = line_parametric_3d(p1, p2)
         
         # Optimized hit detection using vectorized operations
@@ -268,17 +270,15 @@ def adaptive_monte_carlo(cloud, hit_distance, target_precision=0.05, max_trials=
     
     return result
 
-def main():
+def main(parent_mass:"kilograms", parent_radius:"meters") -> None:
     """Main function implementing Section 4 of cissdcm.md"""
     
     print("#" * 60)
     print("IMPACT PROBABILITY AT EVENT ZERO")
-    print("Implementation of Section 4 from CISSDCM")
+    print("Monte Carlo Implementation of Collision Probability Analysis")
     print("#" * 60)
     
-    # Create debris cloud
-    parent_mass = 750    # kilograms
-    parent_radius = 0.2  # meters
+    # Initiate hit distance
     hit_distance = 1.0   # meters
     
     print(f"\nCreating debris cloud...")
@@ -316,9 +316,9 @@ def main():
     print(f"  Large fragments (> 11 cm):  {large_count:,} ({100*large_count/len(cloud.all_points):.3f}%)")
     
     # Monte Carlo impact probability calculation
-    print(f"\n" + "="*60)
+    print(f"\n" + "#"*60)
     print("MONTE CARLO IMPACT PROBABILITY CALCULATION")
-    print("="*60)
+    print("#"*60)
     
     # Standard Monte Carlo
     print(f"\n1. Standard Monte Carlo Estimation:")
@@ -348,11 +348,11 @@ def main():
     
     for hd in hit_distances:
         result = monte_carlo_impact_probability(cloud, hd, num_trials=5000)
-        print(f"  Hit distance {hd:3.1f} m: P = {result['probability']:.6f} ± {result['standard_error']:.6f}")
+        print(f"  Hit distance {hd:3.1f} m: ℙ = {result['probability']:.6f} ± {result['standard_error']:.6f}")
     
-    print(f"\n" + "="*60)
+    print(f"\n" + "#"*60)
     print("ANALYSIS COMPLETE")
-    print("="*60)
+    print("#"*60)
 
 if __name__ == "__main__":
-    main()
+    main(parent_mass=10000, parent_radius=1000)  # large asteroid
