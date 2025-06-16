@@ -263,14 +263,19 @@ def adaptive_monte_carlo(cloud, hit_distance, target_precision=0.05, max_trials=
     
     return result
 
-def main(parent_mass:'kg', parent_radius:'m', hit_distance:'m') -> None:
+def main():
     """Main function implementing Section 4 of cissdcm.md"""
     
     print("#" * 60)
     print("IMPACT PROBABILITY AT EVENT ZERO")
-    print("Implementation of Section 4 from cissdcm.md")
+    print("Implementation of Section 4 from CISSDCM")
     print("#" * 60)
-       
+    
+    # Create debris cloud
+    parent_mass = 100e3  # kg
+    parent_radius = 10   # meters
+    hit_distance = 1.0   # meters
+    
     print(f"\nCreating debris cloud...")
     print(f"Parent mass: {parent_mass:.0f} kg")#/1000:.0f} kg")
     print(f"Parent radius: {parent_radius} m") 
@@ -334,4 +339,4 @@ def main(parent_mass:'kg', parent_radius:'m', hit_distance:'m') -> None:
     print("="*60)
 
 if __name__ == "__main__":
-    main(100e3, 10, 1)
+    main()
