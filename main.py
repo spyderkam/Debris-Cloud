@@ -268,7 +268,7 @@ def main():
     
     print("#" * 60)
     print("IMPACT PROBABILITY AT EVENT ZERO")
-    print("Implementation of Section 4 from cissdcm.md")
+    print("Implementation of Section 4 from CISSDCM")
     print("#" * 60)
     
     # Create debris cloud
