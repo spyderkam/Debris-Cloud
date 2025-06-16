@@ -272,6 +272,10 @@ $$ \mathcal{P}(\mathbf{p}_{\mathrm{entry}}, \mathbf{p}_{\mathrm{exit}}) \,\propt
 
 where $\ell_{\mathrm{min}}$ is a function that calculates the minimum distance between the trajectory defined by these points and the peak density sphere at radius $\mu R_{\mathrm{c}}$ and $\sigma_{\mathrm{IS}}$ is the *importance sampling* standard deviation, a tuning parameter that controls how strongly the sampling is biased toward trajectories passing near the peak density radius.[^1]
 
+
+[^1]: A small $\sigma_{\mathrm{IS}}$ means we heavily favor trajectories close to $\mu R_{\mathrm{c}}$, a large $\sigma_{\mathrm{IS}}$ means the bias is weaker, approaching uniform sampling. Typically, $\sigma_{\mathrm{IS}} \approx 0.2 R_\mathrm c$ provides a good balance between bias strength and sampling efficiency, though this can be adjusted based on the specific debris distribution.
+
+
 ##### Why This Shape
 
 1. **When $\ell_{\mathrm{min}} = 0$** (trajectory passes exactly through the peak density shell):
@@ -307,7 +311,262 @@ $$ w_j = \frac{h(\mathbf{p}_{\mathrm{entry}}, \mathbf{p}_{\mathrm{exit}})}{\math
 
 where and $h$ represents the uniform distribution on the sphere.
 
+## Sample Results for Large Asteroid
 
-[^1]: A small $\sigma_{\mathrm{IS}}$ means we heavily favor trajectories close to $\mu R_{\mathrm{c}}$, a large $\sigma_{\mathrm{IS}}$ means the bias is weaker, approaching uniform sampling. Typically, $\sigma_{\mathrm{IS}} \approx 0.2 R_\mathrm c$ provides a good balance between bias strength and sampling efficiency, though this can be adjusted based on the specific debris distribution.
+```
+############################################################
+IMPACT PROBABILITY AT EVENT ZERO
+Monte Carlo Implementation of Collision Probability Analysis
+############################################################
 
+Creating debris cloud...
+Parent mass: 10000 kg
+Parent radius: 1000 m
+Hit distance threshold: 1.0 m
+
+Cloud created in 14.08 seconds
+Total fragments: 804,105
+Cloud radius: 1100.64 m 
+
+Fragment distribution (inside cloud radius only):
+  Small fragments (< 8 cm):  804,077 (99.997%)
+  Medium fragments (8-11 cm): 28 (0.003%)
+  Large fragments (> 11 cm):  0 (0.000%)
+
+############################################################
+MONTE CARLO IMPACT PROBABILITY CALCULATION
+############################################################
+
+1. Standard Monte Carlo Estimation:
+Starting Monte Carlo simulation with 10000 trials...        
+Using 40,205 sampled fragments (5.0% of total)
+Trial 0/10000 (0.0%) - ETA: 0.0s
+Trial 1000/10000 (10.0%) - ETA: 25.3s
+Trial 2000/10000 (20.0%) - ETA: 22.3s
+Trial 3000/10000 (30.0%) - ETA: 19.0s
+Trial 4000/10000 (40.0%) - ETA: 16.1s
+Trial 5000/10000 (50.0%) - ETA: 13.4s
+Trial 6000/10000 (60.0%) - ETA: 10.7s
+Trial 7000/10000 (70.0%) - ETA: 8.0s
+Trial 8000/10000 (80.0%) - ETA: 5.3s
+Trial 9000/10000 (90.0%) - ETA: 2.7s
+
+Results:
+  Impact Probability: 0.005200
+  Hits: 52 out of 10,000 trials
+  Fragments Used: 40,205 (5.0% of total)
+  95% Confidence Interval: [0.003968, 0.006812]
+  Standard Error: 0.000719
+  Computation Time: 26.48 seconds
+
+2. Adaptive Monte Carlo with Sequential Refinement:        
+Starting adaptive Monte Carlo with target precision 5.0%...
+Starting Monte Carlo simulation with 1000 trials...        
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/1000 (0.0%) - ETA: 0.0s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 20.3s
+Trial 2000/5000 (40.0%) - ETA: 15.1s
+Trial 3000/5000 (60.0%) - ETA: 10.3s
+Trial 4000/5000 (80.0%) - ETA: 5.9s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 21.0s
+Trial 2000/5000 (40.0%) - ETA: 15.5s
+Trial 3000/5000 (60.0%) - ETA: 10.6s
+Trial 4000/5000 (80.0%) - ETA: 5.8s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 21.3s
+Trial 2000/5000 (40.0%) - ETA: 16.8s
+Trial 3000/5000 (60.0%) - ETA: 11.6s
+Trial 4000/5000 (80.0%) - ETA: 6.1s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 20.7s
+Trial 2000/5000 (40.0%) - ETA: 15.2s
+Trial 3000/5000 (60.0%) - ETA: 10.1s
+Trial 4000/5000 (80.0%) - ETA: 5.0s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 20.6s
+Trial 2000/5000 (40.0%) - ETA: 15.2s
+Trial 3000/5000 (60.0%) - ETA: 10.0s
+Trial 4000/5000 (80.0%) - ETA: 4.9s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 25.5s
+Trial 2000/5000 (40.0%) - ETA: 17.4s
+Trial 3000/5000 (60.0%) - ETA: 11.0s
+Trial 4000/5000 (80.0%) - ETA: 5.3s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 18.6s
+Trial 2000/5000 (40.0%) - ETA: 13.8s
+Trial 3000/5000 (60.0%) - ETA: 9.2s
+Trial 4000/5000 (80.0%) - ETA: 4.6s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 18.2s
+Trial 2000/5000 (40.0%) - ETA: 13.5s
+Trial 3000/5000 (60.0%) - ETA: 9.0s
+Trial 4000/5000 (80.0%) - ETA: 4.5s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 18.3s
+Trial 2000/5000 (40.0%) - ETA: 13.6s
+Trial 3000/5000 (60.0%) - ETA: 9.1s
+Trial 4000/5000 (80.0%) - ETA: 4.7s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 19.5s
+Trial 2000/5000 (40.0%) - ETA: 14.1s
+Trial 3000/5000 (60.0%) - ETA: 9.6s
+Trial 4000/5000 (80.0%) - ETA: 5.0s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 20.1s
+Trial 2000/5000 (40.0%) - ETA: 15.1s
+Trial 3000/5000 (60.0%) - ETA: 10.0s
+Trial 4000/5000 (80.0%) - ETA: 5.0s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 20.1s
+Trial 2000/5000 (40.0%) - ETA: 14.4s
+Trial 3000/5000 (60.0%) - ETA: 9.5s
+Trial 4000/5000 (80.0%) - ETA: 4.8s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 18.7s
+Trial 2000/5000 (40.0%) - ETA: 14.5s
+Trial 3000/5000 (60.0%) - ETA: 9.7s
+Trial 4000/5000 (80.0%) - ETA: 4.8s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 18.3s
+Trial 2000/5000 (40.0%) - ETA: 13.5s
+Trial 3000/5000 (60.0%) - ETA: 9.3s
+Trial 4000/5000 (80.0%) - ETA: 4.7s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 18.2s
+Trial 2000/5000 (40.0%) - ETA: 14.3s
+Trial 3000/5000 (60.0%) - ETA: 9.7s
+Trial 4000/5000 (80.0%) - ETA: 4.9s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 21.2s
+Trial 2000/5000 (40.0%) - ETA: 16.9s
+Trial 3000/5000 (60.0%) - ETA: 10.9s
+Trial 4000/5000 (80.0%) - ETA: 5.3s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 20.7s
+Trial 2000/5000 (40.0%) - ETA: 15.0s
+Trial 3000/5000 (60.0%) - ETA: 9.7s
+Trial 4000/5000 (80.0%) - ETA: 4.8s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 18.7s
+Trial 2000/5000 (40.0%) - ETA: 14.3s
+Trial 3000/5000 (60.0%) - ETA: 9.7s
+Trial 4000/5000 (80.0%) - ETA: 4.9s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 19.3s
+Trial 2000/5000 (40.0%) - ETA: 14.5s
+Trial 3000/5000 (60.0%) - ETA: 9.6s
+Trial 4000/5000 (80.0%) - ETA: 4.8s
+Adding 5000 more trials...
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 20.4s
+Trial 2000/5000 (40.0%) - ETA: 14.9s
+Trial 3000/5000 (60.0%) - ETA: 9.8s
+Trial 4000/5000 (80.0%) - ETA: 4.8s
+
+Adaptive Results:
+  Impact Probability: 0.012941
+  Hits: 1,307 out of 101,000 trials
+  95% Confidence Interval: [0.012262, 0.013656]
+  Total Computation Time: 5.10 seconds
+
+3. Sensitivity Analysis - Different Hit Distances:
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 18.3s
+Trial 2000/5000 (40.0%) - ETA: 13.6s
+Trial 3000/5000 (60.0%) - ETA: 9.0s
+Trial 4000/5000 (80.0%) - ETA: 4.5s
+  Hit distance 0.5 m: ℙ = 0.002400 ± 0.000692
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 20.2s
+Trial 2000/5000 (40.0%) - ETA: 15.1s
+Trial 3000/5000 (60.0%) - ETA: 10.1s
+Trial 4000/5000 (80.0%) - ETA: 5.0s
+  Hit distance 1.0 m: ℙ = 0.014000 ± 0.001662
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 17.8s
+Trial 2000/5000 (40.0%) - ETA: 13.4s
+Trial 3000/5000 (60.0%) - ETA: 8.9s
+Trial 4000/5000 (80.0%) - ETA: 4.4s
+  Hit distance 2.0 m: ℙ = 0.053600 ± 0.003185
+Starting Monte Carlo simulation with 5000 trials...
+Using 80,410 sampled fragments (10.0% of total)
+Trial 0/5000 (0.0%) - ETA: 0.0s
+Trial 1000/5000 (20.0%) - ETA: 18.3s
+Trial 2000/5000 (40.0%) - ETA: 13.6s
+Trial 3000/5000 (60.0%) - ETA: 9.0s
+Trial 4000/5000 (80.0%) - ETA: 4.5s
+  Hit distance 5.0 m: ℙ = 0.258400 ± 0.006191
+
+############################################################
+ANALYSIS COMPLETE
+############################################################
+```
 
