@@ -289,12 +289,23 @@ def main():
     print(f"Total fragments: {len(cloud.all_points):,}")
     print(f"Cloud radius: {cloud.radius:.2f} m")
     
-    # Fragment distribution by category
-    small_count = sum(len(sc.fragments) for sc in cloud.subclouds['small'].values())
-    medium_count = sum(len(sc.fragments) for sc in cloud.subclouds['medium'].values())
-    large_count = sum(len(sc.fragments) for sc in cloud.subclouds['large'].values())
+    # Fragment distribution by category (only fragments inside cloud radius)
+    small_count = 0
+    medium_count = 0
+    large_count = 0
     
-    print(f"\nFragment distribution:")
+    # Count fragments that are actually inside the cloud radius
+    for category in cloud.subclouds:
+        for Lc, subcloud in cloud.subclouds[category].items():
+            inside_fragments = [frag for frag in subcloud.fragments if np.linalg.norm(frag.pos) <= cloud.radius]
+            if category == 'small':
+                small_count += len(inside_fragments)
+            elif category == 'medium':
+                medium_count += len(inside_fragments)
+            elif category == 'large':
+                large_count += len(inside_fragments)
+    
+    print(f"\nFragment distribution (inside cloud radius only):")
     print(f"  Small fragments (< 8 cm):  {small_count:,} ({100*small_count/len(cloud.all_points):.1f}%)")
     print(f"  Medium fragments (8-11 cm): {medium_count:,} ({100*medium_count/len(cloud.all_points):.1f}%)")
     print(f"  Large fragments (> 11 cm):  {large_count:,} ({100*large_count/len(cloud.all_points):.1f}%)")
