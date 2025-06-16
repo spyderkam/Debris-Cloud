@@ -246,6 +246,6 @@ This project implements scientific research methodologies for orbital debris ana
 
 ---
 
-**Authors**: Kamyar Modjtahedzadeh
+**Authors**: Kamyar Modjtahedzadeh  
 **Institution**: Boeing Intelligence & Analytics  
 **Date**: May 2025 - June 2025
