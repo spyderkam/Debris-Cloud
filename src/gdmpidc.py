@@ -65,8 +65,9 @@ class Cloud:
         relavent_points = []
         for category in self.subclouds:
             for Lc, sub_cloud in self.subclouds[category].items():
-                sub_points = sub_cloud.sample_positions()
-                inside_points = [point for point in sub_points if np.linalg.norm(point) <= sub_cloud.radius]
+                # Use the already initialized fragment positions instead of resampling
+                fragment_positions = [frag.pos for frag in sub_cloud.fragments]
+                inside_points = [point for point in fragment_positions if np.linalg.norm(point) <= sub_cloud.radius]
                 relavent_points.extend(inside_points)
         self.all_points = relavent_points
 
