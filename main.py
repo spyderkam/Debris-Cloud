@@ -277,12 +277,12 @@ def main():
     print("#" * 60)
     
     # Create debris cloud
-    parent_mass = 100e3  # kg
-    parent_radius = 10   # meters
+    parent_mass = 750    # kilograms
+    parent_radius = 0.2  # meters
     hit_distance = 1.0   # meters
     
     print(f"\nCreating debris cloud...")
-    print(f"Parent mass: {parent_mass:.0f} kg")#/1000:.0f} kg")
+    print(f"Parent mass: {parent_mass:.0f} kg")
     print(f"Parent radius: {parent_radius} m") 
     print(f"Hit distance threshold: {hit_distance} m")
     
