@@ -268,7 +268,7 @@ def main(parent_mass:'kg', parent_radius:'m', hit_distance:'m') -> None:
     
     print("#" * 60)
     print("IMPACT PROBABILITY AT EVENT ZERO")
-    print("Implementation of Section 4 from CISSDCM")
+    print("Implementation of Section 4 from cissdcm.md")
     print("#" * 60)
        
     print(f"\nCreating debris cloud...")
