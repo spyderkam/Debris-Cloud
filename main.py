@@ -1,20 +1,19 @@
-
 #!/usr/bin/env python3
 
-__author__ = "Kamyar Modjtahedzadeh"
-__date__ = "June 2, 2025"
+__author__ = "Claude 4.0 Sonnet"
+__date__ = "June 15, 2025"
 
 """
-Implementation of Section 4 from cissdcm.md:        bability at Event Zero
+Implementation of Section 4 from cissdcm.md: Probability at Event Zero
 Monte Carlo estimation of collision probability for trajectories through debris cloud.
 """
 
+from scipy import stats
 from src.gdmpidc import *
 from src.gdmpidc_tools import *
 from src.geometric_analysis import *
 import numpy as np
 import time
-from scipy import stats
 
 def calculate_number_density(cloud, Lc, position):
     """
@@ -57,7 +56,7 @@ def calculate_number_density(cloud, Lc, position):
 
 def collision_rate_along_trajectory(trajectory, cloud, hit_distance, num_points=100):
     """
-    Calculate collision rate along a trajectory using Equation (4.3): Λ(s,L) = ρ_N(r,L) * π*ℓ²
+    Calculate collision rate along a trajectory using Equation (4.3): Λ(s,ℒ) = ρ_N(r,ℒ) * πℓ²
     """
     total_rate = 0.0
     
@@ -84,7 +83,7 @@ def collision_rate_along_trajectory(trajectory, cloud, hit_distance, num_points=
 def impact_probability_single_trajectory(trajectory, cloud, hit_distance):
     """
     Calculate impact probability for a single trajectory using Equation (4.2):
-    P_impact(L_c, L) = 1 - exp(-∫_L Λ(L_c, L') dL')
+    P_impact(L_c, ℒ) = 1 - exp(-∫_ℒ Λ(L_c, ℒ') dℒ')
     """
     # Calculate average collision rate along trajectory
     avg_rate = collision_rate_along_trajectory(trajectory, cloud, hit_distance)
