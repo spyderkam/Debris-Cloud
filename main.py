@@ -101,7 +101,7 @@ def impact_probability_single_trajectory(trajectory, cloud, hit_distance):
 
 def monte_carlo_impact_probability(cloud, hit_distance, num_trials=10000, confidence_level=0.95):
     """
-    Monte Carlo estimation of impact probability using Equations (4.5)-(4.10) from cissdcm.md
+    Monte Carlo estimation of impact probability using Equations (4.5)-(4.8) from cissdcm.md
     """
     print(f"Starting Monte Carlo simulation with {num_trials} trials...")
     start_time = time.time()
