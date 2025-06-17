@@ -1,5 +1,4 @@
-
-# Gaussian Distribution Model of Post-Impact Debris Cloud (GDMPIDC)
+# Gaussian Distribution Model of Post-Impact Debris Cloud
 
 A comprehensive computational model for simulating and analyzing satellite debris clouds following fragmentation events in orbit. This project implements the theoretical framework described in the accompanying research papers for modeling the spatial density distribution of fragments using Gaussian functions.
 
