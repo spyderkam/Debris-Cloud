@@ -144,7 +144,7 @@ Where:
 Using non-homogeneous Poisson process theory:
 
 ```
-P_impact = 1 - exp[-∫ Λ(s) ds]
+ℙ_impact = 1 - exp[-∫ Λ(s) ds]
 ```
 
 Where `Λ(s)` is the collision rate along trajectory path `s`.
