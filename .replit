@@ -3,6 +3,7 @@ modules = ["python-3.11"]
 
 [nix]
 channel = "stable-24_05"
+packages = ["libxcrypt", "pkg-config", "xsimd"]
 
 [unitTest]
 language = "python3"
