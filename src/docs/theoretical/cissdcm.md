@@ -289,15 +289,15 @@ where $\varepsilon$ is an infinitesimal increment. With this formulation, $\Upsi
 
 ## 4 Impact Probability at Event Zero
 
-Given the parent mass, initial cloud radius, cumulative distribution function, $\rho(r, L_{\mathrm{c}})$, and hit distance threshold, the impact probability will be calculated such that a linear trajectory passing through random entry and exit points on the cloud sphere at time $t = 0$ will encounter at least one fragment within distance $\ell$. A fundamental result in stochastic processes from Poisson process theory is the application of a non-homogeneous Poisson process [12]; since encounters occur randomly at rate (per unit length) $\Lambda(L')$ along path $L'$, then the number of encounters follows a Poisson distribution with parameter $\int\Lambda dL'$. The probability of at least one encounter is $1-P_{\mathrm{avoid}} = 1-\exp[-\int\Lambda dL']$ [10, 12]. The total impact probability is computed as the weighted sum over all fragment size categories:
+Given the parent mass, initial cloud radius, cumulative distribution function, $\rho(r, L_{\mathrm{c}})$, and hit distance threshold, the impact probability will be calculated such that a linear trajectory passing through random entry and exit points on the cloud sphere at time $t = 0$ will encounter at least one fragment within distance $\ell$. A fundamental result in stochastic processes from Poisson process theory is the application of a non-homogeneous Poisson process [12]; since encounters occur randomly at rate (per unit length) $\Lambda(L')$ along path $L'$, then the number of encounters follows a Poisson distribution with parameter $\int\Lambda dL'$. The probability of at least one encounter is $1-\mathbb{P}_{\mathrm{avoid}} = 1-\exp[-\int\Lambda dL']$ [10, 12]. The total impact probability is computed as the weighted sum over all fragment size categories:
 
-$$P_{\mathrm{impact}} = \sum_{L_{\mathrm{c}} =L_{\mathrm{min}}}^{L_{\mathrm{max}}} f \cdot P_{\mathrm{impact}}(L_{\mathrm{c}}) , \tag{4.1}$$
+$$\mathbb{P}_{\mathrm{impact}} = \sum_{L_{\mathrm{c}} =L_{\mathrm{min}}}^{L_{\mathrm{max}}} f \cdot \mathbb{P}_{\mathrm{impact}}(L_{\mathrm{c}}) , \tag{4.1}$$
 
 where $f$ represents the fraction of fragments given from percentage distributions per size category, as in Section 3.1.1.
 
 For a specific characteristic length, the probability of impact along a trajectory is [11]:
 
-$$P_{\mathrm{impact}}(L_{\mathrm{c}}, L) = 1-\exp\left[-\int_L \Lambda(L_{\mathrm{c}}, L'),dL'\right] . \tag{4.2}$$
+$$\mathbb{P}_{\mathrm{impact}}(L_{\mathrm{c}}, L) = 1-\exp\left[-\int_L \Lambda(L_{\mathrm{c}}, L'),dL'\right] . \tag{4.2}$$
 
 The collision rate at position $r$ along trajectory $L$ is [9, 13–16]:
 
@@ -315,7 +315,7 @@ where $M$ is the average mass of fragments with characteristic length $L_{\mathr
 
 The impact probability is estimated through repeated sampling [4–6]:
 
-$$\hat{P}_{\mathrm{impact}} = \frac{1}{\Upsilon_{\mathrm{trials}}} \sum_{j=1}^{\Upsilon_{\mathrm{trials}}} I_j, \tag{4.5}$$
+$$\hat{\mathbb{P}}_{\mathrm{impact}} = \frac{1}{\Upsilon_{\mathrm{trials}}} \sum_{j=1}^{\Upsilon_{\mathrm{trials}}} I_j, \tag{4.5}$$
 
 where $I_j$ is an indicator function:
 
@@ -325,25 +325,25 @@ This indicator function captures whether a given trajectory $j$ results in a col
 
 The variance of the Monte Carlo estimator is [5, 6]:
 
-$$\text{Var}(P) = \frac{P(1-P)}{\Upsilon_{\mathrm{trials}}} . \tag{4.7}$$
+$$\text{Var}(\mathbb{P}) = \frac{\mathbb{P}(1-\mathbb{P})}{\Upsilon_{\mathrm{trials}}} . \tag{4.7}$$
 
 The confidence interval using the Wilson score method is [17]:
 
-$$P \in \left[\frac{\hat{P} + \frac{\zeta^2}{2\Upsilon} - \zeta\sqrt{\frac{\hat{P}(1-\hat{P})}{\Upsilon} + \frac{\zeta^2}{4\Upsilon^2}}}{1+\frac{\zeta^2}{\Upsilon}}, \frac{\hat{P} + \frac{\zeta^2}{2\Upsilon} + \zeta\sqrt{\frac{\hat{P}(1-\hat{P})}{\Upsilon} + \frac{\zeta^2}{4\Upsilon^2}}}{1+\frac{\zeta^2}{\Upsilon}}\right] , \tag{4.8}$$
+$$\mathbb{P} \in \left[\frac{\hat{\mathbb{P}} + \frac{\zeta^2}{2\Upsilon} - \zeta\sqrt{\frac{\hat{\mathbb{P}}(1-\hat{\mathbb{P}})}{\Upsilon} + \frac{\zeta^2}{4\Upsilon^2}}}{1+\frac{\zeta^2}{\Upsilon}}, \frac{\hat{\mathbb{P}} + \frac{\zeta^2}{2\Upsilon} + \zeta\sqrt{\frac{\hat{\mathbb{P}}(1-\hat{\mathbb{P}})}{\Upsilon} + \frac{\zeta^2}{4\Upsilon^2}}}{1+\frac{\zeta^2}{\Upsilon}}\right] , \tag{4.8}$$
 
 where $\zeta$ is the z-score (standard normal quantile) [4–6].
 
 #### 4.1.2 Adaptive Sample Size with Sequential Refinement
 
-Since $P$ is unknown a priori, an adaptive sampling approach is employed [5, 6]. Starting with an initial batch of $\Upsilon_0 = 10^4$ trials, the required sample size is updated after each batch;
+Since $\mathbb{P}$ is unknown a priori, an adaptive sampling approach is employed [5, 6]. Starting with an initial batch of $\Upsilon_0 = 10^4$ trials, the required sample size is updated after each batch;
 
-$$\Upsilon_{\mathrm{next}} = \frac{\zeta^2(1-\hat{P}_{\mathrm{current}})}{\hat{P}_{\mathrm{current}}\epsilon^2} . \tag{4.9}$$
+$$\Upsilon_{\mathrm{next}} = \frac{\zeta^2(1-\hat{\mathbb{P}}_{\mathrm{current}})}{\hat{\mathbb{P}}_{\mathrm{current}}\epsilon^2} . \tag{4.9}$$
 
 where $\epsilon$ is the tolerance. The sampling continues until convergence is achieved [4–6]:
 
-$$\frac{P_{\mathrm{upper}} - P_{\mathrm{lower}}}{\hat{P}_{\mathrm{current}}} < \epsilon , \tag{4.10}$$
+$$\frac{\mathbb{P}_{\mathrm{upper}} - \mathbb{P}_{\mathrm{lower}}}{\hat{\mathbb{P}}_{\mathrm{current}}} < \epsilon , \tag{4.10}$$
 
-where $P_{\mathrm{lower}}$ and $P_{\mathrm{upper}}$ come from the confidence interval formula in (4.8). As more trials are added, the $\sqrt{\Upsilon}$ in the denominator of the Wilson formula makes the interval tighter, reducing the relative width until it's less than the tolerance [4–6].
+where $\mathbb{P}_{\mathrm{lower}}$ and $\mathbb{P}_{\mathrm{upper}}$ come from the confidence interval formula in (4.8). As more trials are added, the $\sqrt{\Upsilon}$ in the denominator of the Wilson formula makes the interval tighter, reducing the relative width until it's less than the tolerance [4–6].
 
 ### 4.2 Importance Sampling
 
