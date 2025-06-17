@@ -1,9 +1,12 @@
-
 # Computational Implementation of Spherically Symmetric Debris Cloud Models
 
 Kamyar Modjtahedzadeh  
 Boeing Intelligence & Analytics  
 June 9, 2025
+
+> This paper presents a comprehensive computational framework for implementing spherically symmetric debris cloud models based on the NASA Standard Breakup Model. The implementation addresses three critical components of orbital debris simulation: statistical sampling of fragment area-to-mass ratios, three-dimensional spatial positioning according to Gaussian density distributions, and numerical fragment count determination across size categories. A piecewise statistical function is developed to model area-to-mass ratio distributions, incorporating unimodal log-normal sampling for small fragments and bimodal distributions for larger debris with smooth interpolation across the transition region. For spatial sampling, marginal and conditional probability density functions are derived in spherical coordinates, with specialized techniques including inverse cumulative distribution function methods and rejection sampling for Gaussian volumetric mass densities. The framework accounts for the steep power-law size distribution characteristic of fragmentation events, with adaptive resolution strategies that allocate computational resources efficiently across small, medium, and large fragment populations. Practical algorithms are provided for both high-accuracy rejection sampling and computationally efficient rectified Gaussian approximations, enabling flexible implementation based on performance requirements. This computational approach provides the foundation for simulating post-impact debris clouds in orbital environments, supporting risk assessment and collision avoidance applications in space situational awareness.
+
+**Keywords:** Orbital debris, Fragmentation simulation, NASA EVOLVE 4.0, Statistical sampling
 
 ## 1 Distribution of Area-to-Mass Ratios
 
@@ -296,9 +299,9 @@ For a specific characteristic length, the probability of impact along a trajecto
 
 $$P_{\mathrm{impact}}(L_{\mathrm{c}}, L) = 1-\exp\left[-\int_L \Lambda(L_{\mathrm{c}}, L'),dL'\right] . \tag{4.2}$$
 
-The collision rate at position $s$ along trajectory $L$ is [9, 13–16]:
+The collision rate at position $r$ along trajectory $L$ is [9, 13–16]:
 
-$$\Lambda(s, L) = \rho_N(r, L)\cdot \pi\ell^2 , \tag{4.3}$$
+$$\Lambda(r, L) = \rho_N(r, L)\cdot \pi\ell^2 , \tag{4.3}$$
 
 $\rho_N(r)$ is the the number density of fragments at radial distance $r$ and $\pi\ell^2$ represents the effective impact cross-sectional area. The number density is related to the mass density through,
 

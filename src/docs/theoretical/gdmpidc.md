@@ -6,7 +6,7 @@ May 5, 2025
 
 > A comprehensive model describing the evolution of satellite debris clouds following fragmentation events in orbit is presented. The approach models the spatial density distribution of fragments using a Gaussian function that incorporates the physical characteristics of debris particles. The model accounts for size-dependent stratification through an inverse relationship between the applied perturbational forces and characteristic length. These prominent non-gravitational forces cause the initial spherical cloud with differently sized fragments to evolve along distinct trajectories, transforming the geometry of the original structure. It follows that this representation provides the groundwork for a computational model to simulate and predict the system for short time intervals post-fragmentation, i.e., $\lesssim{120}$ seconds. 
 
-**Keywords:** Space debris, Density distribution, Cloud propagation, Orbital mechanics
+**Keywords:** Orbital debris, Density distribution, Cloud propagation, Orbital mechanics
 
 ## 1 Basic Modeling of PID Cloud Radius using Packing Density
 
