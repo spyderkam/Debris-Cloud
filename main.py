@@ -348,7 +348,7 @@ def main(parent_mass:"kilograms", parent_radius:"meters") -> None:
     
     for hd in hit_distances:
         result = monte_carlo_impact_probability(cloud, hd, num_trials=5000)
-        print(f"  Hit distance {hd:3.1f} m: ℙ = {result['probability']:.6f} ± {result['standard_error']:.6f}")
+        print(f"  Hit distance {hd:3.1f} m: P = {result['probability']:.6f} ± {result['standard_error']:.6f}")
     
     print(f"\n" + "#"*60)
     print("ANALYSIS COMPLETE")
