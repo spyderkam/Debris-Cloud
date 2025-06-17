@@ -270,7 +270,7 @@ def adaptive_monte_carlo(cloud, hit_distance, target_precision=0.05, max_trials=
     
     return result
 
-def main(parent_mass:"kilograms", parent_radius:"meters") -> None:
+def main(parent_mass: "kilograms", parent_radius: "meters", hit_distances: list = [0.5, 1.0, 2.0, 5.0]) -> None:
     """Main function implementing Section 4 of cissdcm.md"""
     
     print("#" * 60)
@@ -343,9 +343,7 @@ def main(parent_mass:"kilograms", parent_radius:"meters") -> None:
     print(f"  Total Computation Time: {result_adaptive['computation_time']:.2f} seconds")
     
     # Compare different hit distances
-    print(f"\n3. Sensitivity Analysis - Different Hit Distances:")
-    hit_distances = [0.5, 1.0, 2.0, 5.0]
-    
+    print(f"\n3. Sensitivity Analysis - Different Hit Distances:")    
     for hd in hit_distances:
         result = monte_carlo_impact_probability(cloud, hd, num_trials=5000)
         print(f"  Hit distance {hd:3.1f} m: P = {result['probability']:.6f} ± {result['standard_error']:.6f}")
