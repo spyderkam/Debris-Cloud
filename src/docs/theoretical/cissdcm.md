@@ -264,12 +264,12 @@ $$\Upsilon_{\mathrm{total}} = \Upsilon_{\mathrm{small}} + \Upsilon_{\mathrm{medi
 
 The percentage distributions are: 
 &nbsp;&nbsp;&nbsp;&nbsp;• Small fragments: $99.95\%$  
-&nbsp;&nbsp;&nbsp;&nbsp;• Medium fragments: $0.023\%$ 
-&nbsp;&nbsp;&nbsp;&nbsp;• Large fragments: $0.032\%$  
+&nbsp;&nbsp;&nbsp;&nbsp;% • Medium fragments: $0.023\%$ 
+&nbsp;&nbsp;&nbsp;&nbsp;% • Large fragments: $0.032\%$  %
 
 #### 3.1.2 Intra-Category Distribution
 
-It has been established how the fragments are distributed based on their classification; however, the three size categories also have internal distributions. The small, medium, and large fragments themselves follow the same respective power law distribution pattern. Within any subrange size category, the fragments are not uniformly distributed as smaller fragments within any classification are more numerous than larger ones. For any subrange within any category, from $L_{\mathrm{a}}$ to $L_{\mathrm{b}}$, where $0.001$ m $\leq L_{\mathrm{a}} < L_{\mathrm{b}} \leq 1.0$ m, the number of fragments is:
+It has been established how the fragments are distributed based on their classification; however, the three size categories also have internal distributions. The small, medium, and large fragments themselves follow the same respective power law distribution pattern. Within any subrange size category, the fragments are not uniformly distributed as smaller fragments within any classification are more numerous than larger ones. For any subrange within any category, from $_{\mathrm{a}}$ to $_{\mathrm{b}}$, where $0.001$ m $\leq L_{\mathrm{a}} < L_{\mathrm{b}} \leq 1.0$ m, the number of fragments is:
 
 $$\Upsilon_{\mathrm{subrange}} = N(L_{\mathrm{a}}) - N(L_{\mathrm{b}}) = 0.1M_{\mathrm{parent}}^{0.75} \left( L_{\mathrm{a}}^{-1.71} - L_{\mathrm{b}}^{-1.71} \right) \tag{3.5}$$
 
@@ -285,29 +285,29 @@ To estimate the number of fragments for any particular characteristic length, th
 
 $$\Upsilon(L_{\mathrm{c}}) = N(L_{\mathrm{c}}) - N(L_{\mathrm{c}} + \varepsilon), \tag{3.6}$$
 
-where $\varepsilon$ is an infinitesimal increment. With this formulation, $\Upsilon(L_{\mathrm{c}}) \approx \varepsilon \cdot n(L_{\mathrm{c}})$. Loop through the discrete $L_{\mathrm{c}}$ values with the assigned $\Delta L_{\mathrm{c}}$ size steps and calculate the number of pieces for each characteristic length with the above formula for $\Upsilon(L_{\mathrm{c}})$.
+where $\varepsilon$ is an infinitesimal increment. With this formulation, $\Upsilon(L_{\mathrm{c}}) \approx \varepsilon \cdot _{\mathrm{c}})$. Loop through the discrete $L_{\mathrm{c}}$ values with the assigned $\Delta L_{\mathrm{c}}$ size steps and calculate the number of pieces for each characteristic length with the above formula for $\Upsilon(L_{\mathrm{c}})$.
 
 ## 4 Impact Probability at Event Zero
 
-Given the parent mass, initial cloud radius, cumulative distribution function, $\rho(r, L_{\mathrm{c}})$, and hit distance threshold, the impact probability will be calculated such that a linear trajectory passing through random entry and exit points on the cloud sphere at time $t = 0$ will encounter at least one fragment within distance $\ell$. A fundamental result in stochastic processes from Poisson process theory is the application of a non-homogeneous Poisson process [12]; since encounters occur randomly at rate (per unit length) $\Lambda(L')$ along path $L'$, then the number of encounters follows a Poisson distribution with parameter $\int\Lambda dL'$. The probability of at least one encounter is $1-\mathbb{P}_{\mathrm{avoid}} = 1-\exp[-\int\Lambda dL']$ [10, 12]. The total impact probability is computed as the weighted sum over all fragment size categories:
+Given the parent mass, initial cloud radius, cumulative distribution function, $\rho(r, L_{\mathrm{c}})$, and hit distance threshold, the impact probability will be calculated such that a linear trajectory passing through random entry and exit points on the cloud sphere at time $t = 0$ will encounter at least one fragment within distance $\ell$. A fundamental result in stochastic processes from Poisson process theory is the application of a non-homogeneous Poisson process [12]; since encounters occur randomly at rate (per unit length) $\Lambda(\mathcal{L})$ along path $\mathcal{L}$, then the number of encounters follows a Poisson distribution with parameter $\int\Lambda d\mathcal{L}'$. The probability of at least one encounter is $1-\mathbb{P}P_{\mathrm{avoid}} = 1-\exp[-\int\Lambda d\mathcal{L}']$ [10, 12]. The total impact probability is computed as the weighted sum over all fragment size categories:
 
-$$\mathbb{P}_{\mathrm{impact}} = \sum_{L_{\mathrm{c}} =L_{\mathrm{min}}}^{L_{\mathrm{max}}} f \cdot \mathbb{P}_{\mathrm{impact}}(L_{\mathrm{c}}) , \tag{4.1}$$
+$$\mathbb{P}P_{\mathrm{impact}} = \sum_{L_{\mathrm{c}} =L_{\mathrm{min}}}^{L_{\mathrm{max}}} f \cdot \mathbb{P}P_{\mathrm{impact}}(L_{\mathrm{c}}) , \tag{4.1}$$
 
 where $f$ represents the fraction of fragments given from percentage distributions per size category, as in Section 3.1.1.
 
 For a specific characteristic length, the probability of impact along a trajectory is [11]:
 
-$$\mathbb{P}_{\mathrm{impact}}(L_{\mathrm{c}}, L) = 1-\exp\left[-\int_L \Lambda(L_{\mathrm{c}}, L'),dL'\right] . \tag{4.2}$$
+$$\mathbb{P}_{\mathrm{impact}}(L_{\mathrm{c}}, \mathcal{L}) = 1-\exp\left[-\int_L \Lambda(L_{\mathrm{c}}, \mathcal{L}'),d\mathcal{L}'\right] . \tag{4.2}$$
 
-The collision rate at position $r$ along trajectory $L$ is [9, 13–16]:
+The collision rate at position $r$ along trajectory $\mathcal{L}$ is [9, 13–16]:
 
-$$\Lambda(r, L) = \rho_N(r, L)\cdot \pi\ell^2 , \tag{4.3}$$
+$$\Lambda(r, \mathcal{L}) = \rho_N(r, \mathcal{L})\cdot \pi\ell^2 , \tag{4.3}$$
 
-$\rho_N(r)$ is the the number density of fragments at radial distance $r$ and $\pi\ell^2$ represents the effective impact cross-sectional area. The number density is related to the mass density through,
+$\rho_N(r)$ is the number density of fragments at radial distance $r$ and $\pi\ell^2$ represents the effective impact cross-sectional area. The number density is related to the mass density through,
 
-$$\rho_N(r, L_{\mathrm{c}}) = \frac{\rho(r, L_{\mathrm{c}})}{M} \frac{dN}{dL_{\mathrm{c}}} , \tag{4.4}$$
+$$\rho_N(r, L_{\mathrm{c}}) = \frac{\rho(r, L_{\mathrm{c}})}{M} \frac{dN}{d_{\mathrm{c}}} , \tag{4.4}$$
 
-where $M$ is the average mass of fragments with characteristic length $L_{\mathrm{c}}$.
+where $M$ is the average mass of fragments with characteristic length $_{\mathrm{c}}$.
 
 ### 4.1 Monte Carlo Implementation
 
@@ -315,7 +315,7 @@ where $M$ is the average mass of fragments with characteristic length $L_{\mathr
 
 The impact probability is estimated through repeated sampling [4–6]:
 
-$$\hat{\mathbb{P}}_{\mathrm{impact}} = \frac{1}{\Upsilon_{\mathrm{trials}}} \sum_{j=1}^{\Upsilon_{\mathrm{trials}}} I_j, \tag{4.5}$$
+$$\hat{\mathbb{P}P}_{\mathrm{impact}} = \frac{1}{\Upsilon_{\mathrm{trials}}} \sum_{j=1}^{\Upsilon_{\mathrm{trials}}} I_j, \tag{4.5}$$
 
 where $I_j$ is an indicator function:
 
@@ -329,7 +329,7 @@ $$\text{Var}(\mathbb{P}) = \frac{\mathbb{P}(1-\mathbb{P})}{\Upsilon_{\mathrm{tri
 
 The confidence interval using the Wilson score method is [17]:
 
-$$\mathbb{P} \in \left[\frac{\hat{\mathbb{P}} + \frac{\zeta^2}{2\Upsilon} - \zeta\sqrt{\frac{\hat{\mathbb{P}}(1-\hat{\mathbb{P}})}{\Upsilon} + \frac{\zeta^2}{4\Upsilon^2}}}{1+\frac{\zeta^2}{\Upsilon}}, \frac{\hat{\mathbb{P}} + \frac{\zeta^2}{2\Upsilon} + \zeta\sqrt{\frac{\hat{\mathbb{P}}(1-\hat{\mathbb{P}})}{\Upsilon} + \frac{\zeta^2}{4\Upsilon^2}}}{1+\frac{\zeta^2}{\Upsilon}}\right] , \tag{4.8}$$
+$$\mathbb{P} \in \left[\frac{\hat{\mathbb{P}P} + \frac{\zeta^2}{2\Upsilon} - \zeta\sqrt{\frac{\hat{\mathbb{P}}(1-\hat{\mathbb{P}P})}{\Upsilon} + \frac{\zeta^2}{4\Upsilon^2}}}{1+\frac{\zeta^2}{\Upsilon}}, \frac{\hat{\mathbb{P}P} + \frac{\zeta^2}{2\Upsilon} + \zeta\sqrt{\frac{\hat{\mathbb{P}}(1-\hat{\mathbb{})}{\Upsilon} + \frac{\zeta^2}{4\Upsilon^2}}}{1+\frac{\zeta^2}{\Upsilon}}\right] , \tag{4.8}$$
 
 where $\zeta$ is the z-score (standard normal quantile) [4–6].
 
@@ -337,13 +337,13 @@ where $\zeta$ is the z-score (standard normal quantile) [4–6].
 
 Since $\mathbb{P}$ is unknown a priori, an adaptive sampling approach is employed [5, 6]. Starting with an initial batch of $\Upsilon_0 = 10^4$ trials, the required sample size is updated after each batch;
 
-$$\Upsilon_{\mathrm{next}} = \frac{\zeta^2(1-\hat{\mathbb{P}}_{\mathrm{current}})}{\hat{\mathbb{P}}_{\mathrm{current}}\epsilon^2} . \tag{4.9}$$
+$$\Upsilon_{\mathrm{next}} = \frac{\zeta^2(1-\hat{\mathbb{P}P}_{\mathrm{current}})}{\hat{\mathbb{P}P}_{\mathrm{current}}\epsilon^2} . \tag{4.9}$$
 
 where $\epsilon$ is the tolerance. The sampling continues until convergence is achieved [4–6]:
 
-$$\frac{\mathbb{P}_{\mathrm{upper}} - \mathbb{P}_{\mathrm{lower}}}{\hat{\mathbb{P}}_{\mathrm{current}}} < \epsilon , \tag{4.10}$$
+$$\frac{\mathbb{P}P_{\mathrm{upper}} - \mathbb{P}P_{\mathrm{lower}}}{\hat{\mathbb{P}P}_{\mathrm{current}}} < \epsilon , \tag{4.10}$$
 
-where $\mathbb{P}_{\mathrm{lower}}$ and $\mathbb{P}_{\mathrm{upper}}$ come from the confidence interval formula in (4.8). As more trials are added, the $\sqrt{\Upsilon}$ in the denominator of the Wilson formula makes the interval tighter, reducing the relative width until it's less than the tolerance [4–6].
+where $\mathbb{P}P_{\mathrm{lower}}$ and $\mathbb{P}P_{\mathrm{upper}}$ come from the confidence interval formula in (4.8). As more trials are added, the $\sqrt{\Upsilon}$ in the denominator of the Wilson formula makes the interval tighter, reducing the relative width until it's less than the tolerance [4–6].
 
 ### 4.2 Importance Sampling
 
@@ -367,41 +367,41 @@ with $h$ representing the uniform distribution on the sphere. Without weights, e
 
 ## References
 
-&nbsp;&nbsp;&nbsp;[1]  Modjtahedzadeh, K. (2025). _Gaussian distribution model of post-impact debris cloud_. Manuscript in preparation. Boeing Intelligence & Analytics.  
+[1]  Modjtahedzadeh, K. (2025). _Gaussian distribution model of post-impact debris cloud_. Manuscript in preparation. Boeing Intelligence & Analytics.  
   
-&nbsp;&nbsp;&nbsp;[2]  Ellgen, P. (2020). _Probability density functions for velocity components in spherical coordinates_. In _Thermodynamics and chemical equilibrium_. LibreTexts Chemistry.  
+[2]  Ellgen, P. (2020). _Probability density functions for velocity components in spherical coordinates_. In _Thermodynamics and chemical equilibrium_. LibreTexts Chemistry.  
   
-&nbsp;&nbsp;&nbsp;[3]  Johnson, N. L., Krisko, P. H., Liou, J.-C., & Anz-Meador, P. D. (2001). NASA's new breakup model of EVOLVE 4.0. _Advances in Space Research,_ **28**(9), 1377–1384.  
+[3]  Johnson, N. L., Krisko, P. H., Liou, J.-C., & Anz-Meador, P. D. (2001). NASA's new breakup model of EVOLVE 4.0. _Advances in Space Research,_ **28**(9), 1377–1384.  
   
-&nbsp;&nbsp;&nbsp;[4]  Davis-Ross, K., & Chunn, J. (2021). _An introduction to probability and simulation_. Chapman and Hall/CRC.  
+[4]  Davis-Ross, K., & Chunn, J. (2021). _An introduction to probability and simulation_. Chapman and Hall/CRC.  
   
-&nbsp;&nbsp;&nbsp;[5]  Ross, S. M. (2019). _Introduction to probability models_ (12th ed.). Academic Press.  
+[5]  Ross, S. M. (2019). _Introduction to probability models_ (12th ed.). Academic Press.  
   
-&nbsp;&nbsp;&nbsp;[6]  Law, A. M. (2015). _Simulation modeling and analysis_ (5th ed.). McGraw-Hill.  
+[6]  Law, A. M. (2015). _Simulation modeling and analysis_ (5th ed.). McGraw-Hill.  
   
-&nbsp;&nbsp;&nbsp;[7]  Devroye, L. (1986). _Non-uniform random variate generation_. Springer-Verlag.  
+[7]  Devroye, L. (1986). _Non-uniform random variate generation_. Springer-Verlag.  
   
-&nbsp;&nbsp;&nbsp;[8]  Gentle, J. E. (2003). _Random number generation and Monte Carlo methods_ (2nd ed.). Springer.  
+[8]  Gentle, J. E. (2003). _Random number generation and Monte Carlo methods_ (2nd ed.). Springer.  
   
-&nbsp;&nbsp;&nbsp;[9]  Chapman, S., & Cowling, T. G. (1970). _The mathematical theory of non-uniform gases_ (3rd ed.). Cambridge University Press.  
+[9]  Chapman, S., & Cowling, T. G. (1970). _The mathematical theory of non-uniform gases_ (3rd ed.). Cambridge University Press.  
   
-&nbsp;&nbsp;&nbsp;[10] Duderstadt, J. J., & Hamilton, L. J. (1976). _Nuclear reactor analysis_. John Wiley & Sons.  
+[10] Duderstadt, J. J., & Hamilton, L. J. (1976). _Nuclear reactor analysis_. John Wiley & Sons.  
   
-&nbsp;&nbsp;&nbsp;[11] Letizia, F., Colombo, C., & Lewis, H. G. (2016). Collision probability due to space debris clouds through a continuum approach. _Journal of Guidance, Control, and Dynamics,_ **39**(10), 2240–2249.  
+[11] Letizia, F., Colombo, C., & Lewis, H. G. (2016). Collision probability due to space debris clouds through a continuum approach. _Journal of Guidance, Control, and Dynamics,_ **39**(10), 2240–2249.  
   
-&nbsp;&nbsp;&nbsp;[12] Haight, F. A. (1967). _Handbook of the Poisson distribution_. John Wiley & Sons.  
+[12] Haight, F. A. (1967). _Handbook of the Poisson distribution_. John Wiley & Sons.  
   
-&nbsp;&nbsp;&nbsp;[13] McQuarrie, D. A. (2000). _Statistical mechanics_. University Science Books.  
+[13] McQuarrie, D. A. (2000). _Statistical mechanics_. University Science Books.  
   
-&nbsp;&nbsp;&nbsp;[14] Perkins, D. H. (2000). _Introduction to high energy physics_ (4th ed.). Cambridge University Press.  
+[14] Perkins, D. H. (2000). _Introduction to high energy physics_ (4th ed.). Cambridge University Press.  
   
-&nbsp;&nbsp;&nbsp;[15] Grün, E., Zook, H. A., Fechtig, H., & Giese, R. H. (1985). Collisional balance of the meteoritic complex. _Icarus,_ **62**(2), 244–272.  
+[15] Grün, E., Zook, H. A., Fechtig, H., & Giese, R. H. (1985). Collisional balance of the meteoritic complex. _Icarus,_ **62**(2), 244–272.  
   
-&nbsp;&nbsp;&nbsp;[16] Bird, G. A. (1994). _Molecular gas dynamics and the direct simulation of gas flows_. Oxford University Press.  
+[16] Bird, G. A. (1994). _Molecular gas dynamics and the direct simulation of gas flows_. Oxford University Press.  
   
- &nbsp;&nbsp;&nbsp;[17] Wilson, E. B. (1927). Probable inference, the law of succession, and statistical inference. _Journal of the American Statistical Association,_ **22**(158), 209–212.  
+ [17] Wilson, E. B. (1927). Probable inference, the law of succession, and statistical inference. _Journal of the American Statistical Association,_ **22**(158), 209–212.  
   
-&nbsp;&nbsp;&nbsp;[18] Kloek, T., & van Dijk, H. K. (1978). Efficient estimation of income distribution parameters. _Journal of Econometrics,_ **8**(1), 61–74.  
+[18] Kloek, T., & van Dijk, H. K. (1978). Efficient estimation of income distribution parameters. _Journal of Econometrics,_ **8**(1), 61–74.  
 
 
 [^1]: It is called $\xi_{\mathrm{inter}}$ instead of $\xi_{\mathrm{middle}}$ because this function does not represent a unique statistical distribution for medium-sized fragments. Instead, it performs an interpolation (weighted blending) between the small and large fragment distributions. The name describes its mathematical operation rather than just the size category. Without interpolation, a fragment at 7.9 cm would use entirely different statistical parameters than one at 8.1 cm, creating an unrealistic discontinuity in physical properties. Linear interpolation creates a gradual transition: At exactly 8 cm almost entirely small fragment distribution is used, at 9.5 cm (midpoint) weighting of both distributions is used, and at exactly 11 cm almost the entirety of large fragment distribution is used. This represents the physical reality that fragmentation processes produce a continuous spectrum of fragment properties rather than discrete categories with sharp boundaries.
