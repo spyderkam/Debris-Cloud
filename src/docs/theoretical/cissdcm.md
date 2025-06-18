@@ -408,7 +408,7 @@ with $h$ representing the uniform distribution on the sphere. Without weights, e
 
 [^2]: A marginal PDF is the probability density function of one or more variables from a joint distribution, obtained by averaging out (integrating) the other variables. In the context of sampling fragment positions in a 3D debris cloud, where positions are defined by spherical coordinates $(r, \theta, \varphi)$, the marginal PDF for the radial distance $r$ describes the likelihood of a fragment being at a certain distance from the origin, ignoring the angular coordinates $\theta$ and $\varphi$. Its derived by summing up the probabilities over all possible angles, focusing only on the radial part of the distribution.
 
-[^3]: $U \sim \text{Uniform}[0, 1]$ means that $U$ has equal probability of taking any value between 0 and 1.
+[^3]: $\mathcal{U} \sim \text{Uniform}[0, 1]$ means that $U$ has equal probability of taking any value between 0 and 1.
 
 [^4]: In general, a uniform random variable $\mathcal{U}$ that's distributed on any interval $[c, d]$ can be transformed into a uniform distribution on $[a, b]$ using a modified formula: $\mathcal{X} = a + (b - a) \frac{\mathcal{U} - c}{d - c}$ This formula first normalizes $\mathcal{U}$ to $[0, 1]$ and then scales it to $[a, b]$ [5, 7].
 
