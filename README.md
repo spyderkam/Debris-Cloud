@@ -243,6 +243,8 @@ This project implements peer-reviewed research in orbital debris modeling. Contr
 
 This project implements scientific research methodologies for orbital debris analysis. Please cite the accompanying research papers when using this code in academic or commercial applications.
 
+This project is licensed under the Apache License, Version 2.0. See the [LICENSE](https://github.com/spyderkam/Debris-Cloud/blob/main/LICENSE) file for details.
+
 ---
 
 **Authors**: Kamyar Modjtahedzadeh  
