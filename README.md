@@ -249,4 +249,4 @@ This project is licensed under the Apache License, Version 2.0. See the [LICENSE
 
 **Authors**: Kamyar Modjtahedzadeh  
 **Institution**: Boeing Intelligence & Analytics  
-**Date**: May 2025 -- June 2025
+**Date**: May 2025 &ndash; June 2025
