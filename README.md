@@ -235,9 +235,10 @@ This project implements peer-reviewed research in orbital debris modeling. Contr
 
 ## References
 
-1. Johnson, N. L., et al. (2001). NASA's New Breakup Model of EVOLVE 4.0. *Advances in Space Research*, **28**(9), 1377-1384.
-2. Modjtahedzadeh, K. (2025). Gaussian Distribution Model of Post-Impact Debris Cloud. Boeing Intelligence & Analytics.
-3. Modjtahedzadeh, K. (2025). Computational Implementation of Spherically Symmetric Debris Cloud Models. Boeing Intelligence & Analytics.
+1. Johnson, N. L., et al. (2001). NASA's New Breakup Model of EVOLVE 4.0. *Advances in Space Research*, **28**(9), 1377-1384. DOI: 10.1016/S0273-1177(01)00423-0
+2. Modjtahedzadeh, K. (2025). Gaussian Distribution Model of Post-Impact Debris Cloud. *Boeing Intelligence & Analytics*.
+3. Modjtahedzadeh, K. (2025). Computational Implementation of Spherically Symmetric Debris Cloud Models. *Boeing Intelligence & Analytics*.
+4. Klinkrad, H. (2006). Space Debris: Models and Risk Analysis. Springer-Praxis. ISBN: 978-3-540-37674-1
 
 ## License
 
